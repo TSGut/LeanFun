@@ -1,0 +1,141 @@
+{
+  "columns": [
+    "Definition and weight",
+    "Orthogonality and norms",
+    "Recurrences and operator structure",
+    "Differentiation and conversion"
+  ],
+  "rows": [
+    {
+      "family": "Chebyshev",
+      "nodes": [
+        [
+          "def:chebyshev-mathlib",
+          "def:classical-chebyshev-weights"
+        ],
+        [
+          "thm:T-orthogonal",
+          "thm:U-orthogonal"
+        ],
+        [
+          "thm:chebyshev-recurrence"
+        ],
+        [
+          "thm:T-coefficient-calculus"
+        ]
+      ]
+    },
+    {
+      "family": "Jacobi",
+      "nodes": [
+        [
+          "def:jacobi",
+          "def:jacobi-measure"
+        ],
+        [
+          "thm:jacobi-pairwise",
+          "thm:jacobi-norm"
+        ],
+        [
+          "thm:jacobi-recurrence"
+        ],
+        [
+          "thm:jacobi-derivative"
+        ]
+      ]
+    },
+    {
+      "family": "Gegenbauer / ultraspherical",
+      "nodes": [
+        [
+          "def:gegenbauer",
+          "def:gegenbauer-measure"
+        ],
+        [
+          "thm:gegenbauer-norm",
+          "thm:gegenbauer-orthogonal"
+        ],
+        [
+          "thm:gegenbauer-recurrence"
+        ],
+        [
+          "thm:gegenbauer-derivative"
+        ]
+      ]
+    },
+    {
+      "family": "Legendre",
+      "nodes": [
+        [
+          "def:legendre",
+          "def:legendre-measure"
+        ],
+        [
+          "thm:legendre-norm"
+        ],
+        [
+          "thm:legendre-recurrence"
+        ],
+        [
+          "thm:legendre-derivative-leading-coefficient"
+        ]
+      ]
+    },
+    {
+      "family": "Proriol / triangle",
+      "nodes": [
+        [
+          "def:proriol-triangle"
+        ],
+        [
+          "thm:proriol-triangle-orthogonality"
+        ],
+        [
+          "thm:proriol-triangle-multiplication"
+        ],
+        [
+          "thm:proriol-alpha-conversion"
+        ]
+      ]
+    },
+    {
+      "family": "Cartesian disk",
+      "nodes": [
+        [
+          "def:dunkl-xu-polynomials",
+          "def:disk-measure"
+        ],
+        [
+          "thm:disk-orthogonality",
+          "thm:dunkl-xu-norm"
+        ],
+        [
+          "thm:koornwinder-operators",
+          "thm:disk-koornwinder-bridge"
+        ],
+        [
+          "thm:dunkl-xu-raising"
+        ]
+      ]
+    },
+    {
+      "family": "Zernike / annulus",
+      "nodes": [
+        [
+          "def:zernike-real",
+          "def:zernike-annulus-measure"
+        ],
+        [
+          "thm:zernike-polynomials",
+          "thm:zernike-annulus-basis"
+        ],
+        [
+          "thm:zernike-annulus-conversion"
+        ],
+        [
+          "thm:zernike-annulus-laplacian"
+        ]
+      ]
+    }
+  ]
+}

@@ -1,0 +1,88 @@
+# Lean dependencies, toolchains, and compiled artifacts
+.lake/
+.tools/
+*.olean
+*.ilean
+*.olean.server
+*.olean.private
+
+# Python environments and caches
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Generated blueprint output (keep blueprint sources and bibliography)
+/blueprint/web/
+/blueprint/print/
+/blueprint/lean_decls
+/blueprint/src/version.tex
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.nav
+*.out
+*.run.xml
+*.snm
+*.synctex.gz
+*.toc
+*.vrb
+*.paux
+
+# Agentic context
+AGENTS.md
+AGENTS.local.md
+CLAUDE.md
+.agents/
+.codex/
+.claude/
+/agents/
+/docs/
+/blueprint/dep_graph.png
+/private/
+/scratch/
+
+# Local credentials and environment overrides (allow sanitised examples)
+.env
+.env.*
+!.env.example
+!.env.sample
+.envrc
+.aws/
+.ssh/
+.netrc
+.npmrc
+.pypirc
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Machine-specific editor settings, OS metadata, and temporary files
+.idea/
+.vscode/
+.DS_Store
+._*
+Thumbs.db
+Desktop.ini
+*.swp
+*.swo
+*~
+*.bak
+*.tmp
+
+# Manuscript drafts (kept local)
+/paper/
+
+# Generated human-review status; approvals live in statements.toml
+/review/status.json
+
+# Local full-project backups
+/backups/

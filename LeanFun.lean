@@ -1,0 +1,722 @@
+module
+
+public import LeanFun.Mathlib.Analysis.Calculus.IteratedDeriv.OpenDomain
+
+public import LeanFun.Mathlib.MeasureTheory.Integral.CircleDomain
+
+public import LeanFun.Mathlib.Analysis.Analytic.OpenDomain
+
+public import LeanFun.Mathlib.LinearAlgebra.Barycentric
+
+public import Mathlib.Algebra.Polynomial.Sequence
+public import Mathlib.RingTheory.Polynomial.Chebyshev
+public import Mathlib.RingTheory.Polynomial.ShiftedLegendre
+public import Mathlib.Analysis.SpecialFunctions.Trigonometric.Chebyshev.Orthogonality
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Trigonometric.Chebyshev.Orthogonality
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Trigonometric.Chebyshev.Coefficients
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Trigonometric.Chebyshev.Completeness
+public import LeanFun.Mathlib.Analysis.Complex.BernsteinEllipse
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Trigonometric.Chebyshev.Sequence
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.OrthogonalPolynomial.Existence
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.OrthogonalPolynomial.Uniqueness
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.OrthogonalPolynomial.Recurrence
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.OrthogonalPolynomial.RecurrenceCoefficients
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.OrthogonalPolynomial.ChristoffelDarboux
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.OrthogonalPolynomial.Roots
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.OrthogonalPolynomial.Interlacing
+public import LeanFun.Mathlib.RingTheory.Polynomial.Jacobi
+public import LeanFun.Mathlib.RingTheory.Polynomial.Jacobi.Derivative
+public import LeanFun.Mathlib.RingTheory.Polynomial.Gegenbauer
+public import LeanFun.Mathlib.RingTheory.Polynomial.Gegenbauer.Derivative
+public import LeanFun.Mathlib.RingTheory.Polynomial.Jacobi.DifferentialEquation
+public import LeanFun.Mathlib.RingTheory.Polynomial.Gegenbauer.Values
+public import LeanFun.Mathlib.RingTheory.Polynomial.Gegenbauer.Conversion
+public import LeanFun.Mathlib.RingTheory.Polynomial.Gegenbauer.Recurrence
+public import LeanFun.Mathlib.RingTheory.Polynomial.Gegenbauer.DifferentialEquation
+public import LeanFun.Mathlib.Analysis.Complex.LaurentCoefficient
+public import LeanFun.Mathlib.Analysis.Complex.BernsteinEllipseDecay
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Trigonometric.Chebyshev.ComplexCoefficients
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Trigonometric.Chebyshev.Series
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Trigonometric.Chebyshev.SmoothDecay
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Trigonometric.Chebyshev.AnalyticDecay
+public import LeanFun.Mathlib.MeasureTheory.VectorMeasure.AbsolutelyContinuous
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Trigonometric.Chebyshev.BoundedVariation
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Trigonometric.Chebyshev.FiniteSmoothness
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Trigonometric.Chebyshev.AlgebraicDecay
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Trigonometric.Chebyshev.Interpolation
+public import LeanFun.Mathlib.RingTheory.Polynomial.Legendre.Basic
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Legendre.Orthogonality
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Legendre.Recurrence
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Legendre.Roots
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Legendre.Completeness
+public import LeanFun.Mathlib.RingTheory.Polynomial.Jacobi.Symmetry
+public import LeanFun.Mathlib.RingTheory.Polynomial.Jacobi.Recurrence
+public import LeanFun.Mathlib.RingTheory.Polynomial.Gegenbauer.Jacobi
+public import LeanFun.Mathlib.RingTheory.Polynomial.Chebyshev.Jacobi
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Jacobi.Completeness
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Jacobi.Structure
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Gegenbauer.Norm
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Gegenbauer.Structure
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Gegenbauer.Completeness
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.OrthogonalPolynomial.Operators
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Jacobi.Operators
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Gegenbauer.Operators
+public import LeanFun.Mathlib.RingTheory.Polynomial.Chebyshev.Clenshaw
+public import LeanFun.Mathlib.RingTheory.Polynomial.Gegenbauer.Clenshaw
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Jacobi.Clenshaw
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Jacobi.Quadrature
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Trigonometric.Chebyshev.NearBest
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Jacobi.Rodrigues
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Jacobi.Hypergeometric
+public import LeanFun.Mathlib.LinearAlgebra.Polynomial.FiniteConnection
+public import LeanFun.Mathlib.RingTheory.Polynomial.Jacobi.FiniteConnection
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Jacobi.FiniteConnection
+public import LeanFun.Mathlib.Analysis.InnerProductSpace.FiniteProjection
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.OrthogonalPolynomial.Approximation
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Trigonometric.Chebyshev.RealApproximation
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.OrthogonalPolynomial.AnalyticApproximation
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Jacobi.Approximation
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.OrthogonalPolynomial.Projection
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.OrthogonalPolynomial.UniformApproximation
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.OrthogonalPolynomial.KernelBound
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Gamma.PolynomialBounds
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Jacobi.Bounds
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Jacobi.PolynomialBounds
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Jacobi.NormBounds
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Jacobi.KernelBounds
+public import LeanFun.Mathlib.Analysis.SpecificLimits.PolynomialGeometric
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Jacobi.UniformConvergence
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Gegenbauer.Approximation
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.OrthogonalPolynomial.ScalarExtension
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.OrthogonalPolynomial.ScalarCoefficients
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.OrthogonalPolynomial.ComplexCompetitor
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.OrthogonalPolynomial.ComplexApproximation
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Jacobi.ComplexApproximation
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Gegenbauer.ComplexApproximation
+public import LeanFun.Mathlib.Analysis.Polynomial.RationalIdentity
+public import LeanFun.Mathlib.RingTheory.Polynomial.Jacobi.ConnectionData
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Jacobi.MixedMoment
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Jacobi.MixedInner
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Jacobi.MassShift
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Jacobi.ConnectionCoefficient
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Jacobi.AlphaConnection
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Jacobi.UniversalConnection
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Jacobi.GeneralConnection
+public import LeanFun.Mathlib.Analysis.InnerProductSpace.GramSchmidtFactor
+public import LeanFun.Mathlib.LinearAlgebra.Basis.Flag
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.OrthogonalPolynomial.Multivariate.InnerProduct
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.OrthogonalPolynomial.Multivariate.Gram
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.OrthogonalPolynomial.Multivariate.MeasureModification
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.OrthogonalPolynomial.Multivariate.FiniteSection
+public import LeanFun.Mathlib.Analysis.InnerProductSpace.GramFactorBandwidth
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.SemiclassicalJacobi.Measure
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.SemiclassicalJacobi.Weight
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.SemiclassicalJacobi.Pearson
+public import LeanFun.Mathlib.RingTheory.Polynomial.Jacobi.Parity
+public import LeanFun.Mathlib.Algebra.MvPolynomial.DiskLift
+public import LeanFun.Mathlib.RingTheory.MvPolynomial.DunklXu
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Jacobi.SymmetricConnection
+public import LeanFun.Mathlib.LinearAlgebra.BilinearForm.PositiveBasis
+public import LeanFun.Mathlib.LinearAlgebra.Matrix.CholeskyLU
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Jacobi.ClassicalMeasure
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.DunklXu.Measure
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.DunklXu.Density
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.DunklXu.Orthogonality
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.DunklXu.LinearIndependent
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.DunklXu.Basis
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.DunklXu.Positive
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.DunklXu.Normalization
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.DunklXu.Connection
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.DunklXu.ConnectionSupport
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.DunklXu.MeasureModification
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.DunklXu.GramFactor
+public import LeanFun.Mathlib.MeasureTheory.Measure.EvenDensity
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Jacobi.EvenMeasure
+public import LeanFun.Mathlib.RingTheory.Polynomial.Reflection
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.OrthogonalPolynomial.MeasureModification
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.OrthogonalPolynomial.Parity
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.OrthogonalPolynomial.Normalization
+public import LeanFun.Mathlib.Algebra.MvPolynomial.DiskIndex
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.OrthogonalPolynomial.ConnectionSupport
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Jacobi.DiskOuterMeasure
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.OrthogonalPolynomial.Disk.Basis
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.OrthogonalPolynomial.Disk.Connection
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.OrthogonalPolynomial.Disk.ConnectionParity
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.OrthogonalPolynomial.Disk.Coordinates
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.OrthogonalPolynomial.Disk.GramFactor
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.OrthogonalPolynomial.Disk.Measure
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.OrthogonalPolynomial.Disk.Modification
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.OrthogonalPolynomial.Disk.ModificationDensity
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.OrthogonalPolynomial.Disk.ModifiedSystem
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.OrthogonalPolynomial.Disk.Pairing
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.OrthogonalPolynomial.Disk.Polynomial
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.OrthogonalPolynomial.Disk.Positive
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.OrthogonalPolynomial.Disk.Support
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.OrthogonalPolynomial.Disk.System
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.OrthogonalPolynomial.Multivariate.Projection
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.OrthogonalPolynomial.Multivariate.CompressedMultiplication
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.OrthogonalPolynomial.Multivariate.QuadraticPadding
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.DunklXu.CartesianSystem
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.DunklXu.ModifiedConnection
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.DunklXu.ModificationExamples
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.DunklXu.SparseModification
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.DunklXu.MultiplicationSection
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.DunklXu.ModificationGram
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.DunklXu.ModificationLU
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.DunklXu.Padding
+public import LeanFun.Mathlib.LinearAlgebra.Basis.BandedCoefficientMap
+public import LeanFun.Mathlib.LinearAlgebra.Matrix.OffsetSupport
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.OrthogonalPolynomial.ConnectionGram
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.OrthogonalPolynomial.ModificationOperators
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.OrthogonalPolynomial.ModificationGram
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.OrthogonalPolynomial.SeparatedModification
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.OrthogonalPolynomial.Koornwinder.Cholesky
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.OrthogonalPolynomial.Koornwinder.Connection
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.OrthogonalPolynomial.Koornwinder.Construction
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.OrthogonalPolynomial.Koornwinder.Disk
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.OrthogonalPolynomial.Koornwinder.FiniteSpan
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.OrthogonalPolynomial.Koornwinder.GramFactor
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.OrthogonalPolynomial.Koornwinder.Measure
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.OrthogonalPolynomial.Koornwinder.ModificationDensity
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.OrthogonalPolynomial.Koornwinder.Moments
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.OrthogonalPolynomial.Koornwinder.MultiplicationCases
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.OrthogonalPolynomial.Koornwinder.MultiplicationPairing
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.OrthogonalPolynomial.Koornwinder.MultiplicationSupport
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.OrthogonalPolynomial.Koornwinder.Operators
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.OrthogonalPolynomial.Koornwinder.OrdinarySpan
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.OrthogonalPolynomial.Koornwinder.OuterModification
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.OrthogonalPolynomial.Koornwinder.ScaleTransfer
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.OrthogonalPolynomial.Koornwinder.SpanConversion
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.OrthogonalPolynomial.Koornwinder.Support
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.OrthogonalPolynomial.Koornwinder.SupportCases
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.OrthogonalPolynomial.Koornwinder.System
+public import LeanFun.Mathlib.Algebra.MvPolynomial.ScaledLift
+public import LeanFun.Mathlib.Algebra.MvPolynomial.SeparatedIndex
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.OrthogonalPolynomial.Multivariate.GramBilinear
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.OrthogonalPolynomial.Koornwinder.Composition
+public import LeanFun.Mathlib.Algebra.Function.ProductSeparation
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.OrthogonalPolynomial.Koornwinder.QuadraticSeparation
+public import LeanFun.Mathlib.LinearAlgebra.Matrix.EliminationMinor
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.OrthogonalPolynomial.Multivariate.GramFactor
+public import LeanFun.Mathlib.RingTheory.Polynomial.Gegenbauer.DoubleConversion
+public import LeanFun.Mathlib.Algebra.Ring.GeometricInverse
+public import LeanFun.Mathlib.LinearAlgebra.Matrix.MaximalStep
+public import LeanFun.Mathlib.LinearAlgebra.Matrix.InversePathCoefficient
+public import LeanFun.Mathlib.Analysis.Normed.Algebra.InversePathCoefficient
+public import LeanFun.Mathlib.RingTheory.Polynomial.EvenTransport
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.OrthogonalPolynomial.Disk.Deformation
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.OrthogonalPolynomial.Disk.DeformationPairing
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.OrthogonalPolynomial.Disk.DeformationCoordinates
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.OrthogonalPolynomial.Disk.DeformationSystem
+public import LeanFun.Mathlib.LinearAlgebra.Matrix.SchurGram
+public import LeanFun.Mathlib.Analysis.Matrix.InversePathCoefficient
+public import LeanFun.Mathlib.Analysis.Matrix.CholeskyPath
+public import LeanFun.Mathlib.Algebra.Algebra.Factorial
+public import LeanFun.Mathlib.Algebra.Polynomial.Sequence
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Jacobi.ClassicalMeasures
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Jacobi.SymmetricConnectionSigns
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.DunklXu.ConnectionSigns
+public import LeanFun.Mathlib.RingTheory.Polynomial.Chebyshev.Gegenbauer
+public import LeanFun.Mathlib.RingTheory.Polynomial.Chebyshev.Calculus
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Trigonometric.Chebyshev.DiscreteOrthogonality
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Trigonometric.Chebyshev.DiscreteTransform
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Trigonometric.Chebyshev.Integration
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Trigonometric.Chebyshev.CoefficientAliasing
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Trigonometric.Chebyshev.Parseval
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Trigonometric.Chebyshev.ClenshawCurtis
+public import LeanFun.Mathlib.MeasureTheory.Integral.Quadrature
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.OrthogonalPolynomial.QuadratureError
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Jacobi.QuadratureError
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Trigonometric.Chebyshev.Affine
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Trigonometric.Chebyshev.AffineApproximation
+public import LeanFun.Mathlib.RingTheory.Polynomial.Chebyshev.Operators
+public import LeanFun.Mathlib.Algebra.Polynomial.MultiplicationOperator
+public import LeanFun.Mathlib.RingTheory.Polynomial.Chebyshev.OperatorClenshaw
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Trigonometric.Chebyshev.Operators
+public import LeanFun.Mathlib.LinearAlgebra.Basis.FiniteSection
+public import LeanFun.Mathlib.Algebra.Polynomial.DifferentialOperator
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Gegenbauer.MultiplicationOperator
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Trigonometric.Chebyshev.DifferentialOperator
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Trigonometric.Chebyshev.UltrasphericalLadder
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Trigonometric.Chebyshev.MultiplicationEntries
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Trigonometric.Chebyshev.UltrasphericalDifferentialOperator
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Trigonometric.Chebyshev.BoundaryRows
+public import LeanFun.Mathlib.LinearAlgebra.Basis.BorderedCoefficientMap
+public import LeanFun.Mathlib.Algebra.Polynomial.Sequence.Comrade
+public import LeanFun.Mathlib.Algebra.Polynomial.Sequence.JacobiMatrix
+public import LeanFun.Mathlib.LinearAlgebra.Matrix.HessenbergEigenvector
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.OrthogonalPolynomial.GaussEigenvector
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.OrthogonalPolynomial.JacobiSpectral
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Jacobi.Spectral
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Trigonometric.Chebyshev.Colleague
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Trigonometric.Chebyshev.Spectral
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Trigonometric.Chebyshev.ClenshawCurtisWeights
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Trigonometric.Chebyshev.ClenshawCurtisError
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Trigonometric.Chebyshev.BestError
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Trigonometric.Chebyshev.ClenshawCurtisModes
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Trigonometric.Chebyshev.ClenshawCurtisSeries
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Trigonometric.Chebyshev.ClenshawCurtisAnalytic
+public import LeanFun.Mathlib.Analysis.Normed.Module.BestApproximation
+public import LeanFun.Mathlib.Analysis.Convex.CompactHull
+public import LeanFun.Mathlib.Topology.ContinuousMap.UniformImprovement
+public import LeanFun.Mathlib.Analysis.Polynomial.Alternation
+public import LeanFun.Mathlib.Analysis.Polynomial.Equioscillation
+public import LeanFun.Mathlib.Analysis.Polynomial.ExtremeCertificate
+public import LeanFun.Mathlib.Analysis.Polynomial.FiniteAlternation
+public import LeanFun.Mathlib.Analysis.Polynomial.EquioscillationCharacterization
+public import LeanFun.Mathlib.Analysis.Polynomial.BestApproximationUnique
+public import LeanFun.Mathlib.Analysis.Polynomial.BestApproximation
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Trigonometric.Chebyshev.BestApproximation
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Trigonometric.Chebyshev.EllipseGrowth
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Trigonometric.Chebyshev.AnalyticConverse
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Trigonometric.Chebyshev.AnalyticCharacterization
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Trigonometric.Chebyshev.ComplexCoefficientBounds
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Trigonometric.Chebyshev.BernsteinConverse
+public import LeanFun.Mathlib.Analysis.Polynomial.SeriesCalculus
+public import LeanFun.Mathlib.Analysis.Polynomial.SeriesMultiplication
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Jacobi.SeriesCalculus
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Trigonometric.Chebyshev.SeriesCoefficients
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Trigonometric.Chebyshev.SeriesDifferentiation
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Trigonometric.Chebyshev.SeriesIntegration
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Trigonometric.Chebyshev.SeriesMultiplication
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Trigonometric.Chebyshev.SeriesMultiplicationTail
+public import LeanFun.Mathlib.Analysis.Polynomial.IteratedSeriesCalculus
+public import LeanFun.Mathlib.RingTheory.Polynomial.Jacobi.IteratedDerivative
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Jacobi.IteratedSeriesCalculus
+public import LeanFun.Mathlib.Analysis.Polynomial.SeriesCoefficientMap
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Trigonometric.Chebyshev.IteratedSeriesCalculus
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Trigonometric.Chebyshev.SeriesConversion
+public import LeanFun.Mathlib.Analysis.Polynomial.SeriesDifferentialOperator
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Trigonometric.Chebyshev.SeriesDifferentialOperator
+public import LeanFun.Mathlib.Analysis.Normed.Operator.FiniteSection
+public import LeanFun.Mathlib.Analysis.Normed.Lp.CoefficientOperators
+public import LeanFun.Mathlib.Analysis.Normed.Lp.CoefficientShift
+public import LeanFun.Mathlib.Analysis.Normed.Lp.FiniteSection
+public import LeanFun.Mathlib.Analysis.Polynomial.CoefficientLp
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Trigonometric.Chebyshev.CoefficientPreconditioner
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Trigonometric.Chebyshev.FirstOrderFiniteSection
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Trigonometric.Chebyshev.BoundedCoefficientOperators
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Trigonometric.Chebyshev.FirstOrderRepresentation
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Trigonometric.Chebyshev.FirstOrderPolynomial
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Jacobi.SymmetricDoubleConnection
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Jacobi.SymmetricDoublePairing
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.OrthogonalPolynomial.LeadingPairing
+public import LeanFun.Mathlib.LinearAlgebra.Matrix.MaximalSandwich
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.DunklXu.QuadraticPairing
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.DunklXu.QuadraticSigns
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.DunklXu.QuadraticSupport
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.DunklXu.QuadraticMatrix
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.DunklXu.EvenQuadratic
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.DunklXu.EvenQuadraticPaths
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.DunklXu.EvenQuadraticSigned
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.DunklXu.EvenQuadraticElimination
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.DunklXu.QuadraticScaling
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.DunklXu.QuadraticCholesky
+public import LeanFun.Mathlib.LinearAlgebra.Matrix.GramFactorSectors
+public import LeanFun.Mathlib.MeasureTheory.Integral.ProductReflection
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.OrthogonalPolynomial.Disk.Reflection
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.OrthogonalPolynomial.Disk.QuadraticReflection
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.DunklXu.QuadraticFullFactor
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.DunklXu.QuadraticPencil
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.DunklXu.QuadraticPencilSection
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.DunklXu.QuadraticCanonicalFactor
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Jacobi.DiskDeformation
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.OrthogonalPolynomial.Disk.QuadraticPositive
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.OrthogonalPolynomial.Multivariate.GramFactorScaling
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.DunklXu.QuadraticAdmissibleFactor
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.OrthogonalPolynomial.Disk.OrderedBasis
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.DunklXu.EvenSectorEmbedding
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.DunklXu.QuadraticWitness
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.OrthogonalPolynomial.Disk.OrderedGramFactor
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.OrthogonalPolynomial.Disk.QuadraticFactors
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.OrthogonalPolynomial.Disk.SeparatedCanonicalFactor
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.OrthogonalPolynomial.Disk.UniformInnerBandwidth
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.OrthogonalPolynomial.Disk.UniformSeparated
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.DunklXu.QuadraticUniformNecessity
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.DunklXu.QuadraticClassification
+public import LeanFun.Mathlib.Analysis.Matrix.InversePencilExceptions
+public import LeanFun.Mathlib.Analysis.Real.CofiniteChoice
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.DunklXu.QuadraticPointwiseFactor
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.DunklXu.QuadraticCofiniteCanonical
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.DunklXu.QuadraticCofiniteAdmissible
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.DunklXu.QuadraticFixedWitness
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.OrthogonalPolynomial.TensorProduct.Basic
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.OrthogonalPolynomial.TensorProduct.Moments
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.OrthogonalPolynomial.TensorProduct.Basis
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.OrthogonalPolynomial.TensorProduct.Positive
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.OrthogonalPolynomial.TensorProduct.Operators
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.OrthogonalPolynomial.TensorProduct.Modification
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.OrthogonalPolynomial.TensorProduct.Coordinates
+
+public import LeanFun.Mathlib.RingTheory.Polynomial.Jacobi.Shifted
+public import LeanFun.Mathlib.RingTheory.Polynomial.Proriol.Basic
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Jacobi.UnitInterval
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Jacobi.UnitIntervalShift
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Jacobi.UnitIntervalDensity
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Jacobi.UnitIntervalSequence
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Proriol.Basis
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Proriol.Coordinates
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Proriol.Density
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Proriol.Duffy
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Proriol.Measure
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Proriol.MeasureModification
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Proriol.MixedPairing
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Proriol.Multiplication
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Proriol.Orthogonality
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Proriol.Positive
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Proriol.StandardMeasure
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Proriol.TotalDegree
+public import LeanFun.Mathlib.LinearAlgebra.BilinearForm.OrthogonalCoordinates
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Proriol.MultiplicationEntries
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Jacobi.UnitIntervalModification
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Jacobi.UnitIntervalPositive
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Proriol.ParameterShiftMeasure
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Proriol.ParameterShiftSupport
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Proriol.ParameterPairing
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Proriol.Normalization
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Proriol.OrderedConnection
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Proriol.Cholesky
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.SemiclassicalJacobi.Sequence
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.SemiclassicalJacobi.Basis
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.SemiclassicalJacobi.IntegrationByParts
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.SemiclassicalJacobi.DerivativeSupport
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.SemiclassicalJacobi.Conversion
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.SemiclassicalJacobi.Derivative
+public import LeanFun.Mathlib.Algebra.MvPolynomial.PolynomialComposition
+public import LeanFun.Mathlib.Algebra.MvPolynomial.PolynomialDerivative
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.SemiclassicalJacobi.WeightedDerivative
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Trigonometric.IntegerModes
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Zernike.AnnulusRadial
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Zernike.Basis
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Zernike.Density
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Zernike.Index
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Zernike.Measure
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Zernike.Norm
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Zernike.Normalization
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Zernike.Orthogonality
+public import LeanFun.Mathlib.MeasureTheory.Integral.SquaredRadius
+public import LeanFun.Mathlib.RingTheory.MvPolynomial.Zernike.Basic
+public import LeanFun.Mathlib.RingTheory.MvPolynomial.Zernike.Derivatives
+public import LeanFun.Mathlib.RingTheory.MvPolynomial.Zernike.Harmonics
+public import LeanFun.Mathlib.RingTheory.MvPolynomial.Zernike.Laplacian
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Zernike.RadialLift
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Zernike.AnnulusMeasure
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Zernike.AnnulusPairing
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Zernike.AnnulusBasic
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Zernike.AnnulusBasis
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Zernike.AnnulusNormalization
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Zernike.AnnulusLaplacian
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Zernike.AnnulusOperators
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.SemiclassicalJacobi.PartialWeightedDerivative
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.SemiclassicalJacobi.PartialWeightedDerivativeSupport
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.SemiclassicalJacobi.PartialWeightedOperator
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.SemiclassicalJacobi.AnnularLaplacian
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.SemiclassicalJacobi.DirichletForm
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.SemiclassicalJacobi.DirichletMatrix
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.SemiclassicalJacobi.DirichletEnergy
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.SemiclassicalJacobi.DirichletMass
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Zernike.AnnulusDirichlet
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.OrthogonalPolynomial.FiniteGalerkin
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.SemiclassicalJacobi.DirichletSection
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.SemiclassicalJacobi.DirichletGalerkin
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.SemiclassicalJacobi.DirichletBestApproximation
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.SemiclassicalJacobi.DirichletCompletion
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.SemiclassicalJacobi.DirichletEnergyProjection
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.SemiclassicalJacobi.DirichletEnergyBasis
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.SemiclassicalJacobi.DirichletEnergySolve
+public import LeanFun.Mathlib.Analysis.Normed.Lp.HilbertSumGalerkin
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Zernike.AnnulusEnergyPairing
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Zernike.AnnulusEnergySpace
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Zernike.AnnulusEnergySolve
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.SemiclassicalJacobi.DirichletDerivativeSpace
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Zernike.AnnulusDerivativeSpace
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Zernike.AnnulusPolynomialSpan
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Zernike.AnnulusLaplacianIntegral
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Zernike.AnnulusGreen
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Zernike.AnnulusDivergence
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Zernike.AnnulusSupport
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Zernike.AnnulusPoincare
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Zernike.AnnulusRadialL2
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.OrthogonalPolynomial.Multivariate.L2
+public import LeanFun.Mathlib.Analysis.Normed.Lp.OrthogonalSynthesis
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Zernike.AnnulusRadialL2Injective
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Zernike.AnnulusL2
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Zernike.AnnulusBodyForcing
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Zernike.AnnulusRadialGradient
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Zernike.AnnulusGradient
+
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Proriol.Marginal
+
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Proriol.MarginalOperator
+
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Proriol.VolterraPolynomial
+
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Proriol.MarginalCoefficients
+
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.PowerLaw.Basic
+
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.PowerLaw.GegenbauerEndpoint
+
+public import LeanFun.Mathlib.RingTheory.Polynomial.Jacobi.Lowering
+
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Proriol.VolterraJacobi
+
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Proriol.VolterraJacobiCoefficients
+
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.PowerLaw.GegenbauerIntegrability
+
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.PowerLaw.GegenbauerFirstMode
+
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Proriol.ExtensionCoefficients
+
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Proriol.ExtensionEntries
+
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Proriol.PolynomialMoments
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Proriol.UnweightedNorm
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Proriol.ExtensionMoments
+
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.OrdinaryHypergeometric.Binomial
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.OrdinaryHypergeometric.EulerIntegral
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.OrdinaryHypergeometric.EulerMoments
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.OrdinaryHypergeometric.Real
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.OrdinaryHypergeometric.RegularizedEuler
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.PowerLaw.Mobius
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.PowerLaw.GegenbauerHypergeometric
+
+public import LeanFun.Mathlib.Analysis.ODE.SecondOrder
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Gegenbauer.WeightedDerivative
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.OrdinaryHypergeometric.Polynomial
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.PowerLaw.Differentiation
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.PowerLaw.ClassicalDifferentiation
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.PowerLaw.GegenbauerIntegrationByParts
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.PowerLaw.GegenbauerKernel
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.PowerLaw.GegenbauerOperator
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.PowerLaw.GegenbauerOrigin
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.PowerLaw.GegenbauerPolynomial
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.PowerLaw.GegenbauerRecurrence
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.PowerLaw.GegenbauerReflection
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.PowerLaw.GegenbauerSparsity
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.PowerLaw.GegenbauerSymmetric
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.PowerLaw.Approximation
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.PowerLaw.ClassicalApproximation
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.PowerLaw.Polynomial
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Proriol.ExtensionClosedForm
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Proriol.ExtensionEdge
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Proriol.ExtensionPairing
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Proriol.ExtensionSupport
+public import LeanFun.Mathlib.RingTheory.Polynomial.Gegenbauer.Lowering
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Proriol.VolterraCoordinates
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Proriol.VolterraSupport
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Proriol.VolterraClenshaw
+
+public import LeanFun.Mathlib.Analysis.IntegralEq.VolterraApproximation
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Proriol.VolterraApproximation
+
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.PowerLaw.ClosedInterval
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.PowerLaw.ClassicalClosedInterval
+
+public import LeanFun.Mathlib.Analysis.IntegralEq.Schur
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.PowerLaw.KernelDomain
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.PowerLaw.L2Operator
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.PowerLaw.L2Coefficients
+
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.PowerLaw.SingularMass
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.PowerLaw.ClassicalSingularMass
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.PowerLaw.EndpointL2
+
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Gegenbauer.Density
+public import LeanFun.Mathlib.Analysis.IntegralEq.WeightedL2
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.PowerLaw.CriticalMass
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.PowerLaw.CriticalL2
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.PowerLaw.EndpointTesting
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.PowerLaw.ClassicalEndpointTesting
+public import LeanFun.Mathlib.Analysis.IntegralEq.WeakKernel
+
+public import LeanFun.Mathlib.Analysis.InnerProductSpace.HilbertBasisOperator
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.PowerLaw.CriticalCoefficients
+
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.PowerLaw.FullCoefficients
+
+public import LeanFun.Mathlib.Analysis.IntegralEq.TwoWeightSchur
+public import LeanFun.Mathlib.Analysis.InnerProductSpace.HilbertBasisMap
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.PowerLaw.TwoWeight
+public import LeanFun.Mathlib.Analysis.IntegralEq.BoundedKernel
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Jacobi.UnitIntervalCompleteness
+public import LeanFun.Mathlib.Analysis.IntegralEq.VolterraL2
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Proriol.VolterraL2
+
+public import LeanFun.Mathlib.Analysis.InnerProductSpace.CompactSections
+public import LeanFun.Mathlib.Analysis.IntegralEq.VolterraNorm
+public import LeanFun.Mathlib.Analysis.Normed.Operator.FactorialInverse
+public import LeanFun.Mathlib.Analysis.IntegralEq.L2Dominated
+public import LeanFun.Mathlib.Analysis.IntegralEq.ContinuousRows
+public import LeanFun.Mathlib.Analysis.IntegralEq.VolterraRows
+public import LeanFun.Mathlib.Analysis.IntegralEq.VolterraCompact
+public import LeanFun.Mathlib.Analysis.IntegralEq.VolterraIterates
+public import LeanFun.Mathlib.Analysis.IntegralEq.VolterraSolve
+
+public import LeanFun.Mathlib.Analysis.Normed.Operator.ApproximateFiniteSection
+public import LeanFun.Mathlib.Analysis.InnerProductSpace.FiniteMatrix
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Jacobi.UnitIntervalCoordinates
+public import LeanFun.Mathlib.Analysis.IntegralEq.VolterraApproximateSolve
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Proriol.VolterraMatrix
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Proriol.VolterraMatrixSolve
+
+public import LeanFun.Mathlib.Analysis.IntegralEq.ContinuousKernel
+public import LeanFun.Mathlib.Analysis.IntegralEq.DominatedKernel
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.PowerLaw.SelfAdjoint
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.PowerLaw.RegularizedKernel
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.PowerLaw.Compact
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.PowerLaw.Solve
+
+public import LeanFun.Mathlib.RingTheory.Polynomial.Gegenbauer.Reduced
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Gegenbauer.ParameterLimit
+
+public import LeanFun.Mathlib.Analysis.IntegralEq.VanishingMultipliers
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.PowerLaw.Noncompact
+public import LeanFun.Mathlib.Analysis.Normed.Operator.SmallNormSolve
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.PowerLaw.SmallCoupling
+
+public import LeanFun.Mathlib.Analysis.InnerProductSpace.FirstOrderL2
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Proriol.VolterraFirstKind
+
+public import LeanFun.Mathlib.Analysis.InnerProductSpace.Toeplitz.Shift
+public import LeanFun.Mathlib.Analysis.InnerProductSpace.Toeplitz.Basic
+public import LeanFun.Mathlib.Analysis.InnerProductSpace.Toeplitz.Laurent
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Gegenbauer.Hypergeometric
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Chebyshev.Hypergeometric
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Legendre.Hypergeometric
+
+public import LeanFun.Mathlib.Analysis.InnerProductSpace.Toeplitz.Product
+
+public import LeanFun.Mathlib.Analysis.InnerProductSpace.Toeplitz.ContinuousSymbol
+
+public import LeanFun.Mathlib.Analysis.InnerProductSpace.Toeplitz.Symbol
+
+public import LeanFun.Mathlib.Analysis.InnerProductSpace.Toeplitz.Asymptotic
+
+public import LeanFun.Mathlib.Analysis.Normed.Operator.StableCompactPerturbation
+
+public import LeanFun.Mathlib.Analysis.InnerProductSpace.CoerciveFiniteSection
+
+public import LeanFun.Mathlib.Analysis.InnerProductSpace.CoerciveSections
+
+public import LeanFun.Mathlib.Analysis.InnerProductSpace.Toeplitz.PositiveSymbol
+
+public import LeanFun.Mathlib.Analysis.InnerProductSpace.Toeplitz.FiniteSection
+
+public import LeanFun.Mathlib.Analysis.InnerProductSpace.Toeplitz.RealSymbol
+
+public import LeanFun.Mathlib.Analysis.Normed.Operator.CompactInjective
+
+public import LeanFun.Mathlib.Analysis.Normed.Lp.ReciprocalDiagonal
+
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Jacobi.UnitIntervalMultiplication
+
+public import LeanFun.Mathlib.Analysis.InnerProductSpace.Toeplitz.LaurentAsymptotic
+
+public import LeanFun.Mathlib.Analysis.Normed.Lp.Finsupp
+
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Jacobi.RawL2Multiplication
+
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Jacobi.RawL2Columns
+
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Jacobi.RawL2Preconditioner
+
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Jacobi.RawL2Symbol
+
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Proriol.VolterraToeplitz
+
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Proriol.VolterraToeplitzSections
+public import LeanFun.Mathlib.Analysis.IntegralEq.PolynomialVolterra
+public import LeanFun.Mathlib.Analysis.IntegralEq.PolynomialVolterraUniqueness
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Proriol.VolterraInjectivity
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Jacobi.RawL2Norm
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Jacobi.RawL2Synthesis
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Proriol.VolterraToeplitzAlgebra
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Proriol.VolterraFiniteBridge
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Proriol.VolterraRawAssembly
+public import LeanFun.Mathlib.Analysis.IntegralEq.MarginalKernel
+public import LeanFun.Mathlib.Analysis.IntegralEq.JacobiVolterraMeasure
+public import LeanFun.Mathlib.Analysis.IntegralEq.JacobiVolterraL2
+public import LeanFun.Mathlib.Analysis.IntegralEq.JacobiLocalIntegrability
+public import LeanFun.Mathlib.Analysis.IntegralEq.JacobiVolterraInjectivity
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Proriol.VolterraRawL2Bridge
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Proriol.VolterraRawInjectivity
+public import LeanFun.Mathlib.Analysis.InnerProductSpace.SignedSections
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Proriol.VolterraSignedSections
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Proriol.VolterraWeightedSolve
+public import LeanFun.Mathlib.Analysis.Normed.Operator.NormPerturbation
+public import LeanFun.Mathlib.Analysis.InnerProductSpace.ApproximateCoerciveSection
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Proriol.VolterraKernelMajorant
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Proriol.VolterraApproximateSolve
+public import LeanFun.Mathlib.Analysis.IntegralEq.ContinuousJacobiVolterra
+public import LeanFun.Mathlib.Analysis.IntegralEq.ContinuousVolterraPrimitive
+public import LeanFun.Mathlib.Analysis.IntegralEq.VolterraACUniqueness
+public import LeanFun.Mathlib.Analysis.IntegralEq.ContinuousJacobiVolterraInjectivity
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Proriol.VolterraContinuousBridge
+public import LeanFun.Mathlib.Analysis.InnerProductSpace.Toeplitz.RealSymbolNorm
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Proriol.VolterraToeplitzLimit
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Proriol.VolterraLimitStability
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Proriol.VolterraContinuousSolve
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Proriol.VolterraSeriesTerm
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Proriol.VolterraSeriesKernel
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Proriol.VolterraSeriesApproximation
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Proriol.VolterraSeriesRegularity
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Proriol.VolterraSeriesSolve
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Proriol.VolterraExponentialSeries
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Proriol.VolterraExponentialSolve
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Proriol.VolterraExponentialFactor
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Proriol.VolterraExponentialTail
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Jacobi.RawL2NormBounds
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Proriol.VolterraFiniteResidual
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Proriol.VolterraExponentialCertificate
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Zernike.AnnulusArea
+public import LeanFun.Mathlib.Analysis.FunctionalSpaces.DirichletSpace
+public import LeanFun.Mathlib.Analysis.Calculus.FDeriv.MvPolynomial
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Zernike.AnnulusWeakGradient
+
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.SmoothTransition.BoundaryFactor
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Zernike.AnnulusCutoff
+public import LeanFun.Mathlib.MeasureTheory.Function.L2Space.MeasureCongr
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Zernike.AnnulusSobolevInclusion
+public import LeanFun.Mathlib.Analysis.Polynomial.MultivariateC1
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Zernike.AnnulusPolynomialGraph
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Zernike.AnnulusDensity
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Zernike.AnnulusSobolev
+
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Trigonometric.Chebyshev.ClassicalMeasure
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Jacobi.ClassicalUnitInterval
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.SemiclassicalJacobi.ClassicalMeasure
+
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Trigonometric.Chebyshev.ClassicalIntegration
+
+public import LeanFun.Mathlib.Algebra.Group.Units.Indexed
+public import LeanFun.Mathlib.Analysis.Normed.Ring.IndexedInverse
+
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Trigonometric.Chebyshev.ComplexSeriesDomain
+
+public import LeanFun.Mathlib.Analysis.Calculus.IteratedDeriv.Pointwise
+
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Gamma.Domain
+
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.OrdinaryHypergeometric.Domain
+
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.OrdinaryHypergeometric.RealDomain
+
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.OrdinaryHypergeometric.RegularizedDomain
+
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.OrdinaryHypergeometric.ClassicalAnalytic
+
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.OrdinaryHypergeometric.TerminatingDomain
+
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Gamma.BetaDomain
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.OrdinaryHypergeometric.ClassicalEuler
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.OrdinaryHypergeometric.ClassicalIdentities
+
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.PowerLaw.ClassicalWeighted
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Integrals.ClassicalPower
+
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.Trigonometric.Chebyshev.HigherOrderConvergence
+
+public import LeanFun.Mathlib.Analysis.SpecialFunctions.SemiclassicalJacobi.QR

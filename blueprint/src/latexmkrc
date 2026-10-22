@@ -1,0 +1,8 @@
+$pdf_mode = 1;
+$out_dir = '../print';
+@default_files = ('print.tex');
+$pdflatex = 'pdflatex -interaction=nonstopmode -halt-on-error %O %S';
+# Version string for the title page (scripts/version.py); empty if Python or Git is missing.
+system("python3 ../../scripts/version.py --tex > version.tex") == 0
+  or system("echo '\\newcommand{\\leanfunversion}{}' > version.tex");
+

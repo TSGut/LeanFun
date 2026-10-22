@@ -1,0 +1,148 @@
+name: thmenv
+{% macro icon(icon, id='', class='') %}
+<svg  {% if id %}id="{{id}}" {% endif %}class="icon icon-{{ icon }} {{ class }}"><use xlink:href="symbol-defs.svg#icon-{{ icon }}"></use></svg>
+{% endmacro %}
+{% macro modal(title) %}
+    <div class="modal-container">
+      <div class="modal-content">
+        <header>
+          <h1>{{ title }}</h1>
+          <button class="closebtn">{{ icon('cross') }}</button>
+        </header>
+        {{ caller() }}
+      </div>
+    </div>
+{% endmacro %}
+{% macro leandecl(d) %}
+  <div class="lean-decl" data-lean-name="{{ d.name|e }}">
+    <pre class="lean-statement"><code>{{ d.statement|e }}</code></pre>
+    {% if not d.local %}
+    <span class="lean-tag">Mathlib</span>{% if d.url %} <a class="lean-source" href="{{ d.url }}">source</a>{% endif %}
+    {% elif d.is_def %}
+    <details class="lean-proof" open><summary>Lean definition</summary>
+      <pre><code>{{ d.source|e }}</code></pre>
+      {% if d.url %}<a class="lean-source" href="{{ d.url }}">source</a>{% endif %}
+    </details>
+    {% else %}
+    <details class="lean-proof"><summary>Lean proof</summary>
+      <pre><code>{{ d.source|e }}</code></pre>
+      {% if d.url %}<a class="lean-source" href="{{ d.url }}">source</a>{% endif %}
+    </details>
+    {% endif %}
+  </div>
+{% endmacro %}
+{% set sigs = obj.userdata.get('lean_sigs', []) %}
+{% set mathlib = obj.userdata.get('mathlibok') %}
+<div class="{{ obj.thmName }}_thmwrapper {% if obj.style %}theorem-style-{{ obj.style }}{% endif %}{% if mathlib %} rv-mathlib{% endif %}" id="{{ obj.id }}">
+  <div class="{{ obj.thmName }}_thmheading">
+    <span class="{{ obj.thmName }}_thmcaption">
+    {{ obj.caption }}
+    </span>
+	{% if obj.ref %}
+    <span class="{{obj.thmName}}_thmlabel">{{obj.ref}}</span>
+    {% endif %}
+    {% if obj.title %}
+    <span class="{{obj.thmName}}_thmtitle">{{ obj.title }}</span>
+    {% endif %}
+    {% if mathlib %}
+    {% set ext = [] %}{% for d in sigs %}{% if not d.local and d.url %}{% set _ = ext.append(d) %}{% endif %}{% endfor %}
+    {% if ext %}<a class="rv-mathlib-badge" href="{{ ext[0].url }}" title="Supplied by Mathlib: open the source file">Mathlib</a>{% else %}<span class="rv-mathlib-badge">Mathlib</span>{% endif %}
+    {% endif %}
+    {% if doc.userdata['thm_header_extras_tpl'] %}
+    <div class="thm_header_extras">
+    {% for tpl in doc.userdata['thm_header_extras_tpl'] %}
+    {% include tpl %}
+    {% endfor %}
+    </div>
+    {% endif %}
+    {% if doc.userdata['thm_header_hidden_extras_tpl'] %}
+    <div class="thm_header_hidden_extras">
+    {% for tpl in doc.userdata['thm_header_hidden_extras_tpl'] %}
+    {% include tpl %}
+    {% endfor %}
+    </div>
+    {% endif %}
+  </div>
+  <div class="{{ obj.thmName }}_thmcontent">
+  {{ obj }}
+  </div>
+  {% if sigs %}
+  <details class="lean-block">
+    <summary class="lean-block-title">Lean Formalisation</summary>
+    {{ leandecl(sigs[0]) }}
+    {% if sigs|length > 1 %}
+    <details class="lean-related"><summary>{{ sigs|length - 1 }} related Lean declaration{% if sigs|length > 2 %}s{% endif %}</summary>
+      {% for d in sigs[1:] %}
+      {{ leandecl(d) }}
+      {% endfor %}
+    </details>
+    {% endif %}
+  </details>
+  {% endif %}
+</div>
+
+name: supporting
+<details class="supporting">
+  <summary>{% if obj.attributes.title %}{{ obj.attributes.title }}{% else %}Supporting results{% endif %}</summary>
+  <div class="supporting-content">
+  {{ obj }}
+  </div>
+</details>
+
+name: proof
+{# Proofs are left to Lean: see the collapsed Lean proof under each statement. #}
+
+name: rvRev
+<span class="rv-rev">{{ obj }}</span>
+
+name: rvAcr
+<span class="rv-acr">{{ obj }}</span>
+
+name: covertitle subtitle
+{# Rendered on the cover page by the maketitle template. #}
+
+name: maketitle
+{% set metadata=obj.ownerDocument.userdata %}
+<div class="titlepage">
+<h1>{% if metadata.covertitle %}{{ metadata.covertitle }}{% else %}{{ metadata.title }}{% endif %}</h1>
+{% if metadata.subtitle %}<p class="rv-subtitle">{{ metadata.subtitle }}</p>{% endif %}
+{% if metadata.author %}
+<p class="authors">
+{%for author in metadata.author %}
+<span class="author">{{ author }}</span>
+{% endfor %}
+</p>
+{% endif %}
+<p class="rv-pdf-note">For offline reading, download the <a href="LeanFun-RevOLVER.pdf">PDF version</a>.</p>
+</div>
+
+name: cite
+<span class="cite">{%- for item in obj.citation() -%}
+{%- if item.idref and item.idref.bibitem.url -%}<a href="{{ item.idref.bibitem.url }}">{{ item }}</a>{%- else -%}{{ item }}{%- endif -%}
+{%- endfor -%}</span>
+
+name: part chapter section
+<h1 id="{{ obj.id }}">{{ obj.fullTitle }}</h1>
+{% if obj.nodeName == 'part' and obj.userdata.rvsummary %}<p class="rv-lead">{{ obj.userdata.rvsummary }}</p>{% endif %}
+{% if obj.nodeName == 'chapter' and obj.userdata.rv_main %}
+<nav class="rv-chapter-guide" aria-label="Chapter guide">
+<strong>In this chapter</strong>
+{% if obj.userdata.rv_main %}<ul>{% for n in obj.userdata.rv_main[:10] %}<li><a href="{{ n.url }}">{{ n.title }}</a></li>{% endfor %}</ul>{% endif %}
+</nav>
+{% endif %}
+{{ obj }}
+{% set kids = obj.subsections %}
+{% if kids %}
+<nav class="rv-index">
+<h2>{% if obj.nodeName == 'part' %}Chapters in this part{% else %}Sections in this chapter{% endif %}</h2>
+<ol>
+{% for s in kids %}
+<li><a href="{{ s.url }}">{% if s.ref %}<span class="rv-index-ref">{{ s.ref }}</span> {% endif %}{{ s.title }}</a>
+{% if s.userdata.rvsummary %}<p>{{ s.userdata.rvsummary }}</p>{% endif %}</li>
+{% endfor %}
+</ol>
+</nav>
+{% endif %}
+
+name: rvsummary
+{# Shown in the parent's index; see the part/chapter/section template. #}

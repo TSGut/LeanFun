@@ -1,0 +1,36 @@
+\documentclass{report}
+\usepackage[a4paper,margin=30mm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm,hyperref}
+\usepackage{comment}
+\usepackage{xcolor}
+\definecolor{rvblue}{HTML}{0A6FD8}
+\definecolor{rvorange}{HTML}{F07C12}
+\definecolor{rvmathlib}{HTML}{7040A0}
+\newcommand{\rvRev}[1]{\textcolor{rvblue}{#1}}
+\newcommand{\rvAcr}[1]{\textcolor{rvorange}{\textbf{#1}}}
+\excludecomment{proof}% proofs are left to Lean
+\setlength{\emergencystretch}{3em}
+\input{macros/common}
+\newcommand{\lean}[1]{}
+\newcommand{\leanok}{}
+\newcommand{\mathlibok}{\textcolor{rvmathlib}{\textsf{[Mathlib]}}\ }% results supplied by Mathlib
+\newcommand{\uses}[1]{}
+\newcommand{\notready}{}
+\newcommand{\rvsummary}[1]{}
+\newenvironment{supporting}[1][Supporting results]{\begin{quote}\small\noindent\textbf{#1.}\par}{\end{quote}}
+\title{LeanFun \rvRev{Rev}\rvAcr{OLVER}\\[.6em]
+  {\large a \rvRev{Rev}olving \rvAcr{O}rthogonal-polynomial \rvAcr{L}ean-\rvAcr{V}erified
+  \rvAcr{E}xpository \rvAcr{R}eference}}
+\author{Timon S. Gutleb}
+\IfFileExists{version.tex}{\input{version.tex}}{\newcommand{\leanfunversion}{}}
+\date{\leanfunversion}
+\begin{document}
+\maketitle
+\tableofcontents
+\input{content}
+\renewcommand{\bibname}{References}
+\clearpage\phantomsection\addcontentsline{toc}{chapter}{References}
+\input{references}
+\end{document}

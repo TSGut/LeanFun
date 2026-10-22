@@ -1,0 +1,1017 @@
+# Owner-maintained statement approvals.
+schema = 2
+
+[[statements]]
+name = "AnalyticOnOpen"
+fingerprint = "1d3a0d1f7239e17b5bf1bbce3cf96a4b2eac162df7265933843654e9b435c02f"
+rendered = "definition AnalyticOnOpen : {𝕜 : Type u_1} → [inst : NontriviallyNormedField 𝕜] → (U : TopologicalSpace.Opens 𝕜) → (↥U → 𝕜) → Prop\n:= fun {𝕜} [NontriviallyNormedField 𝕜] U f => ∀ (x : ↥U), ∃ g, (∀ (y : ↥U), g ↑y = f y) ∧ AnalyticAt 𝕜 g ↑x"
+external = ["AnalyticAt", "And", "Eq", "Exists", "Membership.mem", "NonUnitalNormedCommRing.toNonUnitalNormedRing", "NonUnitalNormedRing.toNormedAddCommGroup", "NontriviallyNormedField", "NontriviallyNormedField.toNormedField", "NormedCommRing.toNonUnitalNormedCommRing", "NormedCommRing.toSeminormedCommRing", "NormedField.toNormedCommRing", "NormedField.toNormedSpace", "PseudoMetricSpace.toUniformSpace", "SeminormedCommRing.toSeminormedRing", "SeminormedRing.toPseudoMetricSpace", "SetLike.instMembership", "Subtype", "Subtype.val", "TopologicalSpace.Opens", "TopologicalSpace.Opens.instSetLike", "UniformSpace.toTopologicalSpace"]
+mathlib_commit = "ade5dcd9754acef23d0e35968bff5c0c0c8acc76"
+toolchain = "leanprover/lean4:v4.35.0-rc4"
+git_commit = "95270c3d7e5c2c4b62bd700f7757d6bdd6eac490"
+reviewer = "Timon S. Gutleb"
+date = "2026-10-22"
+book_nodes = ["def:open-domain-analytic"]
+book_texts = ["[Analyticity on an open domain] Let $\\mathbb K$ be a nontrivially normed field (for example $\\mathbb R$ or $\\mathbb C$), let $U\\subseteq\\mathbb K$ be open, and let $f:U\\to\\mathbb K$. We call $f$ analytic on $U$ if, for every $x\\in U$, there exist a function $F:\\mathbb K\\to\\mathbb K$, coefficients $a_n\\in\\mathbb K$ for $n\\in\\mathbb N$, and $r\\in(0,\\infty]$ such that: \\begin{enumerate} \\item $F(y)=f(y)$ for every $y\\in U$; \\item $r\\le R$, where the supremum is taken in $[0,\\infty]$ and \\[ R=\\sup\\left\\{s\\ge0:\\ \\exists C\\in\\mathbb R,\\quad \\|a_n\\|s^n\\le C\\text{ for every }n\\in\\mathbb N\\right\\}; \\] \\item for every $h\\in\\mathbb K$ with $\\|h\\|<r$, the partial sums \\[ \\sum_{n=0}^{N-1}a_nh^n \\] converge to $F(x+h)$ as $N\\to\\infty$. \\end{enumerate}"]
+
+[[statements]]
+name = "Complex.GammaOn"
+fingerprint = "135abf00ce181ff7edddd862e80f7f2f682dcfcac5fdd33a57073d1b5a48023a"
+rendered = "definition Complex.GammaOn : Complex.GammaPoint → ℂ\n:= fun z => Complex.Gamma ↑z"
+external = ["Complex", "Complex.Gamma", "Complex.instNatCast", "Complex.instNeg", "Nat", "Nat.cast", "Ne", "Neg.neg", "Subtype", "Subtype.val"]
+mathlib_commit = "ade5dcd9754acef23d0e35968bff5c0c0c8acc76"
+toolchain = "leanprover/lean4:v4.35.0-rc4"
+git_commit = "02fd3276b9c21c84b4ebc88ff3dc7f202e2ca5df"
+reviewer = "Timon S. Gutleb"
+date = "2026-10-16"
+book_nodes = ["def:gamma-function"]
+book_texts = ["[Gamma on its classical domain] Let $D=\\mathbb C\\setminus\\{0,-1,-2,\\ldots\\}$. For $z\\in D$, let $N=\\lfloor\\max(1-\\Re z,0)\\rfloor$ and define \\[ \\Gamma(z)=\\frac{1}{(z)_N}\\int_0^\\infty e^{-t}t^{z+N-1}\\,dt, \\] where $t$ ranges over the strictly positive reals and the power uses the real logarithm of $t$. The real Gamma function is its restriction to $\\mathbb R\\setminus\\{0,-1,-2,\\ldots\\}$. Gamma has no assigned value at a pole. Reference: \\cite[5.2.1, 5.5.1]{dlmf}."]
+
+[[statements]]
+name = "Complex.GammaPoint"
+fingerprint = "8ce6b17b7dc59e1406e3f37e646e0623b1bc915539d83060381c73849470823d"
+rendered = "definition Complex.GammaPoint : Type\n:= { z // ∀ (n : ℕ), z ≠ -↑n }"
+external = ["Complex", "Complex.instNatCast", "Complex.instNeg", "Nat", "Nat.cast", "Ne", "Neg.neg", "Subtype"]
+mathlib_commit = "ade5dcd9754acef23d0e35968bff5c0c0c8acc76"
+toolchain = "leanprover/lean4:v4.35.0-rc4"
+git_commit = "02fd3276b9c21c84b4ebc88ff3dc7f202e2ca5df"
+reviewer = "Timon S. Gutleb"
+date = "2026-10-16"
+book_nodes = ["def:gamma-function"]
+book_texts = ["[Gamma on its classical domain] Let $D=\\mathbb C\\setminus\\{0,-1,-2,\\ldots\\}$. For $z\\in D$, let $N=\\lfloor\\max(1-\\Re z,0)\\rfloor$ and define \\[ \\Gamma(z)=\\frac{1}{(z)_N}\\int_0^\\infty e^{-t}t^{z+N-1}\\,dt, \\] where $t$ ranges over the strictly positive reals and the power uses the real logarithm of $t$. The real Gamma function is its restriction to $\\mathbb R\\setminus\\{0,-1,-2,\\ldots\\}$. Gamma has no assigned value at a pole. Reference: \\cite[5.2.1, 5.5.1]{dlmf}."]
+
+[[statements]]
+name = "Complex.reciprocalGamma"
+fingerprint = "3b10f665b42642a638e894d6864be0c20fa350a4ffdb94def04106a273734640"
+rendered = "definition Complex.reciprocalGamma : ℂ → ℂ\n:= fun z => if h : ∀ (n : ℕ), z ≠ -↑n then (Complex.GammaOn ⟨z, h⟩)⁻¹ else 0"
+external = ["Classical.propDecidable", "Complex", "Complex.Gamma", "Complex.instInv", "Complex.instNatCast", "Complex.instNeg", "Complex.instZero", "Inv.inv", "Nat", "Nat.cast", "Ne", "Neg.neg", "Not", "OfNat.ofNat", "Subtype", "Subtype.mk", "Subtype.val", "Zero.toOfNat0", "dite"]
+mathlib_commit = "ade5dcd9754acef23d0e35968bff5c0c0c8acc76"
+toolchain = "leanprover/lean4:v4.35.0-rc4"
+git_commit = "02fd3276b9c21c84b4ebc88ff3dc7f202e2ca5df"
+reviewer = "Timon S. Gutleb"
+date = "2026-10-16"
+book_nodes = ["def:reciprocal-gamma"]
+book_texts = ["[Reciprocal Gamma] Define $G:\\mathbb C\\to\\mathbb C$ by $G(z)=1/\\Gamma(z)$ for $z\\in D$ and $G(-n)=0$ for $n\\ge0$. Reference: \\cite[5.2(i)]{dlmf}."]
+
+[[statements]]
+name = "HasDerivAtOnOpen"
+fingerprint = "19045429568d1328d3df819d9203f73ae5de2a89b066306a964da8a198d124ef"
+rendered = "definition HasDerivAtOnOpen : {𝕜 : Type u_1} → [inst : NontriviallyNormedField 𝕜] → (U : TopologicalSpace.Opens 𝕜) → (↥U → 𝕜) → 𝕜 → ↥U → Prop\n:= fun {𝕜} [NontriviallyNormedField 𝕜] U f d x => ∃ g, (∀ (y : ↥U), g ↑y = f y) ∧ HasDerivAt g d ↑x"
+external = ["AddCommGroup.toAddCommMonoid", "AddCommGroup.toAddGroup", "AddGroup.toSubNegMonoid", "AddMonoid.toAddZeroClass", "AddZero.toZero", "AddZeroClass.toAddZero", "And", "CommSemiring.toSemiring", "ContinuousSMul", "DistribMulAction.toDistribSMul", "DistribSMul.toSMulZeroClass", "DivisionRing.toRing", "Eq", "Exists", "Field.toDivisionRing", "Field.toSemifield", "HasDerivAt", "Membership.mem", "Module.toDistribMulAction", "NontriviallyNormedField", "NontriviallyNormedField.toNormedField", "NormedCommRing.toSeminormedCommRing", "NormedField.toField", "NormedField.toNormedCommRing", "PseudoMetricSpace.toUniformSpace", "Ring.toAddCommGroup", "SMulZeroClass.toSMul", "Semifield.toCommSemiring", "SeminormedCommRing.toSeminormedRing", "SeminormedRing.toPseudoMetricSpace", "Semiring.toModule", "Semiring.toMonoid", "SetLike.instMembership", "SubNegMonoid.toAddMonoid", "Subtype", "Subtype.val", "TopologicalSpace.Opens", "TopologicalSpace.Opens.instSetLike", "UniformSpace.toTopologicalSpace"]
+mathlib_commit = "ade5dcd9754acef23d0e35968bff5c0c0c8acc76"
+toolchain = "leanprover/lean4:v4.35.0-rc4"
+git_commit = "40418359188960962b75d84647d9f9eff9b6da7a"
+reviewer = "Timon S. Gutleb"
+date = "2026-10-22"
+book_nodes = ["def:open-domain-derivative"]
+book_texts = ["[Derivatives on open domains] Let $\\mathbb K$ be a nontrivially normed field (for example $\\mathbb R$ or $\\mathbb C$). Let $U\\subseteq\\mathbb K$ be open, $f:U\\to\\mathbb K$, $x\\in U$ and $d\\in\\mathbb K$. Say that $f$ has derivative $d$ at $x$ if there exists $F:\\mathbb K\\to\\mathbb K$ agreeing with $f$ on $U$ such that $F'(x)$ exists and equals $d$."]
+
+[[statements]]
+name = "HasIteratedDerivOnOpen"
+fingerprint = "e8e656e5d7bbc735051e2c132783e06bae2f51f284d625089a01cb4b72a5a797"
+rendered = "definition HasIteratedDerivOnOpen : {𝕜 : Type u_1} → [inst : NontriviallyNormedField 𝕜] → (U : TopologicalSpace.Opens 𝕜) → ℕ → (↥U → 𝕜) → (↥U → 𝕜) → Prop\n:= fun {𝕜} [NontriviallyNormedField 𝕜] U x x_1 x_2 =>\n  Nat.brecOn (motive := fun x => (↥U → 𝕜) → (↥U → 𝕜) → Prop) x (HasIteratedDerivOnOpen._f U) x_1 x_2"
+external = ["AddCommGroup.toAddCommMonoid", "AddCommGroup.toAddGroup", "AddGroup.toSubNegMonoid", "AddMonoid.toAddZeroClass", "AddZero.toZero", "AddZeroClass.toAddZero", "And", "CommSemiring.toSemiring", "ContinuousSMul", "DistribMulAction.toDistribSMul", "DistribSMul.toSMulZeroClass", "DivisionRing.toRing", "Eq", "Exists", "Field.toDivisionRing", "Field.toSemifield", "HasDerivAt", "Membership.mem", "Module.toDistribMulAction", "Nat", "Nat.below", "Nat.brecOn", "Nat.casesOn", "Nat.succ", "NontriviallyNormedField", "NontriviallyNormedField.toNormedField", "NormedCommRing.toSeminormedCommRing", "NormedField.toField", "NormedField.toNormedCommRing", "OfNat.ofNat", "PProd", "PseudoMetricSpace.toUniformSpace", "Ring.toAddCommGroup", "SMulZeroClass.toSMul", "Semifield.toCommSemiring", "SeminormedCommRing.toSeminormedRing", "SeminormedRing.toPseudoMetricSpace", "Semiring.toModule", "Semiring.toMonoid", "SetLike.instMembership", "SubNegMonoid.toAddMonoid", "Subtype", "Subtype.val", "TopologicalSpace.Opens", "TopologicalSpace.Opens.instSetLike", "UniformSpace.toTopologicalSpace", "instOfNatNat"]
+mathlib_commit = "ade5dcd9754acef23d0e35968bff5c0c0c8acc76"
+toolchain = "leanprover/lean4:v4.35.0-rc4"
+git_commit = "95270c3d7e5c2c4b62bd700f7757d6bdd6eac490"
+reviewer = "Timon S. Gutleb"
+date = "2026-10-22"
+book_nodes = ["def:open-domain-iterated-derivative"]
+book_texts = ["[Iterated derivatives on open domains] Let $\\mathbb K$ be a nontrivially normed field (for example $\\mathbb R$ or $\\mathbb C$). For open $U\\subseteq\\mathbb K$, write $D_U^n f=g$ when there is a chain $f_0=f,f_1,\\ldots,f_n=g$ of functions $U\\to\\mathbb K$ such that $f_{k+1}(x)$ is the derivative of $f_k$ at every $x\\in U$, for every $k<n$."]
+
+[[statements]]
+name = "MeasureTheory.IntegrableInput"
+fingerprint = "0e3d84281d7f85eed39c7b9f3d0d883b007020ee3fc0a278d02d956b51c9ffcf"
+rendered = "definition MeasureTheory.IntegrableInput : {X : Type u_1} → [inst : MeasurableSpace X] → MeasureTheory.Measure X → Type (max 0 u_1)\n:= fun {X} [MeasurableSpace X] μ => { f // MeasureTheory.Integrable f μ }"
+external = ["ESeminormedAddMonoid.toContinuousENorm", "MeasurableSpace", "MeasureTheory.Integrable", "MeasureTheory.Measure", "NonUnitalSeminormedCommRing.toNonUnitalSeminormedRing", "NonUnitalSeminormedRing.toSeminormedAddCommGroup", "NormedCommRing.toSeminormedCommRing", "PseudoMetricSpace.toUniformSpace", "Real", "Real.normedCommRing", "Real.pseudoMetricSpace", "SeminormedAddCommGroup.toSeminormedAddGroup", "SeminormedAddGroup.toESeminormedAddMonoid", "SeminormedCommRing.toNonUnitalSeminormedCommRing", "Subtype", "UniformSpace.toTopologicalSpace"]
+mathlib_commit = "ade5dcd9754acef23d0e35968bff5c0c0c8acc76"
+toolchain = "leanprover/lean4:v4.35.0-rc4"
+git_commit = "16ad8e2df66672de8e1157dda0ba51bdba721b85"
+reviewer = "Timon S. Gutleb"
+date = "2026-10-22"
+book_nodes = ["def:integrable-input"]
+book_texts = ["[Integrable real inputs] For a measure $\\mu$ on a measurable space $X$, let $\\mathcal I(\\mu)$ be the set of functions $f:X\\to\\R$ that are $\\mu$-integrable. These are pointwise functions, rather than equivalence classes."]
+
+[[statements]]
+name = "MeasureTheory.IntegrableInput.integrable"
+fingerprint = "045b108bbf0857dac419afd45d242d5a97afe7da85151a721067bdf3fce027d1"
+rendered = "theorem MeasureTheory.IntegrableInput.integrable : ∀ {X : Type u_1} [inst : MeasurableSpace X] {μ : MeasureTheory.Measure X} (f : MeasureTheory.IntegrableInput μ),\n  MeasureTheory.Integrable (↑f) μ"
+external = ["ESeminormedAddMonoid.toContinuousENorm", "MeasurableSpace", "MeasureTheory.Integrable", "MeasureTheory.Measure", "NonUnitalSeminormedCommRing.toNonUnitalSeminormedRing", "NonUnitalSeminormedRing.toSeminormedAddCommGroup", "NormedCommRing.toSeminormedCommRing", "PseudoMetricSpace.toUniformSpace", "Real", "Real.normedCommRing", "Real.pseudoMetricSpace", "SeminormedAddCommGroup.toSeminormedAddGroup", "SeminormedAddGroup.toESeminormedAddMonoid", "SeminormedCommRing.toNonUnitalSeminormedCommRing", "Subtype", "Subtype.val", "UniformSpace.toTopologicalSpace"]
+mathlib_commit = "ade5dcd9754acef23d0e35968bff5c0c0c8acc76"
+toolchain = "leanprover/lean4:v4.35.0-rc4"
+git_commit = "c256a5ea50c066a180ccfe4fb320a65a978b2b44"
+reviewer = "Timon S. Gutleb"
+date = "2026-10-18"
+book_nodes = ["thm:integrable-input"]
+book_texts = ["[Integrability of a bundled input] Every $f\\in\\mathcal I(\\mu)$ is $\\mu$-integrable."]
+
+[[statements]]
+name = "MeasureTheory.integrable_openIntervalWeightMeasure_iff"
+fingerprint = "c9c50b250f328cc1220e8e171f8b36eb8b2a43aeeda67eacfc326033e7621cdf"
+rendered = "theorem MeasureTheory.integrable_openIntervalWeightMeasure_iff : ∀ (a b : ℝ) (w : C(↑(Set.Ioo a b), NNReal)) (f : ℝ → ℝ),\n  MeasureTheory.Integrable f (MeasureTheory.openIntervalWeightMeasure a b w) ↔\n    MeasureTheory.Integrable (fun x => ↑(w x) * f ↑x) MeasureTheory.volume"
+external = ["ContinuousMap", "ContinuousMap.instFunLike", "DFunLike.coe", "ENNReal.ofNNReal", "ESeminormedAddMonoid.toContinuousENorm", "HMul.hMul", "Iff", "MeasureTheory.Integrable", "MeasureTheory.Measure", "MeasureTheory.Measure.Subtype.measureSpace", "MeasureTheory.Measure.map", "MeasureTheory.Measure.withDensity", "MeasureTheory.MeasureSpace.toMeasurableSpace", "MeasureTheory.MeasureSpace.volume", "Membership.mem", "NNReal", "NNReal.instTopologicalSpace", "NNReal.toReal", "NonUnitalSeminormedCommRing.toNonUnitalSeminormedRing", "NonUnitalSeminormedRing.toSeminormedAddCommGroup", "NormedCommRing.toSeminormedCommRing", "PseudoMetricSpace.toUniformSpace", "Real", "Real.instMul", "Real.instPreorder", "Real.measurableSpace", "Real.measureSpace", "Real.normedCommRing", "Real.pseudoMetricSpace", "SeminormedAddCommGroup.toSeminormedAddGroup", "SeminormedAddGroup.toESeminormedAddMonoid", "SeminormedCommRing.toNonUnitalSeminormedCommRing", "Set", "Set.Elem", "Set.Ioo", "Set.instMembership", "Subtype", "Subtype.val", "UniformSpace.toTopologicalSpace", "instHMul", "instTopologicalSpaceSubtype"]
+mathlib_commit = "ade5dcd9754acef23d0e35968bff5c0c0c8acc76"
+toolchain = "leanprover/lean4:v4.35.0-rc4"
+git_commit = "ba57e37f0c7185c154f6c1e2f4f60168a1d4d65f"
+reviewer = "Timon S. Gutleb"
+date = "2026-10-22"
+book_nodes = ["thm:open-interval-weight-measure"]
+book_texts = ["[Open-interval density characterisation] A function $f:\\R\\to\\R$ is $\\mu_w$-integrable if and only if $x\\mapsto w(x)f(x)$ is Lebesgue-integrable on the open interval $(a,b)$. For $f\\in\\mathcal I(\\mu_w)$, \\[\\int_{\\R} f\\,d\\mu_w=\\int_{x\\in(a,b)}w(x)f(x)\\,dx.\\] Both integrals exist as finite real integrals."]
+
+[[statements]]
+name = "MeasureTheory.integral_openIntervalWeightMeasure"
+fingerprint = "b944159a72ff6ec1f080c883a42a2de5cd036ed815f89123c4789d7748664844"
+rendered = "theorem MeasureTheory.integral_openIntervalWeightMeasure : ∀ (a b : ℝ) (w : C(↑(Set.Ioo a b), NNReal))\n  (f : MeasureTheory.IntegrableInput (MeasureTheory.openIntervalWeightMeasure a b w)),\n  ∫ (x : ℝ), ↑f x ∂MeasureTheory.openIntervalWeightMeasure a b w = ∫ (x : ↑(Set.Ioo a b)), ↑(w x) * ↑f ↑x"
+external = ["ContinuousMap", "ContinuousMap.instFunLike", "DFunLike.coe", "ENNReal.ofNNReal", "ESeminormedAddMonoid.toContinuousENorm", "Eq", "HMul.hMul", "InnerProductSpace.toNormedSpace", "MeasurableSpace", "MeasureTheory.Integrable", "MeasureTheory.Measure", "MeasureTheory.Measure.Subtype.measureSpace", "MeasureTheory.Measure.map", "MeasureTheory.Measure.withDensity", "MeasureTheory.MeasureSpace.toMeasurableSpace", "MeasureTheory.MeasureSpace.volume", "MeasureTheory.integral", "Membership.mem", "NNReal", "NNReal.instTopologicalSpace", "NNReal.toReal", "NonUnitalSeminormedCommRing.toNonUnitalSeminormedRing", "NonUnitalSeminormedRing.toSeminormedAddCommGroup", "NormedAddCommGroup.toSeminormedAddCommGroup", "NormedCommRing.toSeminormedCommRing", "PseudoMetricSpace.toUniformSpace", "RCLike.toInnerProductSpaceReal", "Real", "Real.instMul", "Real.instPreorder", "Real.instRCLike", "Real.measurableSpace", "Real.measureSpace", "Real.normedAddCommGroup", "Real.normedCommRing", "Real.pseudoMetricSpace", "SeminormedAddCommGroup.toSeminormedAddGroup", "SeminormedAddGroup.toESeminormedAddMonoid", "SeminormedCommRing.toNonUnitalSeminormedCommRing", "Set", "Set.Elem", "Set.Ioo", "Set.instMembership", "Subtype", "Subtype.val", "UniformSpace.toTopologicalSpace", "instHMul", "instTopologicalSpaceSubtype"]
+mathlib_commit = "ade5dcd9754acef23d0e35968bff5c0c0c8acc76"
+toolchain = "leanprover/lean4:v4.35.0-rc4"
+git_commit = "ba57e37f0c7185c154f6c1e2f4f60168a1d4d65f"
+reviewer = "Timon S. Gutleb"
+date = "2026-10-22"
+book_nodes = ["thm:open-interval-weight-measure"]
+book_texts = ["[Open-interval density characterisation] A function $f:\\R\\to\\R$ is $\\mu_w$-integrable if and only if $x\\mapsto w(x)f(x)$ is Lebesgue-integrable on the open interval $(a,b)$. For $f\\in\\mathcal I(\\mu_w)$, \\[\\int_{\\R} f\\,d\\mu_w=\\int_{x\\in(a,b)}w(x)f(x)\\,dx.\\] Both integrals exist as finite real integrals."]
+
+[[statements]]
+name = "MeasureTheory.openIntervalWeightMeasure"
+fingerprint = "6464b80157b8b02dba8f5568a7e6f2bce5090aa0dfd84ae7d789a1d0d2d4feb7"
+rendered = "definition MeasureTheory.openIntervalWeightMeasure : (a b : ℝ) → C(↑(Set.Ioo a b), NNReal) → MeasureTheory.Measure ℝ\n:= fun a b w => MeasureTheory.Measure.map Subtype.val (MeasureTheory.volume.withDensity fun x => ↑(w x))"
+external = ["ContinuousMap", "ContinuousMap.instFunLike", "DFunLike.coe", "ENNReal.ofNNReal", "MeasureTheory.Measure", "MeasureTheory.Measure.Subtype.measureSpace", "MeasureTheory.Measure.map", "MeasureTheory.Measure.withDensity", "MeasureTheory.MeasureSpace.toMeasurableSpace", "MeasureTheory.MeasureSpace.volume", "Membership.mem", "NNReal", "NNReal.instTopologicalSpace", "PseudoMetricSpace.toUniformSpace", "Real", "Real.instPreorder", "Real.measurableSpace", "Real.measureSpace", "Real.pseudoMetricSpace", "Set", "Set.Elem", "Set.Ioo", "Set.instMembership", "Subtype", "Subtype.val", "UniformSpace.toTopologicalSpace", "instTopologicalSpaceSubtype"]
+mathlib_commit = "ade5dcd9754acef23d0e35968bff5c0c0c8acc76"
+toolchain = "leanprover/lean4:v4.35.0-rc4"
+git_commit = "95270c3d7e5c2c4b62bd700f7757d6bdd6eac490"
+reviewer = "Timon S. Gutleb"
+date = "2026-10-22"
+book_nodes = ["def:open-interval-weight-measure"]
+book_texts = ["[Measures from open-interval densities] For $a,b\\in\\R$ and a continuous $w:(a,b)\\to\\R_{\\ge0}$, form $w\\,dx$ on the open interval $(a,b)$, then push it forward to $\\R$ by inclusion. Denote this measure by $\\mu_w$."]
+
+[[statements]]
+name = "Polynomial.Chebyshev.classicalMeasureT"
+fingerprint = "d9cc4ddd9bf8beacefb3bcc0f824914f9ffeecdef7d61aabaf714e2131c1d04a"
+rendered = "definition Polynomial.Chebyshev.classicalMeasureT : MeasureTheory.Measure ℝ\n:= MeasureTheory.openIntervalWeightMeasure (-1) 1 Polynomial.Chebyshev.weightT"
+external = ["Continuous", "ContinuousMap", "ContinuousMap.instFunLike", "ContinuousMap.mk", "DFunLike.coe", "DivInvOneMonoid.toInvOneClass", "DivisionMonoid.toDivInvOneMonoid", "DivisionSemiring.toGroupWithZero", "ENNReal.ofNNReal", "Field.toSemifield", "GroupWithZero.toDivisionMonoid", "GroupWithZero.toMonoidWithZero", "HPow.hPow", "HSub.hSub", "Iff.mpr", "Inv.inv", "InvOneClass.toInv", "IsStrictOrderedRing.toPosMulStrictMono", "LE.le", "MeasureTheory.Measure", "MeasureTheory.Measure.Subtype.measureSpace", "MeasureTheory.Measure.map", "MeasureTheory.Measure.withDensity", "MeasureTheory.MeasureSpace.toMeasurableSpace", "MeasureTheory.MeasureSpace.volume", "Membership.mem", "Monoid.toNPow", "MonoidWithZero.toMulZeroOneClass", "MulZeroClass.toMul", "MulZeroClass.toZero", "MulZeroOneClass.toMulZeroClass", "NNReal", "NNReal.instTopologicalSpace", "NPow.toPow", "Nat", "Neg.neg", "OfNat.ofNat", "One.toOfNat1", "PartialOrder.toPreorder", "PosMulReflectLE.toPosMulReflectLT", "PosMulStrictMono.toPosMulReflectLE", "Preorder.toLE", "PseudoMetricSpace.toUniformSpace", "Real", "Real.instField", "Real.instInv", "Real.instIsStrictOrderedRing", "Real.instLE", "Real.instMonoid", "Real.instNeg", "Real.instOne", "Real.instPreorder", "Real.instSub", "Real.instZero", "Real.linearOrder", "Real.measurableSpace", "Real.measureSpace", "Real.partialOrder", "Real.pseudoMetricSpace", "Real.semiring", "Real.sqrt", "Real.sqrt_nonneg", "Semifield.toDivisionSemiring", "Set", "Set.Elem", "Set.Ioo", "Set.instMembership", "Subtype", "Subtype.mk", "Subtype.val", "UniformSpace.toTopologicalSpace", "Zero.toOfNat0", "instHPow", "instHSub", "instMulZeroClassOfSemiring", "instOfNatNat", "instTopologicalSpaceSubtype", "inv_nonneg"]
+mathlib_commit = "ade5dcd9754acef23d0e35968bff5c0c0c8acc76"
+toolchain = "leanprover/lean4:v4.35.0-rc4"
+git_commit = "e4cffb5ec1dbb3a8c9a7acd4abc9e19938b7ac4e"
+reviewer = "Timon S. Gutleb"
+date = "2026-10-17"
+book_nodes = ["def:measureT"]
+book_texts = ["[First-kind weight measure] Let $\\mu_T=\\mu_{w_T}$ be the measure of Definition~\\ref{def:open-interval-weight-measure} for the weight $w_T$ of Definition~\\ref{def:classical-chebyshev-weights}. Reference: \\cite[Table 18.3.1]{dlmf}."]
+
+[[statements]]
+name = "Polynomial.Chebyshev.measureU"
+fingerprint = "ddf90b3edf6252bed9e642322e595dda6e292c9147dfee1ae56fbd8538c41a55"
+rendered = "definition Polynomial.Chebyshev.measureU : MeasureTheory.Measure ℝ\n:= MeasureTheory.openIntervalWeightMeasure (-1) 1 Polynomial.Chebyshev.weightU"
+external = ["Continuous", "ContinuousMap", "ContinuousMap.instFunLike", "ContinuousMap.mk", "DFunLike.coe", "ENNReal.ofNNReal", "HPow.hPow", "HSub.hSub", "LE.le", "MeasureTheory.Measure", "MeasureTheory.Measure.Subtype.measureSpace", "MeasureTheory.Measure.map", "MeasureTheory.Measure.withDensity", "MeasureTheory.MeasureSpace.toMeasurableSpace", "MeasureTheory.MeasureSpace.volume", "Membership.mem", "Monoid.toNPow", "NNReal", "NNReal.instTopologicalSpace", "NPow.toPow", "Nat", "Neg.neg", "OfNat.ofNat", "One.toOfNat1", "PseudoMetricSpace.toUniformSpace", "Real", "Real.instLE", "Real.instMonoid", "Real.instNeg", "Real.instOne", "Real.instPreorder", "Real.instSub", "Real.instZero", "Real.measurableSpace", "Real.measureSpace", "Real.pseudoMetricSpace", "Real.sqrt", "Real.sqrt_nonneg", "Set", "Set.Elem", "Set.Ioo", "Set.instMembership", "Subtype", "Subtype.mk", "Subtype.val", "UniformSpace.toTopologicalSpace", "Zero.toOfNat0", "instHPow", "instHSub", "instOfNatNat", "instTopologicalSpaceSubtype"]
+mathlib_commit = "ade5dcd9754acef23d0e35968bff5c0c0c8acc76"
+toolchain = "leanprover/lean4:v4.35.0-rc4"
+git_commit = "e4cffb5ec1dbb3a8c9a7acd4abc9e19938b7ac4e"
+reviewer = "Timon S. Gutleb"
+date = "2026-10-17"
+book_nodes = ["def:measureU"]
+book_texts = ["[Second-kind weight measure] Let $\\mu_U=\\mu_{w_U}$ be the measure of Definition~\\ref{def:open-interval-weight-measure} for the weight $w_U$ of Definition~\\ref{def:classical-chebyshev-weights}. Reference: \\cite[Table 18.3.1]{dlmf}."]
+
+[[statements]]
+name = "Polynomial.Chebyshev.weightT"
+fingerprint = "c7989c75f2a429d6f9bae4731b43e98f90b7c17b6e1234e1bef3387c4b8759a1"
+rendered = "definition Polynomial.Chebyshev.weightT : C(↑(Set.Ioo (-1) 1), NNReal)\n:= { toFun := fun x => ⟨(√(1 - ↑x ^ 2))⁻¹, ⋯⟩, continuous_toFun := Polynomial.Chebyshev.weightT._proof_1 }"
+external = ["Continuous", "ContinuousMap", "ContinuousMap.mk", "DivInvOneMonoid.toInvOneClass", "DivisionMonoid.toDivInvOneMonoid", "DivisionSemiring.toGroupWithZero", "Field.toSemifield", "GroupWithZero.toDivisionMonoid", "GroupWithZero.toMonoidWithZero", "HPow.hPow", "HSub.hSub", "Iff.mpr", "Inv.inv", "InvOneClass.toInv", "IsStrictOrderedRing.toPosMulStrictMono", "LE.le", "Membership.mem", "Monoid.toNPow", "MonoidWithZero.toMulZeroOneClass", "MulZeroClass.toMul", "MulZeroClass.toZero", "MulZeroOneClass.toMulZeroClass", "NNReal", "NNReal.instTopologicalSpace", "NPow.toPow", "Nat", "Neg.neg", "OfNat.ofNat", "One.toOfNat1", "PartialOrder.toPreorder", "PosMulReflectLE.toPosMulReflectLT", "PosMulStrictMono.toPosMulReflectLE", "Preorder.toLE", "PseudoMetricSpace.toUniformSpace", "Real", "Real.instField", "Real.instInv", "Real.instIsStrictOrderedRing", "Real.instLE", "Real.instMonoid", "Real.instNeg", "Real.instOne", "Real.instPreorder", "Real.instSub", "Real.instZero", "Real.linearOrder", "Real.partialOrder", "Real.pseudoMetricSpace", "Real.semiring", "Real.sqrt", "Real.sqrt_nonneg", "Semifield.toDivisionSemiring", "Set", "Set.Elem", "Set.Ioo", "Set.instMembership", "Subtype.mk", "Subtype.val", "UniformSpace.toTopologicalSpace", "Zero.toOfNat0", "instHPow", "instHSub", "instMulZeroClassOfSemiring", "instOfNatNat", "instTopologicalSpaceSubtype", "inv_nonneg"]
+mathlib_commit = "ade5dcd9754acef23d0e35968bff5c0c0c8acc76"
+toolchain = "leanprover/lean4:v4.35.0-rc4"
+git_commit = "ba57e37f0c7185c154f6c1e2f4f60168a1d4d65f"
+reviewer = "Timon S. Gutleb"
+date = "2026-10-22"
+book_nodes = ["def:classical-chebyshev-weights"]
+book_texts = ["[Classical Chebyshev densities] On the open interval $I=(-1,1)$, define the continuous nonnegative weights $w_U(x)=\\sqrt{1-x^2}$ and $w_T(x)=1/\\sqrt{1-x^2}$."]
+
+[[statements]]
+name = "Polynomial.Chebyshev.weightU"
+fingerprint = "d409b5f5add017b3a057b09bbd0c2cd528a3848a3dcdd23a19b3e2837dd297a9"
+rendered = "definition Polynomial.Chebyshev.weightU : C(↑(Set.Ioo (-1) 1), NNReal)\n:= { toFun := fun x => ⟨√(1 - ↑x ^ 2), ⋯⟩, continuous_toFun := Polynomial.Chebyshev.weightU._proof_1 }"
+external = ["Continuous", "ContinuousMap", "ContinuousMap.mk", "HPow.hPow", "HSub.hSub", "LE.le", "Membership.mem", "Monoid.toNPow", "NNReal", "NNReal.instTopologicalSpace", "NPow.toPow", "Nat", "Neg.neg", "OfNat.ofNat", "One.toOfNat1", "PseudoMetricSpace.toUniformSpace", "Real", "Real.instLE", "Real.instMonoid", "Real.instNeg", "Real.instOne", "Real.instPreorder", "Real.instSub", "Real.instZero", "Real.pseudoMetricSpace", "Real.sqrt", "Real.sqrt_nonneg", "Set", "Set.Elem", "Set.Ioo", "Set.instMembership", "Subtype.mk", "Subtype.val", "UniformSpace.toTopologicalSpace", "Zero.toOfNat0", "instHPow", "instHSub", "instOfNatNat", "instTopologicalSpaceSubtype"]
+mathlib_commit = "ade5dcd9754acef23d0e35968bff5c0c0c8acc76"
+toolchain = "leanprover/lean4:v4.35.0-rc4"
+git_commit = "ba57e37f0c7185c154f6c1e2f4f60168a1d4d65f"
+reviewer = "Timon S. Gutleb"
+date = "2026-10-22"
+book_nodes = ["def:classical-chebyshev-weights"]
+book_texts = ["[Classical Chebyshev densities] On the open interval $I=(-1,1)$, define the continuous nonnegative weights $w_U(x)=\\sqrt{1-x^2}$ and $w_T(x)=1/\\sqrt{1-x^2}$."]
+
+[[statements]]
+name = "Polynomial.Chebyshev.weightUT_apply"
+fingerprint = "d00b52ad9c8ef935b82f51d56ad560441c6ead1d4c229233a15206b16ded749f"
+rendered = "theorem Polynomial.Chebyshev.weightUT_apply : ∀ (x : ↑(Set.Ioo (-1) 1)),\n  ↑(Polynomial.Chebyshev.weightU x) = √(1 - ↑x ^ 2) ∧ ↑(Polynomial.Chebyshev.weightT x) = (√(1 - ↑x ^ 2))⁻¹"
+external = ["And", "Continuous", "ContinuousMap", "ContinuousMap.instFunLike", "ContinuousMap.mk", "DFunLike.coe", "DivInvOneMonoid.toInvOneClass", "DivisionMonoid.toDivInvOneMonoid", "DivisionSemiring.toGroupWithZero", "Eq", "Field.toSemifield", "GroupWithZero.toDivisionMonoid", "GroupWithZero.toMonoidWithZero", "HPow.hPow", "HSub.hSub", "Iff.mpr", "Inv.inv", "InvOneClass.toInv", "IsStrictOrderedRing.toPosMulStrictMono", "LE.le", "Membership.mem", "Monoid.toNPow", "MonoidWithZero.toMulZeroOneClass", "MulZeroClass.toMul", "MulZeroClass.toZero", "MulZeroOneClass.toMulZeroClass", "NNReal", "NNReal.instTopologicalSpace", "NNReal.toReal", "NPow.toPow", "Nat", "Neg.neg", "OfNat.ofNat", "One.toOfNat1", "PartialOrder.toPreorder", "PosMulReflectLE.toPosMulReflectLT", "PosMulStrictMono.toPosMulReflectLE", "Preorder.toLE", "PseudoMetricSpace.toUniformSpace", "Real", "Real.instField", "Real.instInv", "Real.instIsStrictOrderedRing", "Real.instLE", "Real.instMonoid", "Real.instNeg", "Real.instOne", "Real.instPreorder", "Real.instSub", "Real.instZero", "Real.linearOrder", "Real.partialOrder", "Real.pseudoMetricSpace", "Real.semiring", "Real.sqrt", "Real.sqrt_nonneg", "Semifield.toDivisionSemiring", "Set", "Set.Elem", "Set.Ioo", "Set.instMembership", "Subtype.mk", "Subtype.val", "UniformSpace.toTopologicalSpace", "Zero.toOfNat0", "instHPow", "instHSub", "instMulZeroClassOfSemiring", "instOfNatNat", "instTopologicalSpaceSubtype", "inv_nonneg"]
+mathlib_commit = "ade5dcd9754acef23d0e35968bff5c0c0c8acc76"
+toolchain = "leanprover/lean4:v4.35.0-rc4"
+git_commit = "e4cffb5ec1dbb3a8c9a7acd4abc9e19938b7ac4e"
+reviewer = "Timon S. Gutleb"
+date = "2026-10-17"
+book_nodes = ["thm:classical-chebyshev-weights"]
+book_texts = ["[Chebyshev density characterisation] For every $x\\in I$, $w_U(x)=\\sqrt{1-x^2}$ and $w_T(x)=1/\\sqrt{1-x^2}$."]
+
+[[statements]]
+name = "Polynomial.ae_mem_Ioo_gegenbauerMeasure"
+fingerprint = "e6ab9e203c9ada52a4a9fe8c1fa0dff106f1519ac5a5bd1d831b936de71f8021"
+rendered = "theorem Polynomial.ae_mem_Ioo_gegenbauerMeasure : ∀ (lam : ℝ), ∀ᵐ (x : ℝ) ∂Polynomial.gegenbauerMeasure lam, x ∈ Set.Ioo (-1) 1"
+external = ["Continuous", "ContinuousMap", "ContinuousMap.instFunLike", "ContinuousMap.mk", "DFunLike.coe", "DivInvMonoid.toDiv", "ENNReal.ofNNReal", "Filter.Eventually", "HAdd.hAdd", "HDiv.hDiv", "HMul.hMul", "HPow.hPow", "HSub.hSub", "IsOrderedRing.toPosMulMono", "LE.le", "MeasureTheory.Measure", "MeasureTheory.Measure.Subtype.measureSpace", "MeasureTheory.Measure.instFunLike", "MeasureTheory.Measure.instOuterMeasureClass", "MeasureTheory.Measure.map", "MeasureTheory.Measure.withDensity", "MeasureTheory.MeasureSpace.toMeasurableSpace", "MeasureTheory.MeasureSpace.volume", "MeasureTheory.ae", "Membership.mem", "MulZeroClass.toMul", "MulZeroClass.toZero", "NNReal", "NNReal.instTopologicalSpace", "Nat", "Nat.AtLeastTwo", "Neg.neg", "OfNat.ofNat", "One.toOfNat1", "Preorder.toLE", "PseudoMetricSpace.toUniformSpace", "Real", "Real.instAdd", "Real.instDivInvMonoid", "Real.instIsOrderedRing", "Real.instLE", "Real.instMul", "Real.instNatCast", "Real.instNeg", "Real.instOne", "Real.instPow", "Real.instPreorder", "Real.instSub", "Real.instZero", "Real.measurableSpace", "Real.measureSpace", "Real.partialOrder", "Real.pseudoMetricSpace", "Real.rpow_nonneg", "Real.semiring", "Set", "Set.Elem", "Set.Ioo", "Set.instMembership", "Subtype", "Subtype.mk", "Subtype.val", "UniformSpace.toTopologicalSpace", "Zero.toOfNat0", "instAddNat", "instHAdd", "instHDiv", "instHMul", "instHPow", "instHSub", "instMulZeroClassOfSemiring", "instOfNatAtLeastTwo", "instOfNatNat", "instTopologicalSpaceSubtype", "mul_nonneg"]
+mathlib_commit = "ade5dcd9754acef23d0e35968bff5c0c0c8acc76"
+toolchain = "leanprover/lean4:v4.35.0-rc4"
+git_commit = "16ad8e2df66672de8e1157dda0ba51bdba721b85"
+reviewer = "Timon S. Gutleb"
+date = "2026-10-22"
+book_nodes = ["thm:gegenbauer-measure-bridge"]
+book_texts = ["[Gegenbauer--Jacobi measure bridge] For every real $\\lambda$, the Gegenbauer weight equals $w_{\\lambda-1/2,\\lambda-1/2}$ on $(-1,1)$, and $\\mu_\\lambda=\\mu_{\\lambda-1/2,\\lambda-1/2}$. The measure assigns zero mass to $\\mathbb{R}\\setminus(-1,1)$. Reference: \\cite[Table 18.3.1]{dlmf}."]
+
+[[statements]]
+name = "Polynomial.ae_mem_Ioo_jacobiMeasure"
+fingerprint = "61493fce3e832eb970151c7f63b123ecf2df33c76570deec7478272004849120"
+rendered = "theorem Polynomial.ae_mem_Ioo_jacobiMeasure : ∀ (α β : ℝ), ∀ᵐ (x : ℝ) ∂Polynomial.jacobiMeasure α β, x ∈ Set.Ioo (-1) 1"
+external = ["Continuous", "ContinuousMap", "ContinuousMap.instFunLike", "ContinuousMap.mk", "DFunLike.coe", "ENNReal.ofNNReal", "Filter.Eventually", "HAdd.hAdd", "HMul.hMul", "HPow.hPow", "HSub.hSub", "IsOrderedRing.toPosMulMono", "LE.le", "MeasureTheory.Measure", "MeasureTheory.Measure.Subtype.measureSpace", "MeasureTheory.Measure.instFunLike", "MeasureTheory.Measure.instOuterMeasureClass", "MeasureTheory.Measure.map", "MeasureTheory.Measure.withDensity", "MeasureTheory.MeasureSpace.toMeasurableSpace", "MeasureTheory.MeasureSpace.volume", "MeasureTheory.ae", "Membership.mem", "MulZeroClass.toMul", "MulZeroClass.toZero", "NNReal", "NNReal.instTopologicalSpace", "Neg.neg", "OfNat.ofNat", "One.toOfNat1", "Preorder.toLE", "PseudoMetricSpace.toUniformSpace", "Real", "Real.instAdd", "Real.instIsOrderedRing", "Real.instLE", "Real.instMul", "Real.instNeg", "Real.instOne", "Real.instPow", "Real.instPreorder", "Real.instSub", "Real.instZero", "Real.measurableSpace", "Real.measureSpace", "Real.partialOrder", "Real.pseudoMetricSpace", "Real.rpow_nonneg", "Real.semiring", "Set", "Set.Elem", "Set.Ioo", "Set.instMembership", "Subtype", "Subtype.mk", "Subtype.val", "UniformSpace.toTopologicalSpace", "Zero.toOfNat0", "instHAdd", "instHMul", "instHPow", "instHSub", "instMulZeroClassOfSemiring", "instTopologicalSpaceSubtype", "mul_nonneg"]
+mathlib_commit = "ade5dcd9754acef23d0e35968bff5c0c0c8acc76"
+toolchain = "leanprover/lean4:v4.35.0-rc4"
+git_commit = "40418359188960962b75d84647d9f9eff9b6da7a"
+reviewer = "Timon S. Gutleb"
+date = "2026-10-22"
+book_nodes = ["thm:jacobi-weight-basic"]
+book_texts = ["[Jacobi weight positivity and support] For all real $\\alpha,\\beta$, the weight $w_{\\alpha,\\beta}$ is measurable and strictly positive on its domain $(-1,1)$, and $\\mu_{\\alpha,\\beta}$-almost every point lies in $(-1,1)$. Reference: \\cite[Table 18.3.1]{dlmf}."]
+
+[[statements]]
+name = "Polynomial.coeff_gegenbauer_self"
+fingerprint = "71c918de11127c907dc090719475acadb979e6326033c248010b14d7c37b6f1e"
+rendered = "theorem Polynomial.coeff_gegenbauer_self : ∀ {R : Type u_1} [inst : CommRing R] [inst_1 : Algebra ℚ R] (lam : R) (n : ℕ),\n  (Polynomial.gegenbauer lam n).coeff n =\n    (algebraMap ℚ R) (↑n.factorial)⁻¹ * Polynomial.eval lam (ascPochhammer R n) * 2 ^ n"
+external = ["AddCommGroup.toDivisionAddCommMonoid", "AddGroupWithOne.toAddMonoidWithOne", "AddMonoidWithOne.toNatCast", "AddMonoidWithOne.toOne", "Algebra", "Algebra.algebraMap", "CommRing", "CommRing.toCommSemiring", "CommRing.toRing", "CommSemiring.toSemiring", "DFunLike.coe", "Distrib.toMul", "Eq", "Finset.range", "Finset.sum", "Finsupp", "Finsupp.instFunLike", "HAdd.hAdd", "HDiv.hDiv", "HMul.hMul", "HPow.hPow", "HSub.hSub", "Inv.inv", "Monoid.toNPow", "MulZeroClass.toZero", "NPow.toPow", "Nat", "Nat.AtLeastTwo", "Nat.cast", "Nat.factorial", "Nat.instAtLeastTwoHAddOfNat", "Nat.instDiv", "Nat.instNeZeroSucc", "Neg.neg", "NegZeroClass.toNeg", "OfNat.ofNat", "One.toOfNat1", "Polynomial", "Polynomial.C", "Polynomial.X", "Polynomial.coeff", "Polynomial.eval", "Polynomial.instMul", "Polynomial.semiring", "Rat", "Rat.commSemiring", "Rat.instInv", "Rat.instMul", "Rat.instNatCast", "Ring.toAddCommGroup", "Ring.toAddGroupWithOne", "RingHom", "RingHom.instFunLike", "Semiring.toAddCommMonoid", "Semiring.toMonoid", "Semiring.toNonAssocSemiring", "SubNegZeroMonoid.toNegZeroClass", "SubtractionCommMonoid.toSubtractionMonoid", "SubtractionMonoid.toSubNegZeroMonoid", "ascPochhammer", "instAddNat", "instDistribOfSemiring", "instHAdd", "instHDiv", "instHMul", "instHPow", "instHSub", "instMulNat", "instMulZeroClassOfSemiring", "instOfNatAtLeastTwo", "instOfNatNat", "instSubNat"]
+mathlib_commit = "ade5dcd9754acef23d0e35968bff5c0c0c8acc76"
+toolchain = "leanprover/lean4:v4.35.0-rc4"
+git_commit = "df293f80609f8e711abacdb4d169e15a82469add"
+reviewer = "Timon S. Gutleb"
+date = "2026-10-22"
+book_nodes = ["thm:gegenbauer-degree"]
+book_texts = ["[Gegenbauer degree and leading term] Let $R$ be a commutative $\\Q$-algebra, let $\\lambda\\in R$, and let $n\\in\\N$. The Gegenbauer polynomial $C_n^{(\\lambda)}(X)$ has degree at most $n$, and its coefficient of $X^n$ is \\[ c_n=\\frac{2^n(\\lambda)_n}{n!}. \\] It has degree exactly $n$ if and only if $c_n\\ne0$. In that case, its leading coefficient is $c_n$. Reference: \\cite[Table 18.3.1]{dlmf}."]
+
+[[statements]]
+name = "Polynomial.coeff_jacobi_self"
+fingerprint = "1394967348b6ba2fa0e3e63d66af5f0d4286690496037bbc2fe0886f3cebc9e5"
+rendered = "theorem Polynomial.coeff_jacobi_self : ∀ {R : Type u_1} [inst : CommRing R] [inst_1 : Algebra ℚ R] (α β : R) (n : ℕ),\n  (Polynomial.jacobi α β n).coeff n =\n    (algebraMap ℚ R) (↑n.factorial * 2 ^ n)⁻¹ * Polynomial.eval (↑n + α + β + 1) (ascPochhammer R n)"
+external = ["AddGroupWithOne.toAddMonoidWithOne", "AddMonoidWithOne.toNatCast", "AddMonoidWithOne.toOne", "Algebra", "Algebra.algebraMap", "CommRing", "CommRing.toCommSemiring", "CommRing.toRing", "CommSemiring.toSemiring", "DFunLike.coe", "Distrib.toAdd", "Distrib.toMul", "Eq", "Finset.range", "Finset.sum", "Finsupp", "Finsupp.instFunLike", "HAdd.hAdd", "HMul.hMul", "HPow.hPow", "HSub.hSub", "Inv.inv", "Monoid.toNPow", "MulZeroClass.toZero", "NPow.toPow", "Nat", "Nat.cast", "Nat.factorial", "OfNat.ofNat", "One.toOfNat1", "Polynomial", "Polynomial.C", "Polynomial.X", "Polynomial.coeff", "Polynomial.eval", "Polynomial.instMul", "Polynomial.instOne", "Polynomial.instSub", "Polynomial.semiring", "Rat", "Rat.commSemiring", "Rat.instInv", "Rat.instMul", "Rat.instNatCast", "Rat.instOfNat", "Rat.instPowNat", "Ring.toAddGroupWithOne", "RingHom", "RingHom.instFunLike", "Semiring.toAddCommMonoid", "Semiring.toMonoid", "Semiring.toNonAssocSemiring", "ascPochhammer", "instAddNat", "instDistribOfSemiring", "instHAdd", "instHMul", "instHPow", "instHSub", "instMulZeroClassOfSemiring", "instOfNatNat", "instSubNat"]
+mathlib_commit = "ade5dcd9754acef23d0e35968bff5c0c0c8acc76"
+toolchain = "leanprover/lean4:v4.35.0-rc4"
+git_commit = "df293f80609f8e711abacdb4d169e15a82469add"
+reviewer = "Timon S. Gutleb"
+date = "2026-10-22"
+book_nodes = ["thm:jacobi-degree"]
+book_texts = ["[Degree and leading term] Let $R$ be a commutative $\\Q$-algebra, let $\\alpha,\\beta\\in R$, and let $n\\in\\N$. The Jacobi polynomial $P_n^{(\\alpha,\\beta)}(X)$ has degree at most $n$, and its coefficient of $X^n$ is \\[ c_n=\\frac{(n+\\alpha+\\beta+1)_n}{2^n n!}. \\] It has degree exactly $n$ if and only if $c_n\\ne0$. In that case, its leading coefficient is $c_n$. Reference: \\cite[Table 18.3.1]{dlmf}."]
+
+[[statements]]
+name = "Polynomial.degree_gegenbauer_eq"
+fingerprint = "4b14c7e0c5f01a508acb903cee0d157d73b29d329a9a3409d68de851bc7fb3a1"
+rendered = "theorem Polynomial.degree_gegenbauer_eq : ∀ {R : Type u_1} [inst : CommRing R] [inst_1 : Algebra ℚ R] (lam : R) (n : ℕ),\n  (algebraMap ℚ R) (↑n.factorial)⁻¹ * Polynomial.eval lam (ascPochhammer R n) * 2 ^ n ≠ 0 →\n    (Polynomial.gegenbauer lam n).degree = ↑n"
+external = ["AddCommGroup.toDivisionAddCommMonoid", "AddGroupWithOne.toAddMonoidWithOne", "AddMonoidWithOne.toNatCast", "AddMonoidWithOne.toOne", "Algebra", "Algebra.algebraMap", "CommRing", "CommRing.toCommSemiring", "CommRing.toRing", "CommSemiring.toSemiring", "DFunLike.coe", "Distrib.toMul", "Eq", "Finset.range", "Finset.sum", "HAdd.hAdd", "HDiv.hDiv", "HMul.hMul", "HPow.hPow", "HSub.hSub", "Inv.inv", "Monoid.toNPow", "MulZeroClass.toZero", "NPow.toPow", "Nat", "Nat.AtLeastTwo", "Nat.cast", "Nat.factorial", "Nat.instAtLeastTwoHAddOfNat", "Nat.instDiv", "Nat.instNeZeroSucc", "Ne", "Neg.neg", "NegZeroClass.toNeg", "OfNat.ofNat", "One.toOfNat1", "Polynomial", "Polynomial.C", "Polynomial.X", "Polynomial.degree", "Polynomial.eval", "Polynomial.instMul", "Polynomial.semiring", "Rat", "Rat.commSemiring", "Rat.instInv", "Rat.instMul", "Rat.instNatCast", "Ring.toAddCommGroup", "Ring.toAddGroupWithOne", "RingHom", "RingHom.instFunLike", "Semiring.toAddCommMonoid", "Semiring.toMonoid", "Semiring.toNonAssocSemiring", "SubNegZeroMonoid.toNegZeroClass", "SubtractionCommMonoid.toSubtractionMonoid", "SubtractionMonoid.toSubNegZeroMonoid", "WithBot", "WithBot.instNatCast", "Zero.toOfNat0", "ascPochhammer", "instAddNat", "instDistribOfSemiring", "instHAdd", "instHDiv", "instHMul", "instHPow", "instHSub", "instMulNat", "instMulZeroClassOfSemiring", "instNatCastNat", "instOfNatAtLeastTwo", "instOfNatNat", "instSubNat"]
+mathlib_commit = "ade5dcd9754acef23d0e35968bff5c0c0c8acc76"
+toolchain = "leanprover/lean4:v4.35.0-rc4"
+git_commit = "df293f80609f8e711abacdb4d169e15a82469add"
+reviewer = "Timon S. Gutleb"
+date = "2026-10-22"
+book_nodes = ["thm:gegenbauer-degree"]
+book_texts = ["[Gegenbauer degree and leading term] Let $R$ be a commutative $\\Q$-algebra, let $\\lambda\\in R$, and let $n\\in\\N$. The Gegenbauer polynomial $C_n^{(\\lambda)}(X)$ has degree at most $n$, and its coefficient of $X^n$ is \\[ c_n=\\frac{2^n(\\lambda)_n}{n!}. \\] It has degree exactly $n$ if and only if $c_n\\ne0$. In that case, its leading coefficient is $c_n$. Reference: \\cite[Table 18.3.1]{dlmf}."]
+
+[[statements]]
+name = "Polynomial.degree_gegenbauer_eq_iff"
+fingerprint = "ee14d68cfb5e739aca588387d7b1cad2bf12e5567d1d586ad2bd80556a686b0c"
+rendered = "theorem Polynomial.degree_gegenbauer_eq_iff : ∀ {R : Type u_1} [inst : CommRing R] [inst_1 : Algebra ℚ R] (lam : R) (n : ℕ),\n  (Polynomial.gegenbauer lam n).degree = ↑n ↔\n    (algebraMap ℚ R) (↑n.factorial)⁻¹ * Polynomial.eval lam (ascPochhammer R n) * 2 ^ n ≠ 0"
+external = ["AddCommGroup.toDivisionAddCommMonoid", "AddGroupWithOne.toAddMonoidWithOne", "AddMonoidWithOne.toNatCast", "AddMonoidWithOne.toOne", "Algebra", "Algebra.algebraMap", "CommRing", "CommRing.toCommSemiring", "CommRing.toRing", "CommSemiring.toSemiring", "DFunLike.coe", "Distrib.toMul", "Eq", "Finset.range", "Finset.sum", "HAdd.hAdd", "HDiv.hDiv", "HMul.hMul", "HPow.hPow", "HSub.hSub", "Iff", "Inv.inv", "Monoid.toNPow", "MulZeroClass.toZero", "NPow.toPow", "Nat", "Nat.AtLeastTwo", "Nat.cast", "Nat.factorial", "Nat.instAtLeastTwoHAddOfNat", "Nat.instDiv", "Nat.instNeZeroSucc", "Ne", "Neg.neg", "NegZeroClass.toNeg", "OfNat.ofNat", "One.toOfNat1", "Polynomial", "Polynomial.C", "Polynomial.X", "Polynomial.degree", "Polynomial.eval", "Polynomial.instMul", "Polynomial.semiring", "Rat", "Rat.commSemiring", "Rat.instInv", "Rat.instMul", "Rat.instNatCast", "Ring.toAddCommGroup", "Ring.toAddGroupWithOne", "RingHom", "RingHom.instFunLike", "Semiring.toAddCommMonoid", "Semiring.toMonoid", "Semiring.toNonAssocSemiring", "SubNegZeroMonoid.toNegZeroClass", "SubtractionCommMonoid.toSubtractionMonoid", "SubtractionMonoid.toSubNegZeroMonoid", "WithBot", "WithBot.instNatCast", "Zero.toOfNat0", "ascPochhammer", "instAddNat", "instDistribOfSemiring", "instHAdd", "instHDiv", "instHMul", "instHPow", "instHSub", "instMulNat", "instMulZeroClassOfSemiring", "instNatCastNat", "instOfNatAtLeastTwo", "instOfNatNat", "instSubNat"]
+mathlib_commit = "ade5dcd9754acef23d0e35968bff5c0c0c8acc76"
+toolchain = "leanprover/lean4:v4.35.0-rc4"
+git_commit = "df293f80609f8e711abacdb4d169e15a82469add"
+reviewer = "Timon S. Gutleb"
+date = "2026-10-22"
+book_nodes = ["thm:gegenbauer-degree"]
+book_texts = ["[Gegenbauer degree and leading term] Let $R$ be a commutative $\\Q$-algebra, let $\\lambda\\in R$, and let $n\\in\\N$. The Gegenbauer polynomial $C_n^{(\\lambda)}(X)$ has degree at most $n$, and its coefficient of $X^n$ is \\[ c_n=\\frac{2^n(\\lambda)_n}{n!}. \\] It has degree exactly $n$ if and only if $c_n\\ne0$. In that case, its leading coefficient is $c_n$. Reference: \\cite[Table 18.3.1]{dlmf}."]
+
+[[statements]]
+name = "Polynomial.degree_gegenbauer_le"
+fingerprint = "e2e81ccdb604a81e3b2a9e2742eba71b179ea9b1ca757135d2f4779132ef6554"
+rendered = "theorem Polynomial.degree_gegenbauer_le : ∀ {R : Type u_1} [inst : CommRing R] [inst_1 : Algebra ℚ R] (lam : R) (n : ℕ), (Polynomial.gegenbauer lam n).degree ≤ ↑n"
+external = ["AddCommGroup.toDivisionAddCommMonoid", "AddGroupWithOne.toAddMonoidWithOne", "AddMonoidWithOne.toNatCast", "AddMonoidWithOne.toOne", "Algebra", "Algebra.algebraMap", "CommRing", "CommRing.toCommSemiring", "CommRing.toRing", "CommSemiring.toSemiring", "DFunLike.coe", "Distrib.toMul", "Finset.range", "Finset.sum", "HAdd.hAdd", "HDiv.hDiv", "HMul.hMul", "HPow.hPow", "HSub.hSub", "Inv.inv", "LE.le", "Monoid.toNPow", "NPow.toPow", "Nat", "Nat.AtLeastTwo", "Nat.cast", "Nat.factorial", "Nat.instDiv", "Nat.instPreorder", "Neg.neg", "NegZeroClass.toNeg", "OfNat.ofNat", "One.toOfNat1", "Polynomial", "Polynomial.C", "Polynomial.X", "Polynomial.degree", "Polynomial.eval", "Polynomial.instMul", "Polynomial.semiring", "Preorder.toLE", "Rat", "Rat.commSemiring", "Rat.instInv", "Rat.instMul", "Rat.instNatCast", "Ring.toAddCommGroup", "Ring.toAddGroupWithOne", "RingHom", "RingHom.instFunLike", "Semiring.toAddCommMonoid", "Semiring.toMonoid", "Semiring.toNonAssocSemiring", "SubNegZeroMonoid.toNegZeroClass", "SubtractionCommMonoid.toSubtractionMonoid", "SubtractionMonoid.toSubNegZeroMonoid", "WithBot", "WithBot.instNatCast", "WithBot.instPreorder", "ascPochhammer", "instAddNat", "instDistribOfSemiring", "instHAdd", "instHDiv", "instHMul", "instHPow", "instHSub", "instMulNat", "instNatCastNat", "instOfNatAtLeastTwo", "instOfNatNat", "instSubNat"]
+mathlib_commit = "ade5dcd9754acef23d0e35968bff5c0c0c8acc76"
+toolchain = "leanprover/lean4:v4.35.0-rc4"
+git_commit = "df293f80609f8e711abacdb4d169e15a82469add"
+reviewer = "Timon S. Gutleb"
+date = "2026-10-22"
+book_nodes = ["thm:gegenbauer-degree"]
+book_texts = ["[Gegenbauer degree and leading term] Let $R$ be a commutative $\\Q$-algebra, let $\\lambda\\in R$, and let $n\\in\\N$. The Gegenbauer polynomial $C_n^{(\\lambda)}(X)$ has degree at most $n$, and its coefficient of $X^n$ is \\[ c_n=\\frac{2^n(\\lambda)_n}{n!}. \\] It has degree exactly $n$ if and only if $c_n\\ne0$. In that case, its leading coefficient is $c_n$. Reference: \\cite[Table 18.3.1]{dlmf}."]
+
+[[statements]]
+name = "Polynomial.degree_jacobi_eq"
+fingerprint = "a50b353cb435a31929292dfa62ed1f92a081bbffa155b43bdc69f49b85a4485e"
+rendered = "theorem Polynomial.degree_jacobi_eq : ∀ {R : Type u_1} [inst : CommRing R] [inst_1 : Algebra ℚ R] (α β : R) (n : ℕ),\n  (algebraMap ℚ R) (↑n.factorial * 2 ^ n)⁻¹ * Polynomial.eval (↑n + α + β + 1) (ascPochhammer R n) ≠ 0 →\n    (Polynomial.jacobi α β n).degree = ↑n"
+external = ["AddGroupWithOne.toAddMonoidWithOne", "AddMonoidWithOne.toNatCast", "AddMonoidWithOne.toOne", "Algebra", "Algebra.algebraMap", "CommRing", "CommRing.toCommSemiring", "CommRing.toRing", "CommSemiring.toSemiring", "DFunLike.coe", "Distrib.toAdd", "Distrib.toMul", "Eq", "Finset.range", "Finset.sum", "HAdd.hAdd", "HMul.hMul", "HPow.hPow", "HSub.hSub", "Inv.inv", "Monoid.toNPow", "MulZeroClass.toZero", "NPow.toPow", "Nat", "Nat.cast", "Nat.factorial", "Ne", "OfNat.ofNat", "One.toOfNat1", "Polynomial", "Polynomial.C", "Polynomial.X", "Polynomial.degree", "Polynomial.eval", "Polynomial.instMul", "Polynomial.instOne", "Polynomial.instSub", "Polynomial.semiring", "Rat", "Rat.commSemiring", "Rat.instInv", "Rat.instMul", "Rat.instNatCast", "Rat.instOfNat", "Rat.instPowNat", "Ring.toAddGroupWithOne", "RingHom", "RingHom.instFunLike", "Semiring.toAddCommMonoid", "Semiring.toMonoid", "Semiring.toNonAssocSemiring", "WithBot", "WithBot.instNatCast", "Zero.toOfNat0", "ascPochhammer", "instAddNat", "instDistribOfSemiring", "instHAdd", "instHMul", "instHPow", "instHSub", "instMulZeroClassOfSemiring", "instNatCastNat", "instOfNatNat", "instSubNat"]
+mathlib_commit = "ade5dcd9754acef23d0e35968bff5c0c0c8acc76"
+toolchain = "leanprover/lean4:v4.35.0-rc4"
+git_commit = "df293f80609f8e711abacdb4d169e15a82469add"
+reviewer = "Timon S. Gutleb"
+date = "2026-10-22"
+book_nodes = ["thm:jacobi-degree"]
+book_texts = ["[Degree and leading term] Let $R$ be a commutative $\\Q$-algebra, let $\\alpha,\\beta\\in R$, and let $n\\in\\N$. The Jacobi polynomial $P_n^{(\\alpha,\\beta)}(X)$ has degree at most $n$, and its coefficient of $X^n$ is \\[ c_n=\\frac{(n+\\alpha+\\beta+1)_n}{2^n n!}. \\] It has degree exactly $n$ if and only if $c_n\\ne0$. In that case, its leading coefficient is $c_n$. Reference: \\cite[Table 18.3.1]{dlmf}."]
+
+[[statements]]
+name = "Polynomial.degree_jacobi_eq_iff"
+fingerprint = "f157525ffb85b7e50793ce6477fd5febf39df3fe4da58e0438f2d89a6572d8ca"
+rendered = "theorem Polynomial.degree_jacobi_eq_iff : ∀ {R : Type u_1} [inst : CommRing R] [inst_1 : Algebra ℚ R] (α β : R) (n : ℕ),\n  (Polynomial.jacobi α β n).degree = ↑n ↔\n    (algebraMap ℚ R) (↑n.factorial * 2 ^ n)⁻¹ * Polynomial.eval (↑n + α + β + 1) (ascPochhammer R n) ≠ 0"
+external = ["AddGroupWithOne.toAddMonoidWithOne", "AddMonoidWithOne.toNatCast", "AddMonoidWithOne.toOne", "Algebra", "Algebra.algebraMap", "CommRing", "CommRing.toCommSemiring", "CommRing.toRing", "CommSemiring.toSemiring", "DFunLike.coe", "Distrib.toAdd", "Distrib.toMul", "Eq", "Finset.range", "Finset.sum", "HAdd.hAdd", "HMul.hMul", "HPow.hPow", "HSub.hSub", "Iff", "Inv.inv", "Monoid.toNPow", "MulZeroClass.toZero", "NPow.toPow", "Nat", "Nat.cast", "Nat.factorial", "Ne", "OfNat.ofNat", "One.toOfNat1", "Polynomial", "Polynomial.C", "Polynomial.X", "Polynomial.degree", "Polynomial.eval", "Polynomial.instMul", "Polynomial.instOne", "Polynomial.instSub", "Polynomial.semiring", "Rat", "Rat.commSemiring", "Rat.instInv", "Rat.instMul", "Rat.instNatCast", "Rat.instOfNat", "Rat.instPowNat", "Ring.toAddGroupWithOne", "RingHom", "RingHom.instFunLike", "Semiring.toAddCommMonoid", "Semiring.toMonoid", "Semiring.toNonAssocSemiring", "WithBot", "WithBot.instNatCast", "Zero.toOfNat0", "ascPochhammer", "instAddNat", "instDistribOfSemiring", "instHAdd", "instHMul", "instHPow", "instHSub", "instMulZeroClassOfSemiring", "instNatCastNat", "instOfNatNat", "instSubNat"]
+mathlib_commit = "ade5dcd9754acef23d0e35968bff5c0c0c8acc76"
+toolchain = "leanprover/lean4:v4.35.0-rc4"
+git_commit = "df293f80609f8e711abacdb4d169e15a82469add"
+reviewer = "Timon S. Gutleb"
+date = "2026-10-22"
+book_nodes = ["thm:jacobi-degree"]
+book_texts = ["[Degree and leading term] Let $R$ be a commutative $\\Q$-algebra, let $\\alpha,\\beta\\in R$, and let $n\\in\\N$. The Jacobi polynomial $P_n^{(\\alpha,\\beta)}(X)$ has degree at most $n$, and its coefficient of $X^n$ is \\[ c_n=\\frac{(n+\\alpha+\\beta+1)_n}{2^n n!}. \\] It has degree exactly $n$ if and only if $c_n\\ne0$. In that case, its leading coefficient is $c_n$. Reference: \\cite[Table 18.3.1]{dlmf}."]
+
+[[statements]]
+name = "Polynomial.degree_jacobi_le"
+fingerprint = "a31780049de781a9a4bfcd79894861097357aa32c1838af840ab85dcedfcafea"
+rendered = "theorem Polynomial.degree_jacobi_le : ∀ {R : Type u_1} [inst : CommRing R] [inst_1 : Algebra ℚ R] (α β : R) (n : ℕ), (Polynomial.jacobi α β n).degree ≤ ↑n"
+external = ["AddGroupWithOne.toAddMonoidWithOne", "AddMonoidWithOne.toNatCast", "AddMonoidWithOne.toOne", "Algebra", "Algebra.algebraMap", "CommRing", "CommRing.toCommSemiring", "CommRing.toRing", "CommSemiring.toSemiring", "DFunLike.coe", "Distrib.toAdd", "Distrib.toMul", "Finset.range", "Finset.sum", "HAdd.hAdd", "HMul.hMul", "HPow.hPow", "HSub.hSub", "Inv.inv", "LE.le", "Monoid.toNPow", "NPow.toPow", "Nat", "Nat.cast", "Nat.factorial", "Nat.instPreorder", "OfNat.ofNat", "One.toOfNat1", "Polynomial", "Polynomial.C", "Polynomial.X", "Polynomial.degree", "Polynomial.eval", "Polynomial.instMul", "Polynomial.instOne", "Polynomial.instSub", "Polynomial.semiring", "Preorder.toLE", "Rat", "Rat.commSemiring", "Rat.instInv", "Rat.instMul", "Rat.instNatCast", "Rat.instOfNat", "Rat.instPowNat", "Ring.toAddGroupWithOne", "RingHom", "RingHom.instFunLike", "Semiring.toAddCommMonoid", "Semiring.toMonoid", "Semiring.toNonAssocSemiring", "WithBot", "WithBot.instNatCast", "WithBot.instPreorder", "ascPochhammer", "instAddNat", "instDistribOfSemiring", "instHAdd", "instHMul", "instHPow", "instHSub", "instNatCastNat", "instOfNatNat", "instSubNat"]
+mathlib_commit = "ade5dcd9754acef23d0e35968bff5c0c0c8acc76"
+toolchain = "leanprover/lean4:v4.35.0-rc4"
+git_commit = "df293f80609f8e711abacdb4d169e15a82469add"
+reviewer = "Timon S. Gutleb"
+date = "2026-10-22"
+book_nodes = ["thm:jacobi-degree"]
+book_texts = ["[Degree and leading term] Let $R$ be a commutative $\\Q$-algebra, let $\\alpha,\\beta\\in R$, and let $n\\in\\N$. The Jacobi polynomial $P_n^{(\\alpha,\\beta)}(X)$ has degree at most $n$, and its coefficient of $X^n$ is \\[ c_n=\\frac{(n+\\alpha+\\beta+1)_n}{2^n n!}. \\] It has degree exactly $n$ if and only if $c_n\\ne0$. In that case, its leading coefficient is $c_n$. Reference: \\cite[Table 18.3.1]{dlmf}."]
+
+[[statements]]
+name = "Polynomial.derivative_gegenbauer_succ"
+fingerprint = "08c25503bc9882c348a0f151670f4e247d6c1d65bd8cfc75b2b2906aba6473ba"
+rendered = "theorem Polynomial.derivative_gegenbauer_succ : ∀ {R : Type u_1} [inst : CommRing R] [inst_1 : Algebra ℚ R] (lam : R) (n : ℕ),\n  Polynomial.derivative (Polynomial.gegenbauer lam (n + 1)) = Polynomial.C (2 * lam) * Polynomial.gegenbauer (lam + 1) n"
+external = ["AddCommGroup.toDivisionAddCommMonoid", "AddGroupWithOne.toAddMonoidWithOne", "AddMonoidWithOne.toNatCast", "AddMonoidWithOne.toOne", "Algebra", "Algebra.algebraMap", "CommRing", "CommRing.toCommSemiring", "CommRing.toRing", "CommSemiring.toSemiring", "DFunLike.coe", "Distrib.toAdd", "Distrib.toMul", "Eq", "Finset.range", "Finset.sum", "HAdd.hAdd", "HDiv.hDiv", "HMul.hMul", "HPow.hPow", "HSub.hSub", "Inv.inv", "LinearMap", "LinearMap.instFunLike", "Monoid.toNPow", "NPow.toPow", "Nat", "Nat.AtLeastTwo", "Nat.cast", "Nat.factorial", "Nat.instAtLeastTwoHAddOfNat", "Nat.instDiv", "Nat.instNeZeroSucc", "Neg.neg", "NegZeroClass.toNeg", "OfNat.ofNat", "One.toOfNat1", "Polynomial", "Polynomial.C", "Polynomial.X", "Polynomial.derivative", "Polynomial.eval", "Polynomial.instMul", "Polynomial.module", "Polynomial.semiring", "Rat", "Rat.commSemiring", "Rat.instInv", "Rat.instMul", "Rat.instNatCast", "Ring.toAddCommGroup", "Ring.toAddGroupWithOne", "RingHom", "RingHom.id", "RingHom.instFunLike", "Semiring.toAddCommMonoid", "Semiring.toModule", "Semiring.toMonoid", "Semiring.toNonAssocSemiring", "SubNegZeroMonoid.toNegZeroClass", "SubtractionCommMonoid.toSubtractionMonoid", "SubtractionMonoid.toSubNegZeroMonoid", "ascPochhammer", "instAddNat", "instDistribOfSemiring", "instHAdd", "instHDiv", "instHMul", "instHPow", "instHSub", "instMulNat", "instOfNatAtLeastTwo", "instOfNatNat", "instSubNat"]
+mathlib_commit = "ade5dcd9754acef23d0e35968bff5c0c0c8acc76"
+toolchain = "leanprover/lean4:v4.35.0-rc4"
+git_commit = "df293f80609f8e711abacdb4d169e15a82469add"
+reviewer = "Timon S. Gutleb"
+date = "2026-10-22"
+book_nodes = ["thm:gegenbauer-derivative"]
+book_texts = ["[Gegenbauer derivative] Let $R$ be a commutative $\\Q$-algebra, let $\\lambda\\in R$, and let $n\\in\\N$. Then \\[(C_{n+1}^{(\\lambda)})'=2\\lambda C_n^{(\\lambda+1)}.\\] Reference: \\cite[18.9.19]{dlmf}."]
+
+[[statements]]
+name = "Polynomial.derivative_jacobi_succ"
+fingerprint = "f141efb030d492c780ee9bae35d133e3466413e7482b002e28f40319b8086433"
+rendered = "theorem Polynomial.derivative_jacobi_succ : ∀ {R : Type u_1} [inst : CommRing R] [inst_1 : Algebra ℚ R] (α β : R) (n : ℕ),\n  Polynomial.derivative (Polynomial.jacobi α β (n + 1)) =\n    Polynomial.C ((algebraMap ℚ R) (1 / 2) * (↑n + α + β + 2)) * Polynomial.jacobi (α + 1) (β + 1) n"
+external = ["AddGroupWithOne.toAddMonoidWithOne", "AddMonoidWithOne.toNatCast", "AddMonoidWithOne.toOne", "Algebra", "Algebra.algebraMap", "CommRing", "CommRing.toCommSemiring", "CommRing.toRing", "CommSemiring.toSemiring", "DFunLike.coe", "Distrib.toAdd", "Distrib.toMul", "Eq", "Finset.range", "Finset.sum", "HAdd.hAdd", "HDiv.hDiv", "HMul.hMul", "HPow.hPow", "HSub.hSub", "Inv.inv", "LinearMap", "LinearMap.instFunLike", "Monoid.toNPow", "NPow.toPow", "Nat", "Nat.cast", "Nat.factorial", "Nat.instAtLeastTwoHAddOfNat", "Nat.instNeZeroSucc", "OfNat.ofNat", "One.toOfNat1", "Polynomial", "Polynomial.C", "Polynomial.X", "Polynomial.derivative", "Polynomial.eval", "Polynomial.instMul", "Polynomial.instOne", "Polynomial.instSub", "Polynomial.module", "Polynomial.semiring", "Rat", "Rat.commSemiring", "Rat.instDiv", "Rat.instInv", "Rat.instMul", "Rat.instNatCast", "Rat.instOfNat", "Rat.instPowNat", "Ring.toAddGroupWithOne", "RingHom", "RingHom.id", "RingHom.instFunLike", "Semiring.toAddCommMonoid", "Semiring.toModule", "Semiring.toMonoid", "Semiring.toNonAssocSemiring", "ascPochhammer", "instAddNat", "instDistribOfSemiring", "instHAdd", "instHDiv", "instHMul", "instHPow", "instHSub", "instOfNatAtLeastTwo", "instOfNatNat", "instSubNat"]
+mathlib_commit = "ade5dcd9754acef23d0e35968bff5c0c0c8acc76"
+toolchain = "leanprover/lean4:v4.35.0-rc4"
+git_commit = "df293f80609f8e711abacdb4d169e15a82469add"
+reviewer = "Timon S. Gutleb"
+date = "2026-10-22"
+book_nodes = ["thm:jacobi-derivative"]
+book_texts = ["[Jacobi derivative] Let $R$ be a commutative $\\Q$-algebra, let $\\alpha,\\beta\\in R$, and let $n\\in\\N$. Then \\[(P_{n+1}^{(\\alpha,\\beta)})'=\\tfrac12(n+\\alpha+\\beta+2) P_n^{(\\alpha+1,\\beta+1)}.\\] Reference: \\cite[18.9.15]{dlmf}."]
+
+[[statements]]
+name = "Polynomial.eval_gegenbauer_even_zero"
+fingerprint = "f630c54a91d16f9637b22afe8186fb85f115ec5cd1a39c4720b8c6a0ef3498b6"
+rendered = "theorem Polynomial.eval_gegenbauer_even_zero : ∀ {R : Type u_1} [inst : CommRing R] [inst_1 : Algebra ℚ R] (lam : R) (m : ℕ),\n  Polynomial.eval 0 (Polynomial.gegenbauer lam (2 * m)) =\n    (-1) ^ m * (algebraMap ℚ R) (↑m.factorial)⁻¹ * Polynomial.eval lam (ascPochhammer R m)"
+external = ["AddCommGroup.toDivisionAddCommMonoid", "AddGroupWithOne.toAddMonoidWithOne", "AddMonoidWithOne.toNatCast", "AddMonoidWithOne.toOne", "Algebra", "Algebra.algebraMap", "CommRing", "CommRing.toCommSemiring", "CommRing.toRing", "CommSemiring.toSemiring", "DFunLike.coe", "Distrib.toMul", "Eq", "Finset.range", "Finset.sum", "HAdd.hAdd", "HDiv.hDiv", "HMul.hMul", "HPow.hPow", "HSub.hSub", "Inv.inv", "Monoid.toNPow", "MulZeroClass.toZero", "NPow.toPow", "Nat", "Nat.AtLeastTwo", "Nat.cast", "Nat.factorial", "Nat.instDiv", "Neg.neg", "NegZeroClass.toNeg", "OfNat.ofNat", "One.toOfNat1", "Polynomial", "Polynomial.C", "Polynomial.X", "Polynomial.eval", "Polynomial.instMul", "Polynomial.semiring", "Rat", "Rat.commSemiring", "Rat.instInv", "Rat.instMul", "Rat.instNatCast", "Ring.toAddCommGroup", "Ring.toAddGroupWithOne", "RingHom", "RingHom.instFunLike", "Semiring.toAddCommMonoid", "Semiring.toMonoid", "Semiring.toNonAssocSemiring", "SubNegZeroMonoid.toNegZeroClass", "SubtractionCommMonoid.toSubtractionMonoid", "SubtractionMonoid.toSubNegZeroMonoid", "Zero.toOfNat0", "ascPochhammer", "instAddNat", "instDistribOfSemiring", "instHAdd", "instHDiv", "instHMul", "instHPow", "instHSub", "instMulNat", "instMulZeroClassOfSemiring", "instOfNatAtLeastTwo", "instOfNatNat", "instSubNat"]
+mathlib_commit = "ade5dcd9754acef23d0e35968bff5c0c0c8acc76"
+toolchain = "leanprover/lean4:v4.35.0-rc4"
+git_commit = "df293f80609f8e711abacdb4d169e15a82469add"
+reviewer = "Timon S. Gutleb"
+date = "2026-10-22"
+book_nodes = ["thm:gegenbauer-values-zero"]
+book_texts = ["[Gegenbauer values at zero] Let $R$ be a commutative $\\Q$-algebra, let $\\lambda\\in R$, and let $m\\in\\N$. Then \\[C_{2m}^{(\\lambda)}(0)=(-1)^m\\frac{(\\lambda)_m}{m!},\\qquad C_{2m+1}^{(\\lambda)}(0)=0.\\] Reference: \\cite[Table 18.6.1]{dlmf}."]
+
+[[statements]]
+name = "Polynomial.eval_gegenbauer_neg"
+fingerprint = "b2ca28703675d70208a345da78ec30709c2fe26c1e5bb1dc40560080e5706e4b"
+rendered = "theorem Polynomial.eval_gegenbauer_neg : ∀ {R : Type u_1} [inst : CommRing R] [inst_1 : Algebra ℚ R] (lam x : R) (n : ℕ),\n  Polynomial.eval (-x) (Polynomial.gegenbauer lam n) = (-1) ^ n * Polynomial.eval x (Polynomial.gegenbauer lam n)"
+external = ["AddCommGroup.toDivisionAddCommMonoid", "AddGroupWithOne.toAddMonoidWithOne", "AddMonoidWithOne.toNatCast", "AddMonoidWithOne.toOne", "Algebra", "Algebra.algebraMap", "CommRing", "CommRing.toCommSemiring", "CommRing.toRing", "CommSemiring.toSemiring", "DFunLike.coe", "Distrib.toMul", "Eq", "Finset.range", "Finset.sum", "HAdd.hAdd", "HDiv.hDiv", "HMul.hMul", "HPow.hPow", "HSub.hSub", "Inv.inv", "Monoid.toNPow", "NPow.toPow", "Nat", "Nat.AtLeastTwo", "Nat.cast", "Nat.factorial", "Nat.instDiv", "Neg.neg", "NegZeroClass.toNeg", "OfNat.ofNat", "One.toOfNat1", "Polynomial", "Polynomial.C", "Polynomial.X", "Polynomial.eval", "Polynomial.instMul", "Polynomial.semiring", "Rat", "Rat.commSemiring", "Rat.instInv", "Rat.instMul", "Rat.instNatCast", "Ring.toAddCommGroup", "Ring.toAddGroupWithOne", "RingHom", "RingHom.instFunLike", "Semiring.toAddCommMonoid", "Semiring.toMonoid", "Semiring.toNonAssocSemiring", "SubNegZeroMonoid.toNegZeroClass", "SubtractionCommMonoid.toSubtractionMonoid", "SubtractionMonoid.toSubNegZeroMonoid", "ascPochhammer", "instAddNat", "instDistribOfSemiring", "instHAdd", "instHDiv", "instHMul", "instHPow", "instHSub", "instMulNat", "instOfNatAtLeastTwo", "instOfNatNat", "instSubNat"]
+mathlib_commit = "ade5dcd9754acef23d0e35968bff5c0c0c8acc76"
+toolchain = "leanprover/lean4:v4.35.0-rc4"
+git_commit = "df293f80609f8e711abacdb4d169e15a82469add"
+reviewer = "Timon S. Gutleb"
+date = "2026-10-22"
+book_nodes = ["thm:gegenbauer-parity"]
+book_texts = ["[Gegenbauer parity] Let $R$ be a commutative $\\Q$-algebra, let $\\lambda\\in R$, and let $n\\in\\N$. Then $C_n^{(\\lambda)}(-X)=(-1)^n C_n^{(\\lambda)}(X)$. Reference: \\cite[Table 18.6.1]{dlmf}."]
+
+[[statements]]
+name = "Polynomial.eval_gegenbauer_odd_zero"
+fingerprint = "fdfc0f186a4b672b8c4900c360dce4a3c9eaa69a1047becf7a16becf7df69f64"
+rendered = "theorem Polynomial.eval_gegenbauer_odd_zero : ∀ {R : Type u_1} [inst : CommRing R] [inst_1 : Algebra ℚ R] (lam : R) (m : ℕ),\n  Polynomial.eval 0 (Polynomial.gegenbauer lam (2 * m + 1)) = 0"
+external = ["AddCommGroup.toDivisionAddCommMonoid", "AddGroupWithOne.toAddMonoidWithOne", "AddMonoidWithOne.toNatCast", "AddMonoidWithOne.toOne", "Algebra", "Algebra.algebraMap", "CommRing", "CommRing.toCommSemiring", "CommRing.toRing", "CommSemiring.toSemiring", "DFunLike.coe", "Distrib.toMul", "Eq", "Finset.range", "Finset.sum", "HAdd.hAdd", "HDiv.hDiv", "HMul.hMul", "HPow.hPow", "HSub.hSub", "Inv.inv", "Monoid.toNPow", "MulZeroClass.toZero", "NPow.toPow", "Nat", "Nat.AtLeastTwo", "Nat.cast", "Nat.factorial", "Nat.instDiv", "Neg.neg", "NegZeroClass.toNeg", "OfNat.ofNat", "One.toOfNat1", "Polynomial", "Polynomial.C", "Polynomial.X", "Polynomial.eval", "Polynomial.instMul", "Polynomial.semiring", "Rat", "Rat.commSemiring", "Rat.instInv", "Rat.instMul", "Rat.instNatCast", "Ring.toAddCommGroup", "Ring.toAddGroupWithOne", "RingHom", "RingHom.instFunLike", "Semiring.toAddCommMonoid", "Semiring.toMonoid", "Semiring.toNonAssocSemiring", "SubNegZeroMonoid.toNegZeroClass", "SubtractionCommMonoid.toSubtractionMonoid", "SubtractionMonoid.toSubNegZeroMonoid", "Zero.toOfNat0", "ascPochhammer", "instAddNat", "instDistribOfSemiring", "instHAdd", "instHDiv", "instHMul", "instHPow", "instHSub", "instMulNat", "instMulZeroClassOfSemiring", "instOfNatAtLeastTwo", "instOfNatNat", "instSubNat"]
+mathlib_commit = "ade5dcd9754acef23d0e35968bff5c0c0c8acc76"
+toolchain = "leanprover/lean4:v4.35.0-rc4"
+git_commit = "df293f80609f8e711abacdb4d169e15a82469add"
+reviewer = "Timon S. Gutleb"
+date = "2026-10-22"
+book_nodes = ["thm:gegenbauer-values-zero"]
+book_texts = ["[Gegenbauer values at zero] Let $R$ be a commutative $\\Q$-algebra, let $\\lambda\\in R$, and let $m\\in\\N$. Then \\[C_{2m}^{(\\lambda)}(0)=(-1)^m\\frac{(\\lambda)_m}{m!},\\qquad C_{2m+1}^{(\\lambda)}(0)=0.\\] Reference: \\cite[Table 18.6.1]{dlmf}."]
+
+[[statements]]
+name = "Polynomial.eval_jacobi_neg"
+fingerprint = "a165fec86516c0579bcab8108940d7abe3169979195e7e61b584a2a816ee6fb4"
+rendered = "theorem Polynomial.eval_jacobi_neg : ∀ {R : Type u_1} [inst : CommRing R] [inst_1 : Algebra ℚ R] (α β x : R) (n : ℕ),\n  Polynomial.eval (-x) (Polynomial.jacobi α β n) = (-1) ^ n * Polynomial.eval x (Polynomial.jacobi β α n)"
+external = ["AddCommGroup.toDivisionAddCommMonoid", "AddGroupWithOne.toAddMonoidWithOne", "AddMonoidWithOne.toNatCast", "AddMonoidWithOne.toOne", "Algebra", "Algebra.algebraMap", "CommRing", "CommRing.toCommSemiring", "CommRing.toRing", "CommSemiring.toSemiring", "DFunLike.coe", "Distrib.toAdd", "Distrib.toMul", "Eq", "Finset.range", "Finset.sum", "HAdd.hAdd", "HMul.hMul", "HPow.hPow", "HSub.hSub", "Inv.inv", "Monoid.toNPow", "NPow.toPow", "Nat", "Nat.cast", "Nat.factorial", "Neg.neg", "NegZeroClass.toNeg", "OfNat.ofNat", "One.toOfNat1", "Polynomial", "Polynomial.C", "Polynomial.X", "Polynomial.eval", "Polynomial.instMul", "Polynomial.instOne", "Polynomial.instSub", "Polynomial.semiring", "Rat", "Rat.commSemiring", "Rat.instInv", "Rat.instMul", "Rat.instNatCast", "Rat.instOfNat", "Rat.instPowNat", "Ring.toAddCommGroup", "Ring.toAddGroupWithOne", "RingHom", "RingHom.instFunLike", "Semiring.toAddCommMonoid", "Semiring.toMonoid", "Semiring.toNonAssocSemiring", "SubNegZeroMonoid.toNegZeroClass", "SubtractionCommMonoid.toSubtractionMonoid", "SubtractionMonoid.toSubNegZeroMonoid", "ascPochhammer", "instAddNat", "instDistribOfSemiring", "instHAdd", "instHMul", "instHPow", "instHSub", "instOfNatNat", "instSubNat"]
+mathlib_commit = "ade5dcd9754acef23d0e35968bff5c0c0c8acc76"
+toolchain = "leanprover/lean4:v4.35.0-rc4"
+git_commit = "df293f80609f8e711abacdb4d169e15a82469add"
+reviewer = "Timon S. Gutleb"
+date = "2026-10-22"
+book_nodes = ["thm:jacobi-values"]
+book_texts = ["[Special values and symmetry] Let $R$ be a commutative $\\Q$-algebra, let $\\alpha,\\beta\\in R$, and let $n\\in\\N$. The Jacobi polynomials satisfy \\[P_n^{(\\alpha,\\beta)}(-X)=(-1)^nP_n^{(\\beta,\\alpha)}(X),\\qquad P_n^{(\\alpha,\\beta)}(-1)=(-1)^n\\frac{(\\beta+1)_n}{n!}.\\] Reference: \\cite[Table 18.6.1]{dlmf}."]
+
+[[statements]]
+name = "Polynomial.eval_jacobi_neg_one"
+fingerprint = "6b9c8c7bcb95e367a9cc3a5e71dad187376c212ffc4a0e9d1aba405e56a2b0e1"
+rendered = "theorem Polynomial.eval_jacobi_neg_one : ∀ {R : Type u_1} [inst : CommRing R] [inst_1 : Algebra ℚ R] (α β : R) (n : ℕ),\n  Polynomial.eval (-1) (Polynomial.jacobi α β n) =\n    (-1) ^ n * ((algebraMap ℚ R) (↑n.factorial)⁻¹ * Polynomial.eval (β + 1) (ascPochhammer R n))"
+external = ["AddCommGroup.toDivisionAddCommMonoid", "AddGroupWithOne.toAddMonoidWithOne", "AddMonoidWithOne.toNatCast", "AddMonoidWithOne.toOne", "Algebra", "Algebra.algebraMap", "CommRing", "CommRing.toCommSemiring", "CommRing.toRing", "CommSemiring.toSemiring", "DFunLike.coe", "Distrib.toAdd", "Distrib.toMul", "Eq", "Finset.range", "Finset.sum", "HAdd.hAdd", "HMul.hMul", "HPow.hPow", "HSub.hSub", "Inv.inv", "Monoid.toNPow", "NPow.toPow", "Nat", "Nat.cast", "Nat.factorial", "Neg.neg", "NegZeroClass.toNeg", "OfNat.ofNat", "One.toOfNat1", "Polynomial", "Polynomial.C", "Polynomial.X", "Polynomial.eval", "Polynomial.instMul", "Polynomial.instOne", "Polynomial.instSub", "Polynomial.semiring", "Rat", "Rat.commSemiring", "Rat.instInv", "Rat.instMul", "Rat.instNatCast", "Rat.instOfNat", "Rat.instPowNat", "Ring.toAddCommGroup", "Ring.toAddGroupWithOne", "RingHom", "RingHom.instFunLike", "Semiring.toAddCommMonoid", "Semiring.toMonoid", "Semiring.toNonAssocSemiring", "SubNegZeroMonoid.toNegZeroClass", "SubtractionCommMonoid.toSubtractionMonoid", "SubtractionMonoid.toSubNegZeroMonoid", "ascPochhammer", "instAddNat", "instDistribOfSemiring", "instHAdd", "instHMul", "instHPow", "instHSub", "instOfNatNat", "instSubNat"]
+mathlib_commit = "ade5dcd9754acef23d0e35968bff5c0c0c8acc76"
+toolchain = "leanprover/lean4:v4.35.0-rc4"
+git_commit = "df293f80609f8e711abacdb4d169e15a82469add"
+reviewer = "Timon S. Gutleb"
+date = "2026-10-22"
+book_nodes = ["thm:jacobi-values"]
+book_texts = ["[Special values and symmetry] Let $R$ be a commutative $\\Q$-algebra, let $\\alpha,\\beta\\in R$, and let $n\\in\\N$. The Jacobi polynomials satisfy \\[P_n^{(\\alpha,\\beta)}(-X)=(-1)^nP_n^{(\\beta,\\alpha)}(X),\\qquad P_n^{(\\alpha,\\beta)}(-1)=(-1)^n\\frac{(\\beta+1)_n}{n!}.\\] Reference: \\cite[Table 18.6.1]{dlmf}."]
+
+[[statements]]
+name = "Polynomial.eval_jacobi_one"
+fingerprint = "f449924a819df16546e8586fbfd5c05a763349b07424770f2b9f66dd1d1217c5"
+rendered = "theorem Polynomial.eval_jacobi_one : ∀ {R : Type u_1} [inst : CommRing R] [inst_1 : Algebra ℚ R] (α β : R) (n : ℕ),\n  Polynomial.eval 1 (Polynomial.jacobi α β n) =\n    (algebraMap ℚ R) (↑n.factorial)⁻¹ * Polynomial.eval (α + 1) (ascPochhammer R n)"
+external = ["AddGroupWithOne.toAddMonoidWithOne", "AddMonoidWithOne.toNatCast", "AddMonoidWithOne.toOne", "Algebra", "Algebra.algebraMap", "CommRing", "CommRing.toCommSemiring", "CommRing.toRing", "CommSemiring.toSemiring", "DFunLike.coe", "Distrib.toAdd", "Distrib.toMul", "Eq", "Finset.range", "Finset.sum", "HAdd.hAdd", "HMul.hMul", "HPow.hPow", "HSub.hSub", "Inv.inv", "Monoid.toNPow", "NPow.toPow", "Nat", "Nat.cast", "Nat.factorial", "OfNat.ofNat", "One.toOfNat1", "Polynomial", "Polynomial.C", "Polynomial.X", "Polynomial.eval", "Polynomial.instMul", "Polynomial.instOne", "Polynomial.instSub", "Polynomial.semiring", "Rat", "Rat.commSemiring", "Rat.instInv", "Rat.instMul", "Rat.instNatCast", "Rat.instOfNat", "Rat.instPowNat", "Ring.toAddGroupWithOne", "RingHom", "RingHom.instFunLike", "Semiring.toAddCommMonoid", "Semiring.toMonoid", "Semiring.toNonAssocSemiring", "ascPochhammer", "instAddNat", "instDistribOfSemiring", "instHAdd", "instHMul", "instHPow", "instHSub", "instOfNatNat", "instSubNat"]
+mathlib_commit = "ade5dcd9754acef23d0e35968bff5c0c0c8acc76"
+toolchain = "leanprover/lean4:v4.35.0-rc4"
+git_commit = "df293f80609f8e711abacdb4d169e15a82469add"
+reviewer = "Timon S. Gutleb"
+date = "2026-10-22"
+book_nodes = ["thm:jacobi-value-one"]
+book_texts = ["[Jacobi value at one] Let $R$ be a commutative $\\Q$-algebra, let $\\alpha,\\beta\\in R$, and let $n\\in\\N$. Then $P_n^{(\\alpha,\\beta)}(1)=(\\alpha+1)_n/n!$. In particular, $(n+1)P_{n+1}^{(\\alpha,\\beta)}(1)=(n+\\alpha+1)P_n^{(\\alpha,\\beta)}(1)$. Reference: \\cite[Table 18.6.1]{dlmf}."]
+
+[[statements]]
+name = "Polynomial.eval_legendre_neg"
+fingerprint = "82f9cf56890adc616b98410c074553b524cc47c15f03b8601e4d8b97b642cdbb"
+rendered = "theorem Polynomial.eval_legendre_neg : ∀ (R : Type u_1) [inst : CommRing R] [inst_1 : Algebra ℚ R] (n : ℕ) (x : R),\n  Polynomial.eval (-x) (Polynomial.legendre R n) = (-1) ^ n * Polynomial.eval x (Polynomial.legendre R n)"
+external = ["AddCommGroup.toDivisionAddCommMonoid", "AddGroupWithOne.toAddMonoidWithOne", "AddMonoidWithOne.toOne", "Algebra", "Algebra.algebraMap", "CommRing", "CommRing.toCommSemiring", "CommRing.toRing", "CommSemiring.toSemiring", "DFunLike.coe", "Distrib.toMul", "Eq", "HMul.hMul", "HPow.hPow", "HSub.hSub", "Inv.inv", "LinearMap", "LinearMap.instFunLike", "Monoid.toNPow", "NPow.toPow", "Nat", "Nat.cast", "Nat.factorial", "Nat.iterate", "Neg.neg", "NegZeroClass.toNeg", "OfNat.ofNat", "One.toOfNat1", "Polynomial", "Polynomial.C", "Polynomial.X", "Polynomial.derivative", "Polynomial.eval", "Polynomial.instMul", "Polynomial.instOne", "Polynomial.instSub", "Polynomial.module", "Polynomial.semiring", "Rat", "Rat.commSemiring", "Rat.instInv", "Rat.instMul", "Rat.instNatCast", "Rat.instOfNat", "Rat.instPowNat", "Ring.toAddCommGroup", "Ring.toAddGroupWithOne", "RingHom", "RingHom.id", "RingHom.instFunLike", "Semiring.toAddCommMonoid", "Semiring.toModule", "Semiring.toMonoid", "Semiring.toNonAssocSemiring", "SubNegZeroMonoid.toNegZeroClass", "SubtractionCommMonoid.toSubtractionMonoid", "SubtractionMonoid.toSubNegZeroMonoid", "instDistribOfSemiring", "instHMul", "instHPow", "instHSub", "instOfNatNat"]
+mathlib_commit = "ade5dcd9754acef23d0e35968bff5c0c0c8acc76"
+toolchain = "leanprover/lean4:v4.35.0-rc4"
+git_commit = "df293f80609f8e711abacdb4d169e15a82469add"
+reviewer = "Timon S. Gutleb"
+date = "2026-10-22"
+book_nodes = ["thm:legendre-parity"]
+book_texts = ["[Legendre parity] Let $R$ be a commutative $\\Q$-algebra and let $n\\in\\N$. Then $P_n(-X)=(-1)^nP_n(X)$. Reference: \\cite[Table 18.6.1]{dlmf}."]
+
+[[statements]]
+name = "Polynomial.gegenbauer"
+fingerprint = "ac322767a5642aa9569d8351a5a5536890abd22a1155eb8a82ba67071baf3c9c"
+rendered = "definition Polynomial.gegenbauer : {R : Type u_1} → [inst : CommRing R] → [Algebra ℚ R] → R → ℕ → Polynomial R\n:= fun {R} [CommRing R] [Algebra ℚ R] lam n =>\n  ∑ k ∈ Finset.range (n / 2 + 1),\n    Polynomial.C\n        ((-1) ^ k * (algebraMap ℚ R) (↑k.factorial * ↑(n - 2 * k).factorial)⁻¹ *\n          Polynomial.eval lam (ascPochhammer R (n - k))) *\n      (Polynomial.C 2 * Polynomial.X) ^ (n - 2 * k)"
+external = ["AddCommGroup.toDivisionAddCommMonoid", "AddGroupWithOne.toAddMonoidWithOne", "AddMonoidWithOne.toNatCast", "AddMonoidWithOne.toOne", "Algebra", "Algebra.algebraMap", "CommRing", "CommRing.toCommSemiring", "CommRing.toRing", "CommSemiring.toSemiring", "DFunLike.coe", "Distrib.toMul", "Finset.range", "Finset.sum", "HAdd.hAdd", "HDiv.hDiv", "HMul.hMul", "HPow.hPow", "HSub.hSub", "Inv.inv", "Monoid.toNPow", "NPow.toPow", "Nat", "Nat.AtLeastTwo", "Nat.cast", "Nat.factorial", "Nat.instDiv", "Neg.neg", "NegZeroClass.toNeg", "OfNat.ofNat", "One.toOfNat1", "Polynomial", "Polynomial.C", "Polynomial.X", "Polynomial.eval", "Polynomial.instMul", "Polynomial.semiring", "Rat", "Rat.commSemiring", "Rat.instInv", "Rat.instMul", "Rat.instNatCast", "Ring.toAddCommGroup", "Ring.toAddGroupWithOne", "RingHom", "RingHom.instFunLike", "Semiring.toAddCommMonoid", "Semiring.toMonoid", "Semiring.toNonAssocSemiring", "SubNegZeroMonoid.toNegZeroClass", "SubtractionCommMonoid.toSubtractionMonoid", "SubtractionMonoid.toSubNegZeroMonoid", "ascPochhammer", "instAddNat", "instDistribOfSemiring", "instHAdd", "instHDiv", "instHMul", "instHPow", "instHSub", "instMulNat", "instOfNatAtLeastTwo", "instOfNatNat", "instSubNat"]
+mathlib_commit = "ade5dcd9754acef23d0e35968bff5c0c0c8acc76"
+toolchain = "leanprover/lean4:v4.35.0-rc4"
+git_commit = "df293f80609f8e711abacdb4d169e15a82469add"
+reviewer = "Timon S. Gutleb"
+date = "2026-10-22"
+book_nodes = ["def:gegenbauer"]
+book_texts = ["[Gegenbauer polynomials] Gegenbauer polynomials are also called \\emph{ultraspherical polynomials}; see \\cite[\\S18.1(ii)]{dlmf}. Let $R$ be a commutative $\\Q$-algebra, let $\\lambda\\in R$, and let $n\\in\\N$. Define \\[C_n^{(\\lambda)}(X)=\\sum_{k=0}^{\\lfloor n/2\\rfloor} \\frac{(-1)^k(\\lambda)_{n-k}}{k!(n-2k)!}(2X)^{n-2k}.\\] Reference: \\cite[18.5.10]{dlmf}."]
+
+[[statements]]
+name = "Polynomial.gegenbauerMeasure"
+fingerprint = "96de93119fd0b5867c29ea19f58a00dcd87f232a71d0a57a28e01cf8e8cc5807"
+rendered = "definition Polynomial.gegenbauerMeasure : ℝ → MeasureTheory.Measure ℝ\n:= fun lam => MeasureTheory.openIntervalWeightMeasure (-1) 1 (Polynomial.gegenbauerWeight lam)"
+external = ["Continuous", "ContinuousMap", "ContinuousMap.instFunLike", "ContinuousMap.mk", "DFunLike.coe", "DivInvMonoid.toDiv", "ENNReal.ofNNReal", "HAdd.hAdd", "HDiv.hDiv", "HMul.hMul", "HPow.hPow", "HSub.hSub", "IsOrderedRing.toPosMulMono", "LE.le", "MeasureTheory.Measure", "MeasureTheory.Measure.Subtype.measureSpace", "MeasureTheory.Measure.map", "MeasureTheory.Measure.withDensity", "MeasureTheory.MeasureSpace.toMeasurableSpace", "MeasureTheory.MeasureSpace.volume", "Membership.mem", "MulZeroClass.toMul", "MulZeroClass.toZero", "NNReal", "NNReal.instTopologicalSpace", "Nat", "Nat.AtLeastTwo", "Neg.neg", "OfNat.ofNat", "One.toOfNat1", "Preorder.toLE", "PseudoMetricSpace.toUniformSpace", "Real", "Real.instAdd", "Real.instDivInvMonoid", "Real.instIsOrderedRing", "Real.instLE", "Real.instMul", "Real.instNatCast", "Real.instNeg", "Real.instOne", "Real.instPow", "Real.instPreorder", "Real.instSub", "Real.instZero", "Real.measurableSpace", "Real.measureSpace", "Real.partialOrder", "Real.pseudoMetricSpace", "Real.rpow_nonneg", "Real.semiring", "Set", "Set.Elem", "Set.Ioo", "Set.instMembership", "Subtype", "Subtype.mk", "Subtype.val", "UniformSpace.toTopologicalSpace", "Zero.toOfNat0", "instAddNat", "instHAdd", "instHDiv", "instHMul", "instHPow", "instHSub", "instMulZeroClassOfSemiring", "instOfNatAtLeastTwo", "instOfNatNat", "instTopologicalSpaceSubtype", "mul_nonneg"]
+mathlib_commit = "ade5dcd9754acef23d0e35968bff5c0c0c8acc76"
+toolchain = "leanprover/lean4:v4.35.0-rc4"
+git_commit = "c88d8ee15f460243ab6f5efefaa7d187a067bc77"
+reviewer = "Timon S. Gutleb"
+date = "2026-10-17"
+book_nodes = ["def:gegenbauer-measure"]
+book_texts = ["[Gegenbauer measure] For real $\\lambda$, let $w_\\lambda=w_{\\lambda-1/2,\\lambda-1/2}:(-1,1)\\to\\R_{\\ge0}$ be the Jacobi weight of Definition~\\ref{def:jacobi-measure}, and let $\\mu_\\lambda=\\mu_{w_\\lambda}$ be the measure of Definition~\\ref{def:open-interval-weight-measure}. Reference: \\cite[Table 18.3.1]{dlmf}."]
+
+[[statements]]
+name = "Polynomial.gegenbauerMeasure_eq_jacobiMeasure"
+fingerprint = "357d5f4ef25ea1dd17bc6ae8b80342f10f470dff045570531dca56f56250c22f"
+rendered = "theorem Polynomial.gegenbauerMeasure_eq_jacobiMeasure : ∀ (lam : ℝ), Polynomial.gegenbauerMeasure lam = Polynomial.jacobiMeasure (lam - 1 / 2) (lam - 1 / 2)"
+external = ["Continuous", "ContinuousMap", "ContinuousMap.instFunLike", "ContinuousMap.mk", "DFunLike.coe", "DivInvMonoid.toDiv", "ENNReal.ofNNReal", "Eq", "HAdd.hAdd", "HDiv.hDiv", "HMul.hMul", "HPow.hPow", "HSub.hSub", "IsOrderedRing.toPosMulMono", "LE.le", "MeasureTheory.Measure", "MeasureTheory.Measure.Subtype.measureSpace", "MeasureTheory.Measure.map", "MeasureTheory.Measure.withDensity", "MeasureTheory.MeasureSpace.toMeasurableSpace", "MeasureTheory.MeasureSpace.volume", "Membership.mem", "MulZeroClass.toMul", "MulZeroClass.toZero", "NNReal", "NNReal.instTopologicalSpace", "Nat", "Nat.AtLeastTwo", "Nat.instAtLeastTwoHAddOfNat", "Nat.instNeZeroSucc", "Neg.neg", "OfNat.ofNat", "One.toOfNat1", "Preorder.toLE", "PseudoMetricSpace.toUniformSpace", "Real", "Real.instAdd", "Real.instDivInvMonoid", "Real.instIsOrderedRing", "Real.instLE", "Real.instMul", "Real.instNatCast", "Real.instNeg", "Real.instOne", "Real.instPow", "Real.instPreorder", "Real.instSub", "Real.instZero", "Real.measurableSpace", "Real.measureSpace", "Real.partialOrder", "Real.pseudoMetricSpace", "Real.rpow_nonneg", "Real.semiring", "Set", "Set.Elem", "Set.Ioo", "Set.instMembership", "Subtype", "Subtype.mk", "Subtype.val", "UniformSpace.toTopologicalSpace", "Zero.toOfNat0", "instAddNat", "instHAdd", "instHDiv", "instHMul", "instHPow", "instHSub", "instMulZeroClassOfSemiring", "instOfNatAtLeastTwo", "instOfNatNat", "instTopologicalSpaceSubtype", "mul_nonneg"]
+mathlib_commit = "ade5dcd9754acef23d0e35968bff5c0c0c8acc76"
+toolchain = "leanprover/lean4:v4.35.0-rc4"
+git_commit = "16ad8e2df66672de8e1157dda0ba51bdba721b85"
+reviewer = "Timon S. Gutleb"
+date = "2026-10-22"
+book_nodes = ["thm:gegenbauer-measure-bridge"]
+book_texts = ["[Gegenbauer--Jacobi measure bridge] For every real $\\lambda$, the Gegenbauer weight equals $w_{\\lambda-1/2,\\lambda-1/2}$ on $(-1,1)$, and $\\mu_\\lambda=\\mu_{\\lambda-1/2,\\lambda-1/2}$. The measure assigns zero mass to $\\mathbb{R}\\setminus(-1,1)$. Reference: \\cite[Table 18.3.1]{dlmf}."]
+
+[[statements]]
+name = "Polynomial.gegenbauerWeight"
+fingerprint = "5cc905f191f6e5baff3eded79bd8469f473731d87b83fa54fbaa9f7195975b85"
+rendered = "definition Polynomial.gegenbauerWeight : ℝ → C(↑(Set.Ioo (-1) 1), NNReal)\n:= fun lam => Polynomial.jacobiWeight (lam - 1 / 2) (lam - 1 / 2)"
+external = ["Continuous", "ContinuousMap", "ContinuousMap.mk", "DivInvMonoid.toDiv", "HAdd.hAdd", "HDiv.hDiv", "HMul.hMul", "HPow.hPow", "HSub.hSub", "IsOrderedRing.toPosMulMono", "LE.le", "Membership.mem", "MulZeroClass.toMul", "MulZeroClass.toZero", "NNReal", "NNReal.instTopologicalSpace", "Nat", "Nat.AtLeastTwo", "Neg.neg", "OfNat.ofNat", "One.toOfNat1", "Preorder.toLE", "PseudoMetricSpace.toUniformSpace", "Real", "Real.instAdd", "Real.instDivInvMonoid", "Real.instIsOrderedRing", "Real.instLE", "Real.instMul", "Real.instNatCast", "Real.instNeg", "Real.instOne", "Real.instPow", "Real.instPreorder", "Real.instSub", "Real.instZero", "Real.partialOrder", "Real.pseudoMetricSpace", "Real.rpow_nonneg", "Real.semiring", "Set", "Set.Elem", "Set.Ioo", "Set.instMembership", "Subtype.mk", "Subtype.val", "UniformSpace.toTopologicalSpace", "Zero.toOfNat0", "instAddNat", "instHAdd", "instHDiv", "instHMul", "instHPow", "instHSub", "instMulZeroClassOfSemiring", "instOfNatAtLeastTwo", "instOfNatNat", "instTopologicalSpaceSubtype", "mul_nonneg"]
+mathlib_commit = "ade5dcd9754acef23d0e35968bff5c0c0c8acc76"
+toolchain = "leanprover/lean4:v4.35.0-rc4"
+git_commit = "c88d8ee15f460243ab6f5efefaa7d187a067bc77"
+reviewer = "Timon S. Gutleb"
+date = "2026-10-17"
+book_nodes = ["def:gegenbauer-measure"]
+book_texts = ["[Gegenbauer measure] For real $\\lambda$, let $w_\\lambda=w_{\\lambda-1/2,\\lambda-1/2}:(-1,1)\\to\\R_{\\ge0}$ be the Jacobi weight of Definition~\\ref{def:jacobi-measure}, and let $\\mu_\\lambda=\\mu_{w_\\lambda}$ be the measure of Definition~\\ref{def:open-interval-weight-measure}. Reference: \\cite[Table 18.3.1]{dlmf}."]
+
+[[statements]]
+name = "Polynomial.gegenbauerWeight_apply"
+fingerprint = "92d7fe58b5a986677db776344581f70ba509692fbdd1e71c6cce0063ab1c535c"
+rendered = "theorem Polynomial.gegenbauerWeight_apply : ∀ (lam : ℝ) (x : ↑(Set.Ioo (-1) 1)), ↑((Polynomial.gegenbauerWeight lam) x) = (1 - ↑x ^ 2) ^ (lam - 1 / 2)"
+external = ["Continuous", "ContinuousMap", "ContinuousMap.instFunLike", "ContinuousMap.mk", "DFunLike.coe", "DivInvMonoid.toDiv", "Eq", "HAdd.hAdd", "HDiv.hDiv", "HMul.hMul", "HPow.hPow", "HSub.hSub", "IsOrderedRing.toPosMulMono", "LE.le", "Membership.mem", "Monoid.toNPow", "MulZeroClass.toMul", "MulZeroClass.toZero", "NNReal", "NNReal.instTopologicalSpace", "NNReal.toReal", "NPow.toPow", "Nat", "Nat.AtLeastTwo", "Nat.instAtLeastTwoHAddOfNat", "Nat.instNeZeroSucc", "Neg.neg", "OfNat.ofNat", "One.toOfNat1", "Preorder.toLE", "PseudoMetricSpace.toUniformSpace", "Real", "Real.instAdd", "Real.instDivInvMonoid", "Real.instIsOrderedRing", "Real.instLE", "Real.instMonoid", "Real.instMul", "Real.instNatCast", "Real.instNeg", "Real.instOne", "Real.instPow", "Real.instPreorder", "Real.instSub", "Real.instZero", "Real.partialOrder", "Real.pseudoMetricSpace", "Real.rpow_nonneg", "Real.semiring", "Set", "Set.Elem", "Set.Ioo", "Set.instMembership", "Subtype.mk", "Subtype.val", "UniformSpace.toTopologicalSpace", "Zero.toOfNat0", "instAddNat", "instHAdd", "instHDiv", "instHMul", "instHPow", "instHSub", "instMulZeroClassOfSemiring", "instOfNatAtLeastTwo", "instOfNatNat", "instTopologicalSpaceSubtype", "mul_nonneg"]
+mathlib_commit = "ade5dcd9754acef23d0e35968bff5c0c0c8acc76"
+toolchain = "leanprover/lean4:v4.35.0-rc4"
+git_commit = "16ad8e2df66672de8e1157dda0ba51bdba721b85"
+reviewer = "Timon S. Gutleb"
+date = "2026-10-22"
+book_nodes = ["thm:gegenbauer-measure-characterisation"]
+book_texts = ["[Gegenbauer density and integral characterisation] For every $x\\in(-1,1)$, $w_\\lambda(x)=(1-x^2)^{\\lambda-1/2}$. A real function $f$ is $\\mu_\\lambda$-integrable if and only if $w_\\lambda f$ is integrable on the open interval. When these equivalent integrability conditions hold, \\[ \\int f\\,d\\mu_\\lambda=\\int_{x\\in(-1,1)}w_\\lambda(x)f(x)\\,dx. \\] Reference: \\cite[Table 18.3.1]{dlmf}."]
+
+[[statements]]
+name = "Polynomial.gegenbauerWeight_eq_jacobiWeight"
+fingerprint = "baf752a3fe4c2cfb9cb55e680b24e876c5fc279c8c5927fd29eaad7b27a7d448"
+rendered = "theorem Polynomial.gegenbauerWeight_eq_jacobiWeight : ∀ (lam : ℝ), Polynomial.gegenbauerWeight lam = Polynomial.jacobiWeight (lam - 1 / 2) (lam - 1 / 2)"
+external = ["Continuous", "ContinuousMap", "ContinuousMap.mk", "DivInvMonoid.toDiv", "Eq", "HAdd.hAdd", "HDiv.hDiv", "HMul.hMul", "HPow.hPow", "HSub.hSub", "IsOrderedRing.toPosMulMono", "LE.le", "Membership.mem", "MulZeroClass.toMul", "MulZeroClass.toZero", "NNReal", "NNReal.instTopologicalSpace", "Nat", "Nat.AtLeastTwo", "Nat.instAtLeastTwoHAddOfNat", "Nat.instNeZeroSucc", "Neg.neg", "OfNat.ofNat", "One.toOfNat1", "Preorder.toLE", "PseudoMetricSpace.toUniformSpace", "Real", "Real.instAdd", "Real.instDivInvMonoid", "Real.instIsOrderedRing", "Real.instLE", "Real.instMul", "Real.instNatCast", "Real.instNeg", "Real.instOne", "Real.instPow", "Real.instPreorder", "Real.instSub", "Real.instZero", "Real.partialOrder", "Real.pseudoMetricSpace", "Real.rpow_nonneg", "Real.semiring", "Set", "Set.Elem", "Set.Ioo", "Set.instMembership", "Subtype.mk", "Subtype.val", "UniformSpace.toTopologicalSpace", "Zero.toOfNat0", "instAddNat", "instHAdd", "instHDiv", "instHMul", "instHPow", "instHSub", "instMulZeroClassOfSemiring", "instOfNatAtLeastTwo", "instOfNatNat", "instTopologicalSpaceSubtype", "mul_nonneg"]
+mathlib_commit = "ade5dcd9754acef23d0e35968bff5c0c0c8acc76"
+toolchain = "leanprover/lean4:v4.35.0-rc4"
+git_commit = "16ad8e2df66672de8e1157dda0ba51bdba721b85"
+reviewer = "Timon S. Gutleb"
+date = "2026-10-22"
+book_nodes = ["thm:gegenbauer-measure-bridge"]
+book_texts = ["[Gegenbauer--Jacobi measure bridge] For every real $\\lambda$, the Gegenbauer weight equals $w_{\\lambda-1/2,\\lambda-1/2}$ on $(-1,1)$, and $\\mu_\\lambda=\\mu_{\\lambda-1/2,\\lambda-1/2}$. The measure assigns zero mass to $\\mathbb{R}\\setminus(-1,1)$. Reference: \\cite[Table 18.3.1]{dlmf}."]
+
+[[statements]]
+name = "Polynomial.gegenbauer_comp_neg_X"
+fingerprint = "5503f93b6beef2e74b68d364a4635c5756fda3bbf698e25f6d05700ca38bd95e"
+rendered = "theorem Polynomial.gegenbauer_comp_neg_X : ∀ {R : Type u_1} [inst : CommRing R] [inst_1 : Algebra ℚ R] (lam : R) (n : ℕ),\n  (Polynomial.gegenbauer lam n).comp (-Polynomial.X) = Polynomial.C ((-1) ^ n) * Polynomial.gegenbauer lam n"
+external = ["AddCommGroup.toDivisionAddCommMonoid", "AddGroupWithOne.toAddMonoidWithOne", "AddMonoidWithOne.toNatCast", "AddMonoidWithOne.toOne", "Algebra", "Algebra.algebraMap", "CommRing", "CommRing.toCommSemiring", "CommRing.toRing", "CommSemiring.toSemiring", "DFunLike.coe", "Distrib.toMul", "Eq", "Finset.range", "Finset.sum", "HAdd.hAdd", "HDiv.hDiv", "HMul.hMul", "HPow.hPow", "HSub.hSub", "Inv.inv", "Monoid.toNPow", "NPow.toPow", "Nat", "Nat.AtLeastTwo", "Nat.cast", "Nat.factorial", "Nat.instDiv", "Neg.neg", "NegZeroClass.toNeg", "OfNat.ofNat", "One.toOfNat1", "Polynomial", "Polynomial.C", "Polynomial.X", "Polynomial.comp", "Polynomial.eval", "Polynomial.instMul", "Polynomial.instNeg", "Polynomial.semiring", "Rat", "Rat.commSemiring", "Rat.instInv", "Rat.instMul", "Rat.instNatCast", "Ring.toAddCommGroup", "Ring.toAddGroupWithOne", "RingHom", "RingHom.instFunLike", "Semiring.toAddCommMonoid", "Semiring.toMonoid", "Semiring.toNonAssocSemiring", "SubNegZeroMonoid.toNegZeroClass", "SubtractionCommMonoid.toSubtractionMonoid", "SubtractionMonoid.toSubNegZeroMonoid", "ascPochhammer", "instAddNat", "instDistribOfSemiring", "instHAdd", "instHDiv", "instHMul", "instHPow", "instHSub", "instMulNat", "instOfNatAtLeastTwo", "instOfNatNat", "instSubNat"]
+mathlib_commit = "ade5dcd9754acef23d0e35968bff5c0c0c8acc76"
+toolchain = "leanprover/lean4:v4.35.0-rc4"
+git_commit = "df293f80609f8e711abacdb4d169e15a82469add"
+reviewer = "Timon S. Gutleb"
+date = "2026-10-22"
+book_nodes = ["thm:gegenbauer-parity"]
+book_texts = ["[Gegenbauer parity] Let $R$ be a commutative $\\Q$-algebra, let $\\lambda\\in R$, and let $n\\in\\N$. Then $C_n^{(\\lambda)}(-X)=(-1)^n C_n^{(\\lambda)}(X)$. Reference: \\cite[Table 18.6.1]{dlmf}."]
+
+[[statements]]
+name = "Polynomial.hasDerivAt_jacobiWeight_add_one"
+fingerprint = "8477b9ca8f7a32da4103120123bab04fd17023cf284e2f74ad72a98e175e1579"
+rendered = "theorem Polynomial.hasDerivAt_jacobiWeight_add_one : ∀ (α β : ℝ) (x : ↑(Set.Ioo (-1) 1)),\n  HasDerivAtOnOpen { carrier := Set.Ioo (-1) 1, is_open' := ⋯ }\n    (fun y => ↑((Polynomial.jacobiWeight (α + 1) (β + 1)) y))\n    ((β - α - (α + β + 2) * ↑x) * ↑((Polynomial.jacobiWeight α β) x)) x"
+external = ["AddCommGroup.toAddCommMonoid", "AddCommGroup.toAddGroup", "AddGroup.toSubNegMonoid", "AddMonoid.toAddZeroClass", "AddZero.toZero", "AddZeroClass.toAddZero", "And", "CommSemiring.toSemiring", "Continuous", "ContinuousMap", "ContinuousMap.instFunLike", "ContinuousMap.mk", "ContinuousSMul", "DFunLike.coe", "DenselyNormedField.toNontriviallyNormedField", "DistribMulAction.toDistribSMul", "DistribSMul.toSMulZeroClass", "DivisionRing.toRing", "Eq", "Exists", "Field.toDivisionRing", "Field.toSemifield", "HAdd.hAdd", "HMul.hMul", "HPow.hPow", "HSub.hSub", "HasDerivAt", "HasSolidNorm.orderClosedTopology", "IsOrderedRing.toPosMulMono", "LE.le", "Membership.mem", "Module.toDistribMulAction", "MulZeroClass.toMul", "MulZeroClass.toZero", "NNReal", "NNReal.instTopologicalSpace", "NNReal.toReal", "Nat", "Nat.instAtLeastTwoHAddOfNat", "Nat.instNeZeroSucc", "Neg.neg", "NontriviallyNormedField", "NontriviallyNormedField.toNormedField", "NormedCommRing.toSeminormedCommRing", "NormedField.toField", "NormedField.toNormedCommRing", "OfNat.ofNat", "One.toOfNat1", "Preorder.toLE", "PseudoMetricSpace.toUniformSpace", "Real", "Real.denselyNormedField", "Real.instAdd", "Real.instIsOrderedAddMonoid", "Real.instIsOrderedRing", "Real.instLE", "Real.instMul", "Real.instNatCast", "Real.instNeg", "Real.instOne", "Real.instPow", "Real.instPreorder", "Real.instSub", "Real.instZero", "Real.lattice", "Real.linearOrder", "Real.normedAddCommGroup", "Real.partialOrder", "Real.pseudoMetricSpace", "Real.rpow_nonneg", "Real.semiring", "Ring.toAddCommGroup", "SMulZeroClass.toSMul", "Semifield.toCommSemiring", "SeminormedCommRing.toSeminormedRing", "SeminormedRing.toPseudoMetricSpace", "Semiring.toModule", "Semiring.toMonoid", "Set", "Set.Elem", "Set.Ioo", "Set.instMembership", "SetLike.instMembership", "SubNegMonoid.toAddMonoid", "Subtype", "Subtype.mk", "Subtype.val", "TopologicalSpace.Opens", "TopologicalSpace.Opens.instSetLike", "TopologicalSpace.Opens.mk", "UniformSpace.toTopologicalSpace", "Zero.toOfNat0", "instHAdd", "instHMul", "instHPow", "instHSub", "instHasSolidNormReal", "instMulZeroClassOfSemiring", "instOfNatAtLeastTwo", "instOfNatNat", "instTopologicalSpaceSubtype", "isOpen_Ioo", "mul_nonneg"]
+mathlib_commit = "ade5dcd9754acef23d0e35968bff5c0c0c8acc76"
+toolchain = "leanprover/lean4:v4.35.0-rc4"
+git_commit = "40418359188960962b75d84647d9f9eff9b6da7a"
+reviewer = "Timon S. Gutleb"
+date = "2026-10-22"
+book_nodes = ["thm:jacobi-weight-calculus"]
+book_texts = ["[Jacobi weight calculus] On $(-1,1)$, for arbitrary real $\\alpha,\\beta$, \\[w_{\\alpha+1,\\beta+1}=(1-x^2)w_{\\alpha,\\beta},\\qquad w_{\\alpha+1,\\beta+1}'=[\\beta-\\alpha-(\\alpha+\\beta+2)x]w_{\\alpha,\\beta}.\\] If $\\alpha>-1$, the right endpoint limit of the shifted weight is zero, with no restriction on $\\beta$. If $\\beta>-1$, its left endpoint limit is zero, with no restriction on $\\alpha$. Reference: \\cite[Tables 18.3.1 and 18.8.1]{dlmf}."]
+
+[[statements]]
+name = "Polynomial.integrable_gegenbauerMeasure_iff"
+fingerprint = "8367016c16687d2d96fd533b37c84f1bbba2faa573e7e36af8ee88b9fcd5baa2"
+rendered = "theorem Polynomial.integrable_gegenbauerMeasure_iff : ∀ (lam : ℝ) (f : ℝ → ℝ),\n  MeasureTheory.Integrable f (Polynomial.gegenbauerMeasure lam) ↔\n    MeasureTheory.Integrable (fun x => ↑((Polynomial.gegenbauerWeight lam) x) * f ↑x) MeasureTheory.volume"
+external = ["Continuous", "ContinuousMap", "ContinuousMap.instFunLike", "ContinuousMap.mk", "DFunLike.coe", "DivInvMonoid.toDiv", "ENNReal.ofNNReal", "ESeminormedAddMonoid.toContinuousENorm", "HAdd.hAdd", "HDiv.hDiv", "HMul.hMul", "HPow.hPow", "HSub.hSub", "Iff", "IsOrderedRing.toPosMulMono", "LE.le", "MeasureTheory.Integrable", "MeasureTheory.Measure", "MeasureTheory.Measure.Subtype.measureSpace", "MeasureTheory.Measure.map", "MeasureTheory.Measure.withDensity", "MeasureTheory.MeasureSpace.toMeasurableSpace", "MeasureTheory.MeasureSpace.volume", "Membership.mem", "MulZeroClass.toMul", "MulZeroClass.toZero", "NNReal", "NNReal.instTopologicalSpace", "NNReal.toReal", "Nat", "Nat.AtLeastTwo", "Neg.neg", "NonUnitalSeminormedCommRing.toNonUnitalSeminormedRing", "NonUnitalSeminormedRing.toSeminormedAddCommGroup", "NormedCommRing.toSeminormedCommRing", "OfNat.ofNat", "One.toOfNat1", "Preorder.toLE", "PseudoMetricSpace.toUniformSpace", "Real", "Real.instAdd", "Real.instDivInvMonoid", "Real.instIsOrderedRing", "Real.instLE", "Real.instMul", "Real.instNatCast", "Real.instNeg", "Real.instOne", "Real.instPow", "Real.instPreorder", "Real.instSub", "Real.instZero", "Real.measurableSpace", "Real.measureSpace", "Real.normedCommRing", "Real.partialOrder", "Real.pseudoMetricSpace", "Real.rpow_nonneg", "Real.semiring", "SeminormedAddCommGroup.toSeminormedAddGroup", "SeminormedAddGroup.toESeminormedAddMonoid", "SeminormedCommRing.toNonUnitalSeminormedCommRing", "Set", "Set.Elem", "Set.Ioo", "Set.instMembership", "Subtype", "Subtype.mk", "Subtype.val", "UniformSpace.toTopologicalSpace", "Zero.toOfNat0", "instAddNat", "instHAdd", "instHDiv", "instHMul", "instHPow", "instHSub", "instMulZeroClassOfSemiring", "instOfNatAtLeastTwo", "instOfNatNat", "instTopologicalSpaceSubtype", "mul_nonneg"]
+mathlib_commit = "ade5dcd9754acef23d0e35968bff5c0c0c8acc76"
+toolchain = "leanprover/lean4:v4.35.0-rc4"
+git_commit = "16ad8e2df66672de8e1157dda0ba51bdba721b85"
+reviewer = "Timon S. Gutleb"
+date = "2026-10-22"
+book_nodes = ["thm:gegenbauer-measure-characterisation"]
+book_texts = ["[Gegenbauer density and integral characterisation] For every $x\\in(-1,1)$, $w_\\lambda(x)=(1-x^2)^{\\lambda-1/2}$. A real function $f$ is $\\mu_\\lambda$-integrable if and only if $w_\\lambda f$ is integrable on the open interval. When these equivalent integrability conditions hold, \\[ \\int f\\,d\\mu_\\lambda=\\int_{x\\in(-1,1)}w_\\lambda(x)f(x)\\,dx. \\] Reference: \\cite[Table 18.3.1]{dlmf}."]
+
+[[statements]]
+name = "Polynomial.integrable_jacobiMeasure"
+fingerprint = "242e18971a5f7e86c3544bb235344e0092da4846425bb9fe1c0f9e190f0f79ea"
+rendered = "theorem Polynomial.integrable_jacobiMeasure : ∀ {α β : ℝ},\n  -1 < α →\n    -1 < β → ∀ {f : ℝ → ℝ}, ContinuousOn f (Set.Icc (-1) 1) → MeasureTheory.Integrable f (Polynomial.jacobiMeasure α β)"
+external = ["Continuous", "ContinuousMap", "ContinuousMap.instFunLike", "ContinuousMap.mk", "ContinuousOn", "DFunLike.coe", "ENNReal.ofNNReal", "ESeminormedAddMonoid.toContinuousENorm", "HAdd.hAdd", "HMul.hMul", "HPow.hPow", "HSub.hSub", "IsOrderedRing.toPosMulMono", "LE.le", "LT.lt", "MeasureTheory.Integrable", "MeasureTheory.Measure", "MeasureTheory.Measure.Subtype.measureSpace", "MeasureTheory.Measure.map", "MeasureTheory.Measure.withDensity", "MeasureTheory.MeasureSpace.toMeasurableSpace", "MeasureTheory.MeasureSpace.volume", "Membership.mem", "MulZeroClass.toMul", "MulZeroClass.toZero", "NNReal", "NNReal.instTopologicalSpace", "Neg.neg", "NonUnitalSeminormedCommRing.toNonUnitalSeminormedRing", "NonUnitalSeminormedRing.toSeminormedAddCommGroup", "NormedCommRing.toSeminormedCommRing", "OfNat.ofNat", "One.toOfNat1", "Preorder.toLE", "PseudoMetricSpace.toUniformSpace", "Real", "Real.instAdd", "Real.instIsOrderedRing", "Real.instLE", "Real.instLT", "Real.instMul", "Real.instNeg", "Real.instOne", "Real.instPow", "Real.instPreorder", "Real.instSub", "Real.instZero", "Real.measurableSpace", "Real.measureSpace", "Real.normedCommRing", "Real.partialOrder", "Real.pseudoMetricSpace", "Real.rpow_nonneg", "Real.semiring", "SeminormedAddCommGroup.toSeminormedAddGroup", "SeminormedAddGroup.toESeminormedAddMonoid", "SeminormedCommRing.toNonUnitalSeminormedCommRing", "Set", "Set.Elem", "Set.Icc", "Set.Ioo", "Set.instMembership", "Subtype", "Subtype.mk", "Subtype.val", "UniformSpace.toTopologicalSpace", "Zero.toOfNat0", "instHAdd", "instHMul", "instHPow", "instHSub", "instMulZeroClassOfSemiring", "instTopologicalSpaceSubtype", "mul_nonneg"]
+mathlib_commit = "ade5dcd9754acef23d0e35968bff5c0c0c8acc76"
+toolchain = "leanprover/lean4:v4.35.0-rc4"
+git_commit = "16ad8e2df66672de8e1157dda0ba51bdba721b85"
+reviewer = "Timon S. Gutleb"
+date = "2026-10-22"
+book_nodes = ["thm:jacobi-integrable"]
+book_texts = ["[Jacobi weight integrability] For $\\alpha,\\beta>-1$, the weight is integrable on $(-1,1)$ and every real-valued function continuous on $[-1,1]$ is $\\mu_{\\alpha,\\beta}$-integrable. Reference: \\cite[Table 18.3.1]{dlmf}."]
+
+[[statements]]
+name = "Polynomial.integrable_jacobiMeasure_iff"
+fingerprint = "c6fc9a9ba239ab3736b9df3730d32d50dc5554e5de4973db66a0f240a04b84c6"
+rendered = "theorem Polynomial.integrable_jacobiMeasure_iff : ∀ (α β : ℝ) (f : ℝ → ℝ),\n  MeasureTheory.Integrable f (Polynomial.jacobiMeasure α β) ↔\n    MeasureTheory.Integrable (fun x => ↑((Polynomial.jacobiWeight α β) x) * f ↑x) MeasureTheory.volume"
+external = ["Continuous", "ContinuousMap", "ContinuousMap.instFunLike", "ContinuousMap.mk", "DFunLike.coe", "ENNReal.ofNNReal", "ESeminormedAddMonoid.toContinuousENorm", "HAdd.hAdd", "HMul.hMul", "HPow.hPow", "HSub.hSub", "Iff", "IsOrderedRing.toPosMulMono", "LE.le", "MeasureTheory.Integrable", "MeasureTheory.Measure", "MeasureTheory.Measure.Subtype.measureSpace", "MeasureTheory.Measure.map", "MeasureTheory.Measure.withDensity", "MeasureTheory.MeasureSpace.toMeasurableSpace", "MeasureTheory.MeasureSpace.volume", "Membership.mem", "MulZeroClass.toMul", "MulZeroClass.toZero", "NNReal", "NNReal.instTopologicalSpace", "NNReal.toReal", "Neg.neg", "NonUnitalSeminormedCommRing.toNonUnitalSeminormedRing", "NonUnitalSeminormedRing.toSeminormedAddCommGroup", "NormedCommRing.toSeminormedCommRing", "OfNat.ofNat", "One.toOfNat1", "Preorder.toLE", "PseudoMetricSpace.toUniformSpace", "Real", "Real.instAdd", "Real.instIsOrderedRing", "Real.instLE", "Real.instMul", "Real.instNeg", "Real.instOne", "Real.instPow", "Real.instPreorder", "Real.instSub", "Real.instZero", "Real.measurableSpace", "Real.measureSpace", "Real.normedCommRing", "Real.partialOrder", "Real.pseudoMetricSpace", "Real.rpow_nonneg", "Real.semiring", "SeminormedAddCommGroup.toSeminormedAddGroup", "SeminormedAddGroup.toESeminormedAddMonoid", "SeminormedCommRing.toNonUnitalSeminormedCommRing", "Set", "Set.Elem", "Set.Ioo", "Set.instMembership", "Subtype", "Subtype.mk", "Subtype.val", "UniformSpace.toTopologicalSpace", "Zero.toOfNat0", "instHAdd", "instHMul", "instHPow", "instHSub", "instMulZeroClassOfSemiring", "instTopologicalSpaceSubtype", "mul_nonneg"]
+mathlib_commit = "ade5dcd9754acef23d0e35968bff5c0c0c8acc76"
+toolchain = "leanprover/lean4:v4.35.0-rc4"
+git_commit = "16ad8e2df66672de8e1157dda0ba51bdba721b85"
+reviewer = "Timon S. Gutleb"
+date = "2026-10-22"
+book_nodes = ["thm:jacobi-measure-characterisation"]
+book_texts = ["[Jacobi integral characterisation] A real function $f$ is $\\mu_{\\alpha,\\beta}$-integrable if and only if $x\\mapsto w_{\\alpha,\\beta}(x)f(x)$ is Lebesgue-integrable on $(-1,1)$. When these equivalent integrability conditions hold, \\[\\int f\\,d\\mu_{\\alpha,\\beta}=\\int_{x\\in(-1,1)}w_{\\alpha,\\beta}(x)f(x)\\,dx.\\]"]
+
+[[statements]]
+name = "Polynomial.integrable_jacobiWeight"
+fingerprint = "9f9f071a6095ae9901aff6261f600129eb4b48cc108c90e6d911f7002638e5df"
+rendered = "theorem Polynomial.integrable_jacobiWeight : ∀ {α β : ℝ},\n  -1 < α → -1 < β → MeasureTheory.Integrable (fun x => ↑((Polynomial.jacobiWeight α β) x)) MeasureTheory.volume"
+external = ["Continuous", "ContinuousMap", "ContinuousMap.instFunLike", "ContinuousMap.mk", "DFunLike.coe", "ESeminormedAddMonoid.toContinuousENorm", "HAdd.hAdd", "HMul.hMul", "HPow.hPow", "HSub.hSub", "IsOrderedRing.toPosMulMono", "LE.le", "LT.lt", "MeasureTheory.Integrable", "MeasureTheory.Measure.Subtype.measureSpace", "MeasureTheory.MeasureSpace.toMeasurableSpace", "MeasureTheory.MeasureSpace.volume", "Membership.mem", "MulZeroClass.toMul", "MulZeroClass.toZero", "NNReal", "NNReal.instTopologicalSpace", "NNReal.toReal", "Neg.neg", "NonUnitalSeminormedCommRing.toNonUnitalSeminormedRing", "NonUnitalSeminormedRing.toSeminormedAddCommGroup", "NormedCommRing.toSeminormedCommRing", "OfNat.ofNat", "One.toOfNat1", "Preorder.toLE", "PseudoMetricSpace.toUniformSpace", "Real", "Real.instAdd", "Real.instIsOrderedRing", "Real.instLE", "Real.instLT", "Real.instMul", "Real.instNeg", "Real.instOne", "Real.instPow", "Real.instPreorder", "Real.instSub", "Real.instZero", "Real.measureSpace", "Real.normedCommRing", "Real.partialOrder", "Real.pseudoMetricSpace", "Real.rpow_nonneg", "Real.semiring", "SeminormedAddCommGroup.toSeminormedAddGroup", "SeminormedAddGroup.toESeminormedAddMonoid", "SeminormedCommRing.toNonUnitalSeminormedCommRing", "Set", "Set.Elem", "Set.Ioo", "Set.instMembership", "Subtype.mk", "Subtype.val", "UniformSpace.toTopologicalSpace", "Zero.toOfNat0", "instHAdd", "instHMul", "instHPow", "instHSub", "instMulZeroClassOfSemiring", "instTopologicalSpaceSubtype", "mul_nonneg"]
+mathlib_commit = "ade5dcd9754acef23d0e35968bff5c0c0c8acc76"
+toolchain = "leanprover/lean4:v4.35.0-rc4"
+git_commit = "16ad8e2df66672de8e1157dda0ba51bdba721b85"
+reviewer = "Timon S. Gutleb"
+date = "2026-10-22"
+book_nodes = ["thm:jacobi-integrable"]
+book_texts = ["[Jacobi weight integrability] For $\\alpha,\\beta>-1$, the weight is integrable on $(-1,1)$ and every real-valued function continuous on $[-1,1]$ is $\\mu_{\\alpha,\\beta}$-integrable. Reference: \\cite[Table 18.3.1]{dlmf}."]
+
+[[statements]]
+name = "Polynomial.integral_gegenbauerMeasure"
+fingerprint = "b4e6f54d9031c0b0680c3504372e6091af85da243341d1c75615a71743f818af"
+rendered = "theorem Polynomial.integral_gegenbauerMeasure : ∀ (lam : ℝ) (f : MeasureTheory.IntegrableInput (Polynomial.gegenbauerMeasure lam)),\n  ∫ (x : ℝ), ↑f x ∂Polynomial.gegenbauerMeasure lam =\n    ∫ (x : ↑(Set.Ioo (-1) 1)), ↑((Polynomial.gegenbauerWeight lam) x) * ↑f ↑x"
+external = ["Continuous", "ContinuousMap", "ContinuousMap.instFunLike", "ContinuousMap.mk", "DFunLike.coe", "DivInvMonoid.toDiv", "ENNReal.ofNNReal", "ESeminormedAddMonoid.toContinuousENorm", "Eq", "HAdd.hAdd", "HDiv.hDiv", "HMul.hMul", "HPow.hPow", "HSub.hSub", "InnerProductSpace.toNormedSpace", "IsOrderedRing.toPosMulMono", "LE.le", "MeasurableSpace", "MeasureTheory.Integrable", "MeasureTheory.Measure", "MeasureTheory.Measure.Subtype.measureSpace", "MeasureTheory.Measure.map", "MeasureTheory.Measure.withDensity", "MeasureTheory.MeasureSpace.toMeasurableSpace", "MeasureTheory.MeasureSpace.volume", "MeasureTheory.integral", "Membership.mem", "MulZeroClass.toMul", "MulZeroClass.toZero", "NNReal", "NNReal.instTopologicalSpace", "NNReal.toReal", "Nat", "Nat.AtLeastTwo", "Neg.neg", "NonUnitalSeminormedCommRing.toNonUnitalSeminormedRing", "NonUnitalSeminormedRing.toSeminormedAddCommGroup", "NormedAddCommGroup.toSeminormedAddCommGroup", "NormedCommRing.toSeminormedCommRing", "OfNat.ofNat", "One.toOfNat1", "Preorder.toLE", "PseudoMetricSpace.toUniformSpace", "RCLike.toInnerProductSpaceReal", "Real", "Real.instAdd", "Real.instDivInvMonoid", "Real.instIsOrderedRing", "Real.instLE", "Real.instMul", "Real.instNatCast", "Real.instNeg", "Real.instOne", "Real.instPow", "Real.instPreorder", "Real.instRCLike", "Real.instSub", "Real.instZero", "Real.measurableSpace", "Real.measureSpace", "Real.normedAddCommGroup", "Real.normedCommRing", "Real.partialOrder", "Real.pseudoMetricSpace", "Real.rpow_nonneg", "Real.semiring", "SeminormedAddCommGroup.toSeminormedAddGroup", "SeminormedAddGroup.toESeminormedAddMonoid", "SeminormedCommRing.toNonUnitalSeminormedCommRing", "Set", "Set.Elem", "Set.Ioo", "Set.instMembership", "Subtype", "Subtype.mk", "Subtype.val", "UniformSpace.toTopologicalSpace", "Zero.toOfNat0", "instAddNat", "instHAdd", "instHDiv", "instHMul", "instHPow", "instHSub", "instMulZeroClassOfSemiring", "instOfNatAtLeastTwo", "instOfNatNat", "instTopologicalSpaceSubtype", "mul_nonneg"]
+mathlib_commit = "ade5dcd9754acef23d0e35968bff5c0c0c8acc76"
+toolchain = "leanprover/lean4:v4.35.0-rc4"
+git_commit = "16ad8e2df66672de8e1157dda0ba51bdba721b85"
+reviewer = "Timon S. Gutleb"
+date = "2026-10-22"
+book_nodes = ["thm:gegenbauer-measure-characterisation"]
+book_texts = ["[Gegenbauer density and integral characterisation] For every $x\\in(-1,1)$, $w_\\lambda(x)=(1-x^2)^{\\lambda-1/2}$. A real function $f$ is $\\mu_\\lambda$-integrable if and only if $w_\\lambda f$ is integrable on the open interval. When these equivalent integrability conditions hold, \\[ \\int f\\,d\\mu_\\lambda=\\int_{x\\in(-1,1)}w_\\lambda(x)f(x)\\,dx. \\] Reference: \\cite[Table 18.3.1]{dlmf}."]
+
+[[statements]]
+name = "Polynomial.integral_jacobiMeasure"
+fingerprint = "1f89da66ab7e3bb32cb3a842ff83c284bcf2f15d0092a3d10e921ea6198642d5"
+rendered = "theorem Polynomial.integral_jacobiMeasure : ∀ (α β : ℝ) (f : MeasureTheory.IntegrableInput (Polynomial.jacobiMeasure α β)),\n  ∫ (x : ℝ), ↑f x ∂Polynomial.jacobiMeasure α β = ∫ (x : ↑(Set.Ioo (-1) 1)), ↑((Polynomial.jacobiWeight α β) x) * ↑f ↑x"
+external = ["Continuous", "ContinuousMap", "ContinuousMap.instFunLike", "ContinuousMap.mk", "DFunLike.coe", "ENNReal.ofNNReal", "ESeminormedAddMonoid.toContinuousENorm", "Eq", "HAdd.hAdd", "HMul.hMul", "HPow.hPow", "HSub.hSub", "InnerProductSpace.toNormedSpace", "IsOrderedRing.toPosMulMono", "LE.le", "MeasurableSpace", "MeasureTheory.Integrable", "MeasureTheory.Measure", "MeasureTheory.Measure.Subtype.measureSpace", "MeasureTheory.Measure.map", "MeasureTheory.Measure.withDensity", "MeasureTheory.MeasureSpace.toMeasurableSpace", "MeasureTheory.MeasureSpace.volume", "MeasureTheory.integral", "Membership.mem", "MulZeroClass.toMul", "MulZeroClass.toZero", "NNReal", "NNReal.instTopologicalSpace", "NNReal.toReal", "Neg.neg", "NonUnitalSeminormedCommRing.toNonUnitalSeminormedRing", "NonUnitalSeminormedRing.toSeminormedAddCommGroup", "NormedAddCommGroup.toSeminormedAddCommGroup", "NormedCommRing.toSeminormedCommRing", "OfNat.ofNat", "One.toOfNat1", "Preorder.toLE", "PseudoMetricSpace.toUniformSpace", "RCLike.toInnerProductSpaceReal", "Real", "Real.instAdd", "Real.instIsOrderedRing", "Real.instLE", "Real.instMul", "Real.instNeg", "Real.instOne", "Real.instPow", "Real.instPreorder", "Real.instRCLike", "Real.instSub", "Real.instZero", "Real.measurableSpace", "Real.measureSpace", "Real.normedAddCommGroup", "Real.normedCommRing", "Real.partialOrder", "Real.pseudoMetricSpace", "Real.rpow_nonneg", "Real.semiring", "SeminormedAddCommGroup.toSeminormedAddGroup", "SeminormedAddGroup.toESeminormedAddMonoid", "SeminormedCommRing.toNonUnitalSeminormedCommRing", "Set", "Set.Elem", "Set.Ioo", "Set.instMembership", "Subtype", "Subtype.mk", "Subtype.val", "UniformSpace.toTopologicalSpace", "Zero.toOfNat0", "instHAdd", "instHMul", "instHPow", "instHSub", "instMulZeroClassOfSemiring", "instTopologicalSpaceSubtype", "mul_nonneg"]
+mathlib_commit = "ade5dcd9754acef23d0e35968bff5c0c0c8acc76"
+toolchain = "leanprover/lean4:v4.35.0-rc4"
+git_commit = "16ad8e2df66672de8e1157dda0ba51bdba721b85"
+reviewer = "Timon S. Gutleb"
+date = "2026-10-22"
+book_nodes = ["thm:jacobi-measure-characterisation"]
+book_texts = ["[Jacobi integral characterisation] A real function $f$ is $\\mu_{\\alpha,\\beta}$-integrable if and only if $x\\mapsto w_{\\alpha,\\beta}(x)f(x)$ is Lebesgue-integrable on $(-1,1)$. When these equivalent integrability conditions hold, \\[\\int f\\,d\\mu_{\\alpha,\\beta}=\\int_{x\\in(-1,1)}w_{\\alpha,\\beta}(x)f(x)\\,dx.\\]"]
+
+[[statements]]
+name = "Polynomial.jacobi"
+fingerprint = "48c2caffff2bb7dbfa577dd8fd2e81e4d69ebe25953ef36295b0136b9a7e480a"
+rendered = "definition Polynomial.jacobi : {R : Type u_1} → [inst : CommRing R] → [Algebra ℚ R] → R → R → ℕ → Polynomial R\n:= fun {R} [CommRing R] [Algebra ℚ R] α β n =>\n  ∑ l ∈ Finset.range (n + 1),\n    Polynomial.C\n        ((algebraMap ℚ R) (↑l.factorial * ↑(n - l).factorial * 2 ^ l)⁻¹ *\n            Polynomial.eval (↑n + α + β + 1) (ascPochhammer R l) *\n          Polynomial.eval (α + ↑l + 1) (ascPochhammer R (n - l))) *\n      (Polynomial.X - 1) ^ l"
+external = ["AddGroupWithOne.toAddMonoidWithOne", "AddMonoidWithOne.toNatCast", "AddMonoidWithOne.toOne", "Algebra", "Algebra.algebraMap", "CommRing", "CommRing.toCommSemiring", "CommRing.toRing", "CommSemiring.toSemiring", "DFunLike.coe", "Distrib.toAdd", "Distrib.toMul", "Finset.range", "Finset.sum", "HAdd.hAdd", "HMul.hMul", "HPow.hPow", "HSub.hSub", "Inv.inv", "Monoid.toNPow", "NPow.toPow", "Nat", "Nat.cast", "Nat.factorial", "OfNat.ofNat", "One.toOfNat1", "Polynomial", "Polynomial.C", "Polynomial.X", "Polynomial.eval", "Polynomial.instMul", "Polynomial.instOne", "Polynomial.instSub", "Polynomial.semiring", "Rat", "Rat.commSemiring", "Rat.instInv", "Rat.instMul", "Rat.instNatCast", "Rat.instOfNat", "Rat.instPowNat", "Ring.toAddGroupWithOne", "RingHom", "RingHom.instFunLike", "Semiring.toAddCommMonoid", "Semiring.toMonoid", "Semiring.toNonAssocSemiring", "ascPochhammer", "instAddNat", "instDistribOfSemiring", "instHAdd", "instHMul", "instHPow", "instHSub", "instOfNatNat", "instSubNat"]
+mathlib_commit = "ade5dcd9754acef23d0e35968bff5c0c0c8acc76"
+toolchain = "leanprover/lean4:v4.35.0-rc4"
+git_commit = "727a8e0c45001fdc99a1383b3e2131de095de47f"
+reviewer = "Timon S. Gutleb"
+date = "2026-10-12"
+book_nodes = ["def:jacobi"]
+book_texts = ["[Jacobi polynomials] For a commutative $\\Q$-algebra $R$, $\\alpha,\\beta\\in R$, and $n\\in\\N$, define \\[P_n^{(\\alpha,\\beta)}(X)=\\sum_{\\ell=0}^n \\frac{(n+\\alpha+\\beta+1)_\\ell(\\alpha+\\ell+1)_{n-\\ell}} {\\ell!(n-\\ell)!2^\\ell}(X-1)^\\ell.\\] Reference: \\cite[18.5.7]{dlmf}."]
+
+[[statements]]
+name = "Polynomial.jacobiMeasure"
+fingerprint = "4546ff9536dc1c92a839c6fa7c1364d5ae3d7ae0e64f7793c7b82eb50223076d"
+rendered = "definition Polynomial.jacobiMeasure : ℝ → ℝ → MeasureTheory.Measure ℝ\n:= fun α β => MeasureTheory.openIntervalWeightMeasure (-1) 1 (Polynomial.jacobiWeight α β)"
+external = ["Continuous", "ContinuousMap", "ContinuousMap.instFunLike", "ContinuousMap.mk", "DFunLike.coe", "ENNReal.ofNNReal", "HAdd.hAdd", "HMul.hMul", "HPow.hPow", "HSub.hSub", "IsOrderedRing.toPosMulMono", "LE.le", "MeasureTheory.Measure", "MeasureTheory.Measure.Subtype.measureSpace", "MeasureTheory.Measure.map", "MeasureTheory.Measure.withDensity", "MeasureTheory.MeasureSpace.toMeasurableSpace", "MeasureTheory.MeasureSpace.volume", "Membership.mem", "MulZeroClass.toMul", "MulZeroClass.toZero", "NNReal", "NNReal.instTopologicalSpace", "Neg.neg", "OfNat.ofNat", "One.toOfNat1", "Preorder.toLE", "PseudoMetricSpace.toUniformSpace", "Real", "Real.instAdd", "Real.instIsOrderedRing", "Real.instLE", "Real.instMul", "Real.instNeg", "Real.instOne", "Real.instPow", "Real.instPreorder", "Real.instSub", "Real.instZero", "Real.measurableSpace", "Real.measureSpace", "Real.partialOrder", "Real.pseudoMetricSpace", "Real.rpow_nonneg", "Real.semiring", "Set", "Set.Elem", "Set.Ioo", "Set.instMembership", "Subtype", "Subtype.mk", "Subtype.val", "UniformSpace.toTopologicalSpace", "Zero.toOfNat0", "instHAdd", "instHMul", "instHPow", "instHSub", "instMulZeroClassOfSemiring", "instTopologicalSpaceSubtype", "mul_nonneg"]
+mathlib_commit = "ade5dcd9754acef23d0e35968bff5c0c0c8acc76"
+toolchain = "leanprover/lean4:v4.35.0-rc4"
+git_commit = "c88d8ee15f460243ab6f5efefaa7d187a067bc77"
+reviewer = "Timon S. Gutleb"
+date = "2026-10-17"
+book_nodes = ["def:jacobi-measure"]
+book_texts = ["[Jacobi weight and measure] For real $\\alpha,\\beta$, define the continuous map $w_{\\alpha,\\beta}:(-1,1)\\to\\R_{\\ge0}$ by $w_{\\alpha,\\beta}(x)=(1-x)^\\alpha(1+x)^\\beta$. Let $\\mu_{\\alpha,\\beta}=\\mu_{w_{\\alpha,\\beta}}$ be the measure of Definition~\\ref{def:open-interval-weight-measure} for this weight on $(-1,1)$. Reference: \\cite[Table 18.3.1]{dlmf}."]
+
+[[statements]]
+name = "Polynomial.jacobiWeight"
+fingerprint = "9a0481d7bf24b88f5da409b9150f7941f297fbc34bc4d3f9a17eb0455adc72c9"
+rendered = "definition Polynomial.jacobiWeight : ℝ → ℝ → C(↑(Set.Ioo (-1) 1), NNReal)\n:= fun α β => { toFun := fun x => ⟨(1 - ↑x) ^ α * (1 + ↑x) ^ β, ⋯⟩, continuous_toFun := ⋯ }"
+external = ["Continuous", "ContinuousMap", "ContinuousMap.mk", "HAdd.hAdd", "HMul.hMul", "HPow.hPow", "HSub.hSub", "IsOrderedRing.toPosMulMono", "LE.le", "Membership.mem", "MulZeroClass.toMul", "MulZeroClass.toZero", "NNReal", "NNReal.instTopologicalSpace", "Neg.neg", "OfNat.ofNat", "One.toOfNat1", "Preorder.toLE", "PseudoMetricSpace.toUniformSpace", "Real", "Real.instAdd", "Real.instIsOrderedRing", "Real.instLE", "Real.instMul", "Real.instNeg", "Real.instOne", "Real.instPow", "Real.instPreorder", "Real.instSub", "Real.instZero", "Real.partialOrder", "Real.pseudoMetricSpace", "Real.rpow_nonneg", "Real.semiring", "Set", "Set.Elem", "Set.Ioo", "Set.instMembership", "Subtype.mk", "Subtype.val", "UniformSpace.toTopologicalSpace", "Zero.toOfNat0", "instHAdd", "instHMul", "instHPow", "instHSub", "instMulZeroClassOfSemiring", "instTopologicalSpaceSubtype", "mul_nonneg"]
+mathlib_commit = "ade5dcd9754acef23d0e35968bff5c0c0c8acc76"
+toolchain = "leanprover/lean4:v4.35.0-rc4"
+git_commit = "c88d8ee15f460243ab6f5efefaa7d187a067bc77"
+reviewer = "Timon S. Gutleb"
+date = "2026-10-17"
+book_nodes = ["def:jacobi-measure"]
+book_texts = ["[Jacobi weight and measure] For real $\\alpha,\\beta$, define the continuous map $w_{\\alpha,\\beta}:(-1,1)\\to\\R_{\\ge0}$ by $w_{\\alpha,\\beta}(x)=(1-x)^\\alpha(1+x)^\\beta$. Let $\\mu_{\\alpha,\\beta}=\\mu_{w_{\\alpha,\\beta}}$ be the measure of Definition~\\ref{def:open-interval-weight-measure} for this weight on $(-1,1)$. Reference: \\cite[Table 18.3.1]{dlmf}."]
+
+[[statements]]
+name = "Polynomial.jacobiWeightClosed"
+fingerprint = "e0261bc717f937693ae5fe49d4d60d0fb0898b8f66d4d424dc58965e996f79a7"
+rendered = "definition Polynomial.jacobiWeightClosed : NNReal → NNReal → C(↑(Set.Icc (-1) 1), NNReal)\n:= fun α β => { toFun := fun x => ⟨(1 - ↑x) ^ ↑α * (1 + ↑x) ^ ↑β, ⋯⟩, continuous_toFun := ⋯ }"
+external = ["Continuous", "ContinuousMap", "ContinuousMap.mk", "HAdd.hAdd", "HMul.hMul", "HPow.hPow", "HSub.hSub", "IsOrderedRing.toPosMulMono", "LE.le", "Membership.mem", "MulZeroClass.toMul", "MulZeroClass.toZero", "NNReal", "NNReal.instTopologicalSpace", "NNReal.toReal", "Neg.neg", "OfNat.ofNat", "One.toOfNat1", "Preorder.toLE", "PseudoMetricSpace.toUniformSpace", "Real", "Real.instAdd", "Real.instIsOrderedRing", "Real.instLE", "Real.instMul", "Real.instNeg", "Real.instOne", "Real.instPow", "Real.instPreorder", "Real.instSub", "Real.instZero", "Real.partialOrder", "Real.pseudoMetricSpace", "Real.rpow_nonneg", "Real.semiring", "Set", "Set.Elem", "Set.Icc", "Set.instMembership", "Subtype.mk", "Subtype.val", "UniformSpace.toTopologicalSpace", "Zero.toOfNat0", "instHAdd", "instHMul", "instHPow", "instHSub", "instMulZeroClassOfSemiring", "instTopologicalSpaceSubtype", "mul_nonneg"]
+mathlib_commit = "ade5dcd9754acef23d0e35968bff5c0c0c8acc76"
+toolchain = "leanprover/lean4:v4.35.0-rc4"
+git_commit = "c256a5ea50c066a180ccfe4fb320a65a978b2b44"
+reviewer = "Timon S. Gutleb"
+date = "2026-10-18"
+book_nodes = ["def:jacobi-weight-closed"]
+book_texts = ["[Continuous closed-interval Jacobi weight] For $\\alpha,\\beta\\ge0$, define the continuous map $\\overline w_{\\alpha,\\beta}:[-1,1]\\to\\R_{\\ge0}$ by $\\overline w_{\\alpha,\\beta}(x)=(1-x)^\\alpha(1+x)^\\beta$, where $0^0=1$. Reference: \\cite[Table 18.3.1]{dlmf}."]
+
+[[statements]]
+name = "Polynomial.jacobiWeightClosed_neg_one"
+fingerprint = "7dcdb8adb91120a8123e6ea3cb371323391eaff07c512863217dc4314cdf0ded"
+rendered = "theorem Polynomial.jacobiWeightClosed_neg_one : ∀ (α β : NNReal),\n  ↑((Polynomial.jacobiWeightClosed α β) ⟨-1, Polynomial.jacobiWeightClosed_neg_one._proof_1⟩) =\n    if β = 0 then 2 ^ ↑α else 0"
+external = ["Continuous", "ContinuousMap", "ContinuousMap.instFunLike", "ContinuousMap.mk", "DFunLike.coe", "Eq", "HAdd.hAdd", "HMul.hMul", "HPow.hPow", "HSub.hSub", "IsOrderedRing.toPosMulMono", "LE.le", "LinearOrder.toDecidableEq", "Membership.mem", "MulZeroClass.toMul", "MulZeroClass.toZero", "NNReal", "NNReal.instLinearOrder", "NNReal.instTopologicalSpace", "NNReal.instZero", "NNReal.toReal", "Nat", "Nat.instAtLeastTwoHAddOfNat", "Nat.instNeZeroSucc", "Neg.neg", "OfNat.ofNat", "One.toOfNat1", "Preorder.toLE", "PseudoMetricSpace.toUniformSpace", "Real", "Real.instAdd", "Real.instIsOrderedRing", "Real.instLE", "Real.instMul", "Real.instNatCast", "Real.instNeg", "Real.instOne", "Real.instPow", "Real.instPreorder", "Real.instSub", "Real.instZero", "Real.partialOrder", "Real.pseudoMetricSpace", "Real.rpow_nonneg", "Real.semiring", "Set", "Set.Elem", "Set.Icc", "Set.instMembership", "Subtype.mk", "Subtype.val", "UniformSpace.toTopologicalSpace", "Zero.toOfNat0", "instHAdd", "instHMul", "instHPow", "instHSub", "instMulZeroClassOfSemiring", "instOfNatAtLeastTwo", "instOfNatNat", "instTopologicalSpaceSubtype", "ite", "mul_nonneg"]
+mathlib_commit = "ade5dcd9754acef23d0e35968bff5c0c0c8acc76"
+toolchain = "leanprover/lean4:v4.35.0-rc4"
+git_commit = "c256a5ea50c066a180ccfe4fb320a65a978b2b44"
+reviewer = "Timon S. Gutleb"
+date = "2026-10-18"
+book_nodes = ["thm:jacobi-weight-closed"]
+book_texts = ["[Closed Jacobi weight characterisation] For $\\alpha,\\beta\\ge0$, the weight $\\overline w_{\\alpha,\\beta}$ agrees with $w_{\\alpha,\\beta}$ on $(-1,1)$, and \\[\\overline w_{\\alpha,\\beta}(1)=\\begin{cases}2^\\beta&\\alpha=0,\\\\0&\\alpha>0,\\end{cases} \\qquad \\overline w_{\\alpha,\\beta}(-1)=\\begin{cases}2^\\alpha&\\beta=0,\\\\0&\\beta>0.\\end{cases}\\]"]
+
+[[statements]]
+name = "Polynomial.jacobiWeightClosed_one"
+fingerprint = "39e699860a5be61ff48a3fff3c62da7201f8ffc087489963a48c92b4299e5a2f"
+rendered = "theorem Polynomial.jacobiWeightClosed_one : ∀ (α β : NNReal),\n  ↑((Polynomial.jacobiWeightClosed α β) ⟨1, Polynomial.jacobiWeightClosed_one._proof_1⟩) = if α = 0 then 2 ^ ↑β else 0"
+external = ["Continuous", "ContinuousMap", "ContinuousMap.instFunLike", "ContinuousMap.mk", "DFunLike.coe", "Eq", "HAdd.hAdd", "HMul.hMul", "HPow.hPow", "HSub.hSub", "IsOrderedRing.toPosMulMono", "LE.le", "LinearOrder.toDecidableEq", "Membership.mem", "MulZeroClass.toMul", "MulZeroClass.toZero", "NNReal", "NNReal.instLinearOrder", "NNReal.instTopologicalSpace", "NNReal.instZero", "NNReal.toReal", "Nat", "Nat.instAtLeastTwoHAddOfNat", "Nat.instNeZeroSucc", "Neg.neg", "OfNat.ofNat", "One.toOfNat1", "Preorder.toLE", "PseudoMetricSpace.toUniformSpace", "Real", "Real.instAdd", "Real.instIsOrderedRing", "Real.instLE", "Real.instMul", "Real.instNatCast", "Real.instNeg", "Real.instOne", "Real.instPow", "Real.instPreorder", "Real.instSub", "Real.instZero", "Real.partialOrder", "Real.pseudoMetricSpace", "Real.rpow_nonneg", "Real.semiring", "Set", "Set.Elem", "Set.Icc", "Set.instMembership", "Subtype.mk", "Subtype.val", "UniformSpace.toTopologicalSpace", "Zero.toOfNat0", "instHAdd", "instHMul", "instHPow", "instHSub", "instMulZeroClassOfSemiring", "instOfNatAtLeastTwo", "instOfNatNat", "instTopologicalSpaceSubtype", "ite", "mul_nonneg"]
+mathlib_commit = "ade5dcd9754acef23d0e35968bff5c0c0c8acc76"
+toolchain = "leanprover/lean4:v4.35.0-rc4"
+git_commit = "c256a5ea50c066a180ccfe4fb320a65a978b2b44"
+reviewer = "Timon S. Gutleb"
+date = "2026-10-18"
+book_nodes = ["thm:jacobi-weight-closed"]
+book_texts = ["[Closed Jacobi weight characterisation] For $\\alpha,\\beta\\ge0$, the weight $\\overline w_{\\alpha,\\beta}$ agrees with $w_{\\alpha,\\beta}$ on $(-1,1)$, and \\[\\overline w_{\\alpha,\\beta}(1)=\\begin{cases}2^\\beta&\\alpha=0,\\\\0&\\alpha>0,\\end{cases} \\qquad \\overline w_{\\alpha,\\beta}(-1)=\\begin{cases}2^\\alpha&\\beta=0,\\\\0&\\beta>0.\\end{cases}\\]"]
+
+[[statements]]
+name = "Polynomial.jacobiWeightClosed_restrict"
+fingerprint = "83f2d6209c5b924ad0acb9fbf23d100a01a900389c13cd2d37e1ce0fc17fe8be"
+rendered = "theorem Polynomial.jacobiWeightClosed_restrict : ∀ (α β : NNReal) (x : ↑(Set.Ioo (-1) 1)),\n  ↑((Polynomial.jacobiWeightClosed α β) ⟨↑x, ⋯⟩) = ↑((Polynomial.jacobiWeight ↑α ↑β) x)"
+external = ["Continuous", "ContinuousMap", "ContinuousMap.instFunLike", "ContinuousMap.mk", "DFunLike.coe", "Eq", "HAdd.hAdd", "HMul.hMul", "HPow.hPow", "HSub.hSub", "IsOrderedRing.toPosMulMono", "LE.le", "Membership.mem", "MulZeroClass.toMul", "MulZeroClass.toZero", "NNReal", "NNReal.instTopologicalSpace", "NNReal.toReal", "Neg.neg", "OfNat.ofNat", "One.toOfNat1", "Preorder.toLE", "PseudoMetricSpace.toUniformSpace", "Real", "Real.instAdd", "Real.instIsOrderedRing", "Real.instLE", "Real.instMul", "Real.instNeg", "Real.instOne", "Real.instPow", "Real.instPreorder", "Real.instSub", "Real.instZero", "Real.partialOrder", "Real.pseudoMetricSpace", "Real.rpow_nonneg", "Real.semiring", "Set", "Set.Elem", "Set.Icc", "Set.Ioo", "Set.Ioo_subset_Icc_self", "Set.instMembership", "Subtype.mk", "Subtype.property", "Subtype.val", "UniformSpace.toTopologicalSpace", "Zero.toOfNat0", "instHAdd", "instHMul", "instHPow", "instHSub", "instMulZeroClassOfSemiring", "instTopologicalSpaceSubtype", "mul_nonneg"]
+mathlib_commit = "ade5dcd9754acef23d0e35968bff5c0c0c8acc76"
+toolchain = "leanprover/lean4:v4.35.0-rc4"
+git_commit = "c256a5ea50c066a180ccfe4fb320a65a978b2b44"
+reviewer = "Timon S. Gutleb"
+date = "2026-10-18"
+book_nodes = ["thm:jacobi-weight-closed"]
+book_texts = ["[Closed Jacobi weight characterisation] For $\\alpha,\\beta\\ge0$, the weight $\\overline w_{\\alpha,\\beta}$ agrees with $w_{\\alpha,\\beta}$ on $(-1,1)$, and \\[\\overline w_{\\alpha,\\beta}(1)=\\begin{cases}2^\\beta&\\alpha=0,\\\\0&\\alpha>0,\\end{cases} \\qquad \\overline w_{\\alpha,\\beta}(-1)=\\begin{cases}2^\\alpha&\\beta=0,\\\\0&\\beta>0.\\end{cases}\\]"]
+
+[[statements]]
+name = "Polynomial.jacobiWeight_add_one"
+fingerprint = "af80457c3d7714aeebb4f5fb7bc8f4fbd503ca1e7f8b5066f18c292620d35616"
+rendered = "theorem Polynomial.jacobiWeight_add_one : ∀ (α β : ℝ) (x : ↑(Set.Ioo (-1) 1)),\n  ↑((Polynomial.jacobiWeight (α + 1) (β + 1)) x) = (1 - ↑x ^ 2) * ↑((Polynomial.jacobiWeight α β) x)"
+external = ["Continuous", "ContinuousMap", "ContinuousMap.instFunLike", "ContinuousMap.mk", "DFunLike.coe", "Eq", "HAdd.hAdd", "HMul.hMul", "HPow.hPow", "HSub.hSub", "IsOrderedRing.toPosMulMono", "LE.le", "Membership.mem", "Monoid.toNPow", "MulZeroClass.toMul", "MulZeroClass.toZero", "NNReal", "NNReal.instTopologicalSpace", "NNReal.toReal", "NPow.toPow", "Nat", "Neg.neg", "OfNat.ofNat", "One.toOfNat1", "Preorder.toLE", "PseudoMetricSpace.toUniformSpace", "Real", "Real.instAdd", "Real.instIsOrderedRing", "Real.instLE", "Real.instMonoid", "Real.instMul", "Real.instNeg", "Real.instOne", "Real.instPow", "Real.instPreorder", "Real.instSub", "Real.instZero", "Real.partialOrder", "Real.pseudoMetricSpace", "Real.rpow_nonneg", "Real.semiring", "Set", "Set.Elem", "Set.Ioo", "Set.instMembership", "Subtype.mk", "Subtype.val", "UniformSpace.toTopologicalSpace", "Zero.toOfNat0", "instHAdd", "instHMul", "instHPow", "instHSub", "instMulZeroClassOfSemiring", "instOfNatNat", "instTopologicalSpaceSubtype", "mul_nonneg"]
+mathlib_commit = "ade5dcd9754acef23d0e35968bff5c0c0c8acc76"
+toolchain = "leanprover/lean4:v4.35.0-rc4"
+git_commit = "40418359188960962b75d84647d9f9eff9b6da7a"
+reviewer = "Timon S. Gutleb"
+date = "2026-10-22"
+book_nodes = ["thm:jacobi-weight-calculus"]
+book_texts = ["[Jacobi weight calculus] On $(-1,1)$, for arbitrary real $\\alpha,\\beta$, \\[w_{\\alpha+1,\\beta+1}=(1-x^2)w_{\\alpha,\\beta},\\qquad w_{\\alpha+1,\\beta+1}'=[\\beta-\\alpha-(\\alpha+\\beta+2)x]w_{\\alpha,\\beta}.\\] If $\\alpha>-1$, the right endpoint limit of the shifted weight is zero, with no restriction on $\\beta$. If $\\beta>-1$, its left endpoint limit is zero, with no restriction on $\\alpha$. Reference: \\cite[Tables 18.3.1 and 18.8.1]{dlmf}."]
+
+[[statements]]
+name = "Polynomial.jacobiWeight_apply"
+fingerprint = "5e2521f5fe2eaab067050883c957a2074e463b9b35fa64b3f32e50e46dc821f8"
+rendered = "theorem Polynomial.jacobiWeight_apply : ∀ (α β : ℝ) (x : ↑(Set.Ioo (-1) 1)), ↑((Polynomial.jacobiWeight α β) x) = (1 - ↑x) ^ α * (1 + ↑x) ^ β"
+external = ["Continuous", "ContinuousMap", "ContinuousMap.instFunLike", "ContinuousMap.mk", "DFunLike.coe", "Eq", "HAdd.hAdd", "HMul.hMul", "HPow.hPow", "HSub.hSub", "IsOrderedRing.toPosMulMono", "LE.le", "Membership.mem", "MulZeroClass.toMul", "MulZeroClass.toZero", "NNReal", "NNReal.instTopologicalSpace", "NNReal.toReal", "Neg.neg", "OfNat.ofNat", "One.toOfNat1", "Preorder.toLE", "PseudoMetricSpace.toUniformSpace", "Real", "Real.instAdd", "Real.instIsOrderedRing", "Real.instLE", "Real.instMul", "Real.instNeg", "Real.instOne", "Real.instPow", "Real.instPreorder", "Real.instSub", "Real.instZero", "Real.partialOrder", "Real.pseudoMetricSpace", "Real.rpow_nonneg", "Real.semiring", "Set", "Set.Elem", "Set.Ioo", "Set.instMembership", "Subtype.mk", "Subtype.val", "UniformSpace.toTopologicalSpace", "Zero.toOfNat0", "instHAdd", "instHMul", "instHPow", "instHSub", "instMulZeroClassOfSemiring", "instTopologicalSpaceSubtype", "mul_nonneg"]
+mathlib_commit = "ade5dcd9754acef23d0e35968bff5c0c0c8acc76"
+toolchain = "leanprover/lean4:v4.35.0-rc4"
+git_commit = "c256a5ea50c066a180ccfe4fb320a65a978b2b44"
+reviewer = "Timon S. Gutleb"
+date = "2026-10-18"
+book_nodes = ["thm:jacobi-weight-characterisation"]
+book_texts = ["[Jacobi density characterisation] For every $x\\in(-1,1)$, $w_{\\alpha,\\beta}(x)=(1-x)^\\alpha(1+x)^\\beta$."]
+
+[[statements]]
+name = "Polynomial.jacobiWeight_nonneg"
+fingerprint = "a0cbe5317d0ef4a012a99b9c6187e805aa6736a72ed1bbb35b6a043a7611ee2a"
+rendered = "theorem Polynomial.jacobiWeight_nonneg : ∀ (α β : ℝ) (x : ↑(Set.Ioo (-1) 1)), 0 ≤ ↑((Polynomial.jacobiWeight α β) x)"
+external = ["Continuous", "ContinuousMap", "ContinuousMap.instFunLike", "ContinuousMap.mk", "DFunLike.coe", "HAdd.hAdd", "HMul.hMul", "HPow.hPow", "HSub.hSub", "IsOrderedRing.toPosMulMono", "LE.le", "Membership.mem", "MulZeroClass.toMul", "MulZeroClass.toZero", "NNReal", "NNReal.instTopologicalSpace", "NNReal.toReal", "Neg.neg", "OfNat.ofNat", "One.toOfNat1", "Preorder.toLE", "PseudoMetricSpace.toUniformSpace", "Real", "Real.instAdd", "Real.instIsOrderedRing", "Real.instLE", "Real.instMul", "Real.instNeg", "Real.instOne", "Real.instPow", "Real.instPreorder", "Real.instSub", "Real.instZero", "Real.partialOrder", "Real.pseudoMetricSpace", "Real.rpow_nonneg", "Real.semiring", "Set", "Set.Elem", "Set.Ioo", "Set.instMembership", "Subtype.mk", "Subtype.val", "UniformSpace.toTopologicalSpace", "Zero.toOfNat0", "instHAdd", "instHMul", "instHPow", "instHSub", "instMulZeroClassOfSemiring", "instTopologicalSpaceSubtype", "mul_nonneg"]
+mathlib_commit = "ade5dcd9754acef23d0e35968bff5c0c0c8acc76"
+toolchain = "leanprover/lean4:v4.35.0-rc4"
+git_commit = "40418359188960962b75d84647d9f9eff9b6da7a"
+reviewer = "Timon S. Gutleb"
+date = "2026-10-22"
+book_nodes = ["thm:jacobi-weight-basic"]
+book_texts = ["[Jacobi weight positivity and support] For all real $\\alpha,\\beta$, the weight $w_{\\alpha,\\beta}$ is measurable and strictly positive on its domain $(-1,1)$, and $\\mu_{\\alpha,\\beta}$-almost every point lies in $(-1,1)$. Reference: \\cite[Table 18.3.1]{dlmf}."]
+
+[[statements]]
+name = "Polynomial.jacobiWeight_pos"
+fingerprint = "bed1d5aad1e6c0abdcf1e560a12599e41c440f069eaf0cf61059729c380d9d5b"
+rendered = "theorem Polynomial.jacobiWeight_pos : ∀ (α β : ℝ) (x : ↑(Set.Ioo (-1) 1)), 0 < ↑((Polynomial.jacobiWeight α β) x)"
+external = ["Continuous", "ContinuousMap", "ContinuousMap.instFunLike", "ContinuousMap.mk", "DFunLike.coe", "HAdd.hAdd", "HMul.hMul", "HPow.hPow", "HSub.hSub", "IsOrderedRing.toPosMulMono", "LE.le", "LT.lt", "Membership.mem", "MulZeroClass.toMul", "MulZeroClass.toZero", "NNReal", "NNReal.instTopologicalSpace", "NNReal.toReal", "Neg.neg", "OfNat.ofNat", "One.toOfNat1", "Preorder.toLE", "PseudoMetricSpace.toUniformSpace", "Real", "Real.instAdd", "Real.instIsOrderedRing", "Real.instLE", "Real.instLT", "Real.instMul", "Real.instNeg", "Real.instOne", "Real.instPow", "Real.instPreorder", "Real.instSub", "Real.instZero", "Real.partialOrder", "Real.pseudoMetricSpace", "Real.rpow_nonneg", "Real.semiring", "Set", "Set.Elem", "Set.Ioo", "Set.instMembership", "Subtype.mk", "Subtype.val", "UniformSpace.toTopologicalSpace", "Zero.toOfNat0", "instHAdd", "instHMul", "instHPow", "instHSub", "instMulZeroClassOfSemiring", "instTopologicalSpaceSubtype", "mul_nonneg"]
+mathlib_commit = "ade5dcd9754acef23d0e35968bff5c0c0c8acc76"
+toolchain = "leanprover/lean4:v4.35.0-rc4"
+git_commit = "40418359188960962b75d84647d9f9eff9b6da7a"
+reviewer = "Timon S. Gutleb"
+date = "2026-10-22"
+book_nodes = ["thm:jacobi-weight-basic"]
+book_texts = ["[Jacobi weight positivity and support] For all real $\\alpha,\\beta$, the weight $w_{\\alpha,\\beta}$ is measurable and strictly positive on its domain $(-1,1)$, and $\\mu_{\\alpha,\\beta}$-almost every point lies in $(-1,1)$. Reference: \\cite[Table 18.3.1]{dlmf}."]
+
+[[statements]]
+name = "Polynomial.jacobi_comp_neg_X"
+fingerprint = "73d64b29682c5ec805025f5c16909fe2bf7c4b8f4a59d6a30390ce29d730ef3c"
+rendered = "theorem Polynomial.jacobi_comp_neg_X : ∀ {R : Type u_1} [inst : CommRing R] [inst_1 : Algebra ℚ R] (α β : R) (n : ℕ),\n  (Polynomial.jacobi α β n).comp (-Polynomial.X) = Polynomial.C ((-1) ^ n) * Polynomial.jacobi β α n"
+external = ["AddCommGroup.toDivisionAddCommMonoid", "AddGroupWithOne.toAddMonoidWithOne", "AddMonoidWithOne.toNatCast", "AddMonoidWithOne.toOne", "Algebra", "Algebra.algebraMap", "CommRing", "CommRing.toCommSemiring", "CommRing.toRing", "CommSemiring.toSemiring", "DFunLike.coe", "Distrib.toAdd", "Distrib.toMul", "Eq", "Finset.range", "Finset.sum", "HAdd.hAdd", "HMul.hMul", "HPow.hPow", "HSub.hSub", "Inv.inv", "Monoid.toNPow", "NPow.toPow", "Nat", "Nat.cast", "Nat.factorial", "Neg.neg", "NegZeroClass.toNeg", "OfNat.ofNat", "One.toOfNat1", "Polynomial", "Polynomial.C", "Polynomial.X", "Polynomial.comp", "Polynomial.eval", "Polynomial.instMul", "Polynomial.instNeg", "Polynomial.instOne", "Polynomial.instSub", "Polynomial.semiring", "Rat", "Rat.commSemiring", "Rat.instInv", "Rat.instMul", "Rat.instNatCast", "Rat.instOfNat", "Rat.instPowNat", "Ring.toAddCommGroup", "Ring.toAddGroupWithOne", "RingHom", "RingHom.instFunLike", "Semiring.toAddCommMonoid", "Semiring.toMonoid", "Semiring.toNonAssocSemiring", "SubNegZeroMonoid.toNegZeroClass", "SubtractionCommMonoid.toSubtractionMonoid", "SubtractionMonoid.toSubNegZeroMonoid", "ascPochhammer", "instAddNat", "instDistribOfSemiring", "instHAdd", "instHMul", "instHPow", "instHSub", "instOfNatNat", "instSubNat"]
+mathlib_commit = "ade5dcd9754acef23d0e35968bff5c0c0c8acc76"
+toolchain = "leanprover/lean4:v4.35.0-rc4"
+git_commit = "df293f80609f8e711abacdb4d169e15a82469add"
+reviewer = "Timon S. Gutleb"
+date = "2026-10-22"
+book_nodes = ["thm:jacobi-values"]
+book_texts = ["[Special values and symmetry] Let $R$ be a commutative $\\Q$-algebra, let $\\alpha,\\beta\\in R$, and let $n\\in\\N$. The Jacobi polynomials satisfy \\[P_n^{(\\alpha,\\beta)}(-X)=(-1)^nP_n^{(\\beta,\\alpha)}(X),\\qquad P_n^{(\\alpha,\\beta)}(-1)=(-1)^n\\frac{(\\beta+1)_n}{n!}.\\] Reference: \\cite[Table 18.6.1]{dlmf}."]
+
+[[statements]]
+name = "Polynomial.jacobi_differentialEquation"
+fingerprint = "4a82a3f85c2402168e8782bf7b72d237c37575f980549d1b99cb577b880980b0"
+rendered = "theorem Polynomial.jacobi_differentialEquation : ∀ {R : Type u_1} [inst : CommRing R] [inst_1 : Algebra ℚ R] (α β : R) (n : ℕ),\n  (1 - Polynomial.X ^ 2) * Polynomial.derivative (Polynomial.derivative (Polynomial.jacobi α β n)) +\n        (Polynomial.C (β - α) - Polynomial.C (α + β + 2) * Polynomial.X) *\n          Polynomial.derivative (Polynomial.jacobi α β n) +\n      Polynomial.C (↑n * (↑n + α + β + 1)) * Polynomial.jacobi α β n =\n    0"
+external = ["AddGroup.toSubNegMonoid", "AddGroupWithOne.toAddGroup", "AddGroupWithOne.toAddMonoidWithOne", "AddMonoidWithOne.toNatCast", "AddMonoidWithOne.toOne", "Algebra", "Algebra.algebraMap", "CommRing", "CommRing.toCommSemiring", "CommRing.toRing", "CommSemiring.toSemiring", "DFunLike.coe", "Distrib.toAdd", "Distrib.toMul", "Eq", "Finset.range", "Finset.sum", "HAdd.hAdd", "HMul.hMul", "HPow.hPow", "HSub.hSub", "Inv.inv", "LinearMap", "LinearMap.instFunLike", "Monoid.toNPow", "NPow.toPow", "Nat", "Nat.cast", "Nat.factorial", "Nat.instAtLeastTwoHAddOfNat", "Nat.instNeZeroSucc", "OfNat.ofNat", "One.toOfNat1", "Polynomial", "Polynomial.C", "Polynomial.X", "Polynomial.derivative", "Polynomial.eval", "Polynomial.instAdd", "Polynomial.instMul", "Polynomial.instOne", "Polynomial.instSub", "Polynomial.instZero", "Polynomial.module", "Polynomial.semiring", "Rat", "Rat.commSemiring", "Rat.instInv", "Rat.instMul", "Rat.instNatCast", "Rat.instOfNat", "Rat.instPowNat", "Ring.toAddGroupWithOne", "RingHom", "RingHom.id", "RingHom.instFunLike", "Semiring.toAddCommMonoid", "Semiring.toModule", "Semiring.toMonoid", "Semiring.toNonAssocSemiring", "SubNegMonoid.toSub", "Zero.toOfNat0", "ascPochhammer", "instAddNat", "instDistribOfSemiring", "instHAdd", "instHMul", "instHPow", "instHSub", "instOfNatAtLeastTwo", "instOfNatNat", "instSubNat"]
+mathlib_commit = "ade5dcd9754acef23d0e35968bff5c0c0c8acc76"
+toolchain = "leanprover/lean4:v4.35.0-rc4"
+git_commit = "df293f80609f8e711abacdb4d169e15a82469add"
+reviewer = "Timon S. Gutleb"
+date = "2026-10-22"
+book_nodes = ["thm:jacobi-ode"]
+book_texts = ["[Jacobi differential equation] Let $R$ be a commutative $\\Q$-algebra, let $\\alpha,\\beta\\in R$, and let $n\\in\\N$. The Jacobi polynomial $y=P_n^{(\\alpha,\\beta)}(X)$ satisfies \\[(1-X^2)y''+[\\beta-\\alpha-(\\alpha+\\beta+2)X]y' +n(n+\\alpha+\\beta+1)y=0.\\] Reference: \\cite[Table 18.8.1]{dlmf}."]
+
+[[statements]]
+name = "Polynomial.jacobi_one"
+fingerprint = "c294973f996641a0121764a21016296d1301d40dc00cf97fc51b2672c491a46b"
+rendered = "theorem Polynomial.jacobi_one : ∀ {R : Type u_1} [inst : CommRing R] [inst_1 : Algebra ℚ R] (α β : R),\n  Polynomial.jacobi α β 1 =\n    Polynomial.C (α + 1) + Polynomial.C ((algebraMap ℚ R) (1 / 2) * (α + β + 2)) * (Polynomial.X - 1)"
+external = ["AddGroupWithOne.toAddMonoidWithOne", "AddMonoidWithOne.toNatCast", "AddMonoidWithOne.toOne", "Algebra", "Algebra.algebraMap", "CommRing", "CommRing.toCommSemiring", "CommRing.toRing", "CommSemiring.toSemiring", "DFunLike.coe", "Distrib.toAdd", "Distrib.toMul", "Eq", "Finset.range", "Finset.sum", "HAdd.hAdd", "HDiv.hDiv", "HMul.hMul", "HPow.hPow", "HSub.hSub", "Inv.inv", "Monoid.toNPow", "NPow.toPow", "Nat", "Nat.cast", "Nat.factorial", "Nat.instAtLeastTwoHAddOfNat", "Nat.instNeZeroSucc", "OfNat.ofNat", "One.toOfNat1", "Polynomial", "Polynomial.C", "Polynomial.X", "Polynomial.eval", "Polynomial.instAdd", "Polynomial.instMul", "Polynomial.instOne", "Polynomial.instSub", "Polynomial.semiring", "Rat", "Rat.commSemiring", "Rat.instDiv", "Rat.instInv", "Rat.instMul", "Rat.instNatCast", "Rat.instOfNat", "Rat.instPowNat", "Ring.toAddGroupWithOne", "RingHom", "RingHom.instFunLike", "Semiring.toAddCommMonoid", "Semiring.toMonoid", "Semiring.toNonAssocSemiring", "ascPochhammer", "instAddNat", "instDistribOfSemiring", "instHAdd", "instHDiv", "instHMul", "instHPow", "instHSub", "instOfNatAtLeastTwo", "instOfNatNat", "instSubNat"]
+mathlib_commit = "ade5dcd9754acef23d0e35968bff5c0c0c8acc76"
+toolchain = "leanprover/lean4:v4.35.0-rc4"
+git_commit = "df293f80609f8e711abacdb4d169e15a82469add"
+reviewer = "Timon S. Gutleb"
+date = "2026-10-22"
+book_nodes = ["thm:jacobi-low-degree"]
+book_texts = ["[Low degrees and parameter substitution] For a commutative $\\Q$-algebra $R$ and $\\alpha,\\beta\\in R$, \\[P_0^{(\\alpha,\\beta)}=1,\\qquad P_1^{(\\alpha,\\beta)}=(\\alpha+1)+\\tfrac12(\\alpha+\\beta+2)(X-1).\\] For every $\\Q$-algebra homomorphism $f:R\\to S$ and $n\\in\\N$, applying $f$ to the coefficients of $P_n^{(\\alpha,\\beta)}$ gives $P_n^{(f(\\alpha),f(\\beta))}$. Reference: \\cite[18.5.7]{dlmf}."]
+
+[[statements]]
+name = "Polynomial.jacobi_zero"
+fingerprint = "f4d74ab995bee10727c6da0459e72814ac564fea874b355e2dcf7800ff6883d8"
+rendered = "theorem Polynomial.jacobi_zero : ∀ {R : Type u_1} [inst : CommRing R] [inst_1 : Algebra ℚ R] (α β : R), Polynomial.jacobi α β 0 = 1"
+external = ["AddGroupWithOne.toAddMonoidWithOne", "AddMonoidWithOne.toNatCast", "AddMonoidWithOne.toOne", "Algebra", "Algebra.algebraMap", "CommRing", "CommRing.toCommSemiring", "CommRing.toRing", "CommSemiring.toSemiring", "DFunLike.coe", "Distrib.toAdd", "Distrib.toMul", "Eq", "Finset.range", "Finset.sum", "HAdd.hAdd", "HMul.hMul", "HPow.hPow", "HSub.hSub", "Inv.inv", "Monoid.toNPow", "NPow.toPow", "Nat", "Nat.cast", "Nat.factorial", "OfNat.ofNat", "One.toOfNat1", "Polynomial", "Polynomial.C", "Polynomial.X", "Polynomial.eval", "Polynomial.instMul", "Polynomial.instOne", "Polynomial.instSub", "Polynomial.semiring", "Rat", "Rat.commSemiring", "Rat.instInv", "Rat.instMul", "Rat.instNatCast", "Rat.instOfNat", "Rat.instPowNat", "Ring.toAddGroupWithOne", "RingHom", "RingHom.instFunLike", "Semiring.toAddCommMonoid", "Semiring.toMonoid", "Semiring.toNonAssocSemiring", "ascPochhammer", "instAddNat", "instDistribOfSemiring", "instHAdd", "instHMul", "instHPow", "instHSub", "instOfNatNat", "instSubNat"]
+mathlib_commit = "ade5dcd9754acef23d0e35968bff5c0c0c8acc76"
+toolchain = "leanprover/lean4:v4.35.0-rc4"
+git_commit = "df293f80609f8e711abacdb4d169e15a82469add"
+reviewer = "Timon S. Gutleb"
+date = "2026-10-22"
+book_nodes = ["thm:jacobi-low-degree"]
+book_texts = ["[Low degrees and parameter substitution] For a commutative $\\Q$-algebra $R$ and $\\alpha,\\beta\\in R$, \\[P_0^{(\\alpha,\\beta)}=1,\\qquad P_1^{(\\alpha,\\beta)}=(\\alpha+1)+\\tfrac12(\\alpha+\\beta+2)(X-1).\\] For every $\\Q$-algebra homomorphism $f:R\\to S$ and $n\\in\\N$, applying $f$ to the coefficients of $P_n^{(\\alpha,\\beta)}$ gives $P_n^{(f(\\alpha),f(\\beta))}$. Reference: \\cite[18.5.7]{dlmf}."]
+
+[[statements]]
+name = "Polynomial.leadingCoeff_gegenbauer"
+fingerprint = "1feaf3334f0b1e8193d4d190590ba368ee448e2d27920e81c6816c7931847925"
+rendered = "theorem Polynomial.leadingCoeff_gegenbauer : ∀ {R : Type u_1} [inst : CommRing R] [inst_1 : Algebra ℚ R] (lam : R) (n : ℕ),\n  (algebraMap ℚ R) (↑n.factorial)⁻¹ * Polynomial.eval lam (ascPochhammer R n) * 2 ^ n ≠ 0 →\n    (Polynomial.gegenbauer lam n).leadingCoeff =\n      (algebraMap ℚ R) (↑n.factorial)⁻¹ * Polynomial.eval lam (ascPochhammer R n) * 2 ^ n"
+external = ["AddCommGroup.toDivisionAddCommMonoid", "AddGroupWithOne.toAddMonoidWithOne", "AddMonoidWithOne.toNatCast", "AddMonoidWithOne.toOne", "Algebra", "Algebra.algebraMap", "CommRing", "CommRing.toCommSemiring", "CommRing.toRing", "CommSemiring.toSemiring", "DFunLike.coe", "Distrib.toMul", "Eq", "Finset.range", "Finset.sum", "HAdd.hAdd", "HDiv.hDiv", "HMul.hMul", "HPow.hPow", "HSub.hSub", "Inv.inv", "Monoid.toNPow", "MulZeroClass.toZero", "NPow.toPow", "Nat", "Nat.AtLeastTwo", "Nat.cast", "Nat.factorial", "Nat.instAtLeastTwoHAddOfNat", "Nat.instDiv", "Nat.instNeZeroSucc", "Ne", "Neg.neg", "NegZeroClass.toNeg", "OfNat.ofNat", "One.toOfNat1", "Polynomial", "Polynomial.C", "Polynomial.X", "Polynomial.eval", "Polynomial.instMul", "Polynomial.leadingCoeff", "Polynomial.semiring", "Rat", "Rat.commSemiring", "Rat.instInv", "Rat.instMul", "Rat.instNatCast", "Ring.toAddCommGroup", "Ring.toAddGroupWithOne", "RingHom", "RingHom.instFunLike", "Semiring.toAddCommMonoid", "Semiring.toMonoid", "Semiring.toNonAssocSemiring", "SubNegZeroMonoid.toNegZeroClass", "SubtractionCommMonoid.toSubtractionMonoid", "SubtractionMonoid.toSubNegZeroMonoid", "Zero.toOfNat0", "ascPochhammer", "instAddNat", "instDistribOfSemiring", "instHAdd", "instHDiv", "instHMul", "instHPow", "instHSub", "instMulNat", "instMulZeroClassOfSemiring", "instOfNatAtLeastTwo", "instOfNatNat", "instSubNat"]
+mathlib_commit = "ade5dcd9754acef23d0e35968bff5c0c0c8acc76"
+toolchain = "leanprover/lean4:v4.35.0-rc4"
+git_commit = "df293f80609f8e711abacdb4d169e15a82469add"
+reviewer = "Timon S. Gutleb"
+date = "2026-10-22"
+book_nodes = ["thm:gegenbauer-degree"]
+book_texts = ["[Gegenbauer degree and leading term] Let $R$ be a commutative $\\Q$-algebra, let $\\lambda\\in R$, and let $n\\in\\N$. The Gegenbauer polynomial $C_n^{(\\lambda)}(X)$ has degree at most $n$, and its coefficient of $X^n$ is \\[ c_n=\\frac{2^n(\\lambda)_n}{n!}. \\] It has degree exactly $n$ if and only if $c_n\\ne0$. In that case, its leading coefficient is $c_n$. Reference: \\cite[Table 18.3.1]{dlmf}."]
+
+[[statements]]
+name = "Polynomial.leadingCoeff_jacobi"
+fingerprint = "8cc55350d297471d5c296e6264492978ede5af561fc9bde65c76f91ef11e9ff9"
+rendered = "theorem Polynomial.leadingCoeff_jacobi : ∀ {R : Type u_1} [inst : CommRing R] [inst_1 : Algebra ℚ R] (α β : R) (n : ℕ),\n  (algebraMap ℚ R) (↑n.factorial * 2 ^ n)⁻¹ * Polynomial.eval (↑n + α + β + 1) (ascPochhammer R n) ≠ 0 →\n    (Polynomial.jacobi α β n).leadingCoeff =\n      (algebraMap ℚ R) (↑n.factorial * 2 ^ n)⁻¹ * Polynomial.eval (↑n + α + β + 1) (ascPochhammer R n)"
+external = ["AddGroupWithOne.toAddMonoidWithOne", "AddMonoidWithOne.toNatCast", "AddMonoidWithOne.toOne", "Algebra", "Algebra.algebraMap", "CommRing", "CommRing.toCommSemiring", "CommRing.toRing", "CommSemiring.toSemiring", "DFunLike.coe", "Distrib.toAdd", "Distrib.toMul", "Eq", "Finset.range", "Finset.sum", "HAdd.hAdd", "HMul.hMul", "HPow.hPow", "HSub.hSub", "Inv.inv", "Monoid.toNPow", "MulZeroClass.toZero", "NPow.toPow", "Nat", "Nat.cast", "Nat.factorial", "Ne", "OfNat.ofNat", "One.toOfNat1", "Polynomial", "Polynomial.C", "Polynomial.X", "Polynomial.eval", "Polynomial.instMul", "Polynomial.instOne", "Polynomial.instSub", "Polynomial.leadingCoeff", "Polynomial.semiring", "Rat", "Rat.commSemiring", "Rat.instInv", "Rat.instMul", "Rat.instNatCast", "Rat.instOfNat", "Rat.instPowNat", "Ring.toAddGroupWithOne", "RingHom", "RingHom.instFunLike", "Semiring.toAddCommMonoid", "Semiring.toMonoid", "Semiring.toNonAssocSemiring", "Zero.toOfNat0", "ascPochhammer", "instAddNat", "instDistribOfSemiring", "instHAdd", "instHMul", "instHPow", "instHSub", "instMulZeroClassOfSemiring", "instOfNatNat", "instSubNat"]
+mathlib_commit = "ade5dcd9754acef23d0e35968bff5c0c0c8acc76"
+toolchain = "leanprover/lean4:v4.35.0-rc4"
+git_commit = "df293f80609f8e711abacdb4d169e15a82469add"
+reviewer = "Timon S. Gutleb"
+date = "2026-10-22"
+book_nodes = ["thm:jacobi-degree"]
+book_texts = ["[Degree and leading term] Let $R$ be a commutative $\\Q$-algebra, let $\\alpha,\\beta\\in R$, and let $n\\in\\N$. The Jacobi polynomial $P_n^{(\\alpha,\\beta)}(X)$ has degree at most $n$, and its coefficient of $X^n$ is \\[ c_n=\\frac{(n+\\alpha+\\beta+1)_n}{2^n n!}. \\] It has degree exactly $n$ if and only if $c_n\\ne0$. In that case, its leading coefficient is $c_n$. Reference: \\cite[Table 18.3.1]{dlmf}."]
+
+[[statements]]
+name = "Polynomial.legendre"
+fingerprint = "c41b587bd43412b01b03d4308129bab0e6b4f0a6b30ed9adb640354ef4bc241d"
+rendered = "definition Polynomial.legendre : (R : Type u_1) → [inst : CommRing R] → [Algebra ℚ R] → ℕ → Polynomial R\n:= fun R [CommRing R] [Algebra ℚ R] n =>\n  Polynomial.C ((algebraMap ℚ R) (2 ^ n * ↑n.factorial)⁻¹) * (⇑Polynomial.derivative)^[n] ((Polynomial.X ^ 2 - 1) ^ n)"
+external = ["Algebra", "Algebra.algebraMap", "CommRing", "CommRing.toCommSemiring", "CommRing.toRing", "CommSemiring.toSemiring", "DFunLike.coe", "HMul.hMul", "HPow.hPow", "HSub.hSub", "Inv.inv", "LinearMap", "LinearMap.instFunLike", "Monoid.toNPow", "NPow.toPow", "Nat", "Nat.cast", "Nat.factorial", "Nat.iterate", "OfNat.ofNat", "One.toOfNat1", "Polynomial", "Polynomial.C", "Polynomial.X", "Polynomial.derivative", "Polynomial.instMul", "Polynomial.instOne", "Polynomial.instSub", "Polynomial.module", "Polynomial.semiring", "Rat", "Rat.commSemiring", "Rat.instInv", "Rat.instMul", "Rat.instNatCast", "Rat.instOfNat", "Rat.instPowNat", "RingHom", "RingHom.id", "RingHom.instFunLike", "Semiring.toAddCommMonoid", "Semiring.toModule", "Semiring.toMonoid", "Semiring.toNonAssocSemiring", "instHMul", "instHPow", "instHSub", "instOfNatNat"]
+mathlib_commit = "ade5dcd9754acef23d0e35968bff5c0c0c8acc76"
+toolchain = "leanprover/lean4:v4.35.0-rc4"
+git_commit = "df293f80609f8e711abacdb4d169e15a82469add"
+reviewer = "Timon S. Gutleb"
+date = "2026-10-22"
+book_nodes = ["def:legendre"]
+book_texts = ["[Legendre polynomials] Let $R$ be a commutative $\\Q$-algebra and let $n\\in\\N$. Define (Rodrigues' formula) \\[P_n(X)=\\frac{1}{2^n n!}\\left(\\frac{d}{dX}\\right)^n(X^2-1)^n.\\] Reference: \\cite[18.5.5, Table 18.5.1 and Table 18.3.1]{dlmf}."]
+
+[[statements]]
+name = "Polynomial.legendreMeasure"
+fingerprint = "8e3bce7482e978177b5a39a0d995d9ebb3dab2056ae74f809d65a7c77b515a09"
+rendered = "definition Polynomial.legendreMeasure : MeasureTheory.Measure ℝ\n:= MeasureTheory.volume.restrict (Set.Ioc (-1) 1)"
+external = ["MeasureTheory.Measure", "MeasureTheory.Measure.restrict", "MeasureTheory.MeasureSpace.toMeasurableSpace", "MeasureTheory.MeasureSpace.volume", "Neg.neg", "OfNat.ofNat", "One.toOfNat1", "Real", "Real.instNeg", "Real.instOne", "Real.instPreorder", "Real.measurableSpace", "Real.measureSpace", "Set.Ioc"]
+mathlib_commit = "ade5dcd9754acef23d0e35968bff5c0c0c8acc76"
+toolchain = "leanprover/lean4:v4.35.0-rc4"
+git_commit = "e4cffb5ec1dbb3a8c9a7acd4abc9e19938b7ac4e"
+reviewer = "Timon S. Gutleb"
+date = "2026-10-17"
+book_nodes = ["def:legendre-measure"]
+book_texts = ["[Legendre measure] Let $\\mu_L$ be Lebesgue measure restricted to $(-1,1]$, the Legendre weight one. Reference: \\cite[Table 18.3.1]{dlmf}."]
+
+[[statements]]
+name = "Polynomial.legendre_comp_neg_X"
+fingerprint = "1129bc3c0f403ff56de3f20381bc9bd1e3c1d4582ba13ad17b5968426c0a4458"
+rendered = "theorem Polynomial.legendre_comp_neg_X : ∀ (R : Type u_1) [inst : CommRing R] [inst_1 : Algebra ℚ R] (n : ℕ),\n  (Polynomial.legendre R n).comp (-Polynomial.X) = Polynomial.C ((-1) ^ n) * Polynomial.legendre R n"
+external = ["AddCommGroup.toDivisionAddCommMonoid", "AddGroupWithOne.toAddMonoidWithOne", "AddMonoidWithOne.toOne", "Algebra", "Algebra.algebraMap", "CommRing", "CommRing.toCommSemiring", "CommRing.toRing", "CommSemiring.toSemiring", "DFunLike.coe", "Eq", "HMul.hMul", "HPow.hPow", "HSub.hSub", "Inv.inv", "LinearMap", "LinearMap.instFunLike", "Monoid.toNPow", "NPow.toPow", "Nat", "Nat.cast", "Nat.factorial", "Nat.iterate", "Neg.neg", "NegZeroClass.toNeg", "OfNat.ofNat", "One.toOfNat1", "Polynomial", "Polynomial.C", "Polynomial.X", "Polynomial.comp", "Polynomial.derivative", "Polynomial.instMul", "Polynomial.instNeg", "Polynomial.instOne", "Polynomial.instSub", "Polynomial.module", "Polynomial.semiring", "Rat", "Rat.commSemiring", "Rat.instInv", "Rat.instMul", "Rat.instNatCast", "Rat.instOfNat", "Rat.instPowNat", "Ring.toAddCommGroup", "Ring.toAddGroupWithOne", "RingHom", "RingHom.id", "RingHom.instFunLike", "Semiring.toAddCommMonoid", "Semiring.toModule", "Semiring.toMonoid", "Semiring.toNonAssocSemiring", "SubNegZeroMonoid.toNegZeroClass", "SubtractionCommMonoid.toSubtractionMonoid", "SubtractionMonoid.toSubNegZeroMonoid", "instHMul", "instHPow", "instHSub", "instOfNatNat"]
+mathlib_commit = "ade5dcd9754acef23d0e35968bff5c0c0c8acc76"
+toolchain = "leanprover/lean4:v4.35.0-rc4"
+git_commit = "df293f80609f8e711abacdb4d169e15a82469add"
+reviewer = "Timon S. Gutleb"
+date = "2026-10-22"
+book_nodes = ["thm:legendre-parity"]
+book_texts = ["[Legendre parity] Let $R$ be a commutative $\\Q$-algebra and let $n\\in\\N$. Then $P_n(-X)=(-1)^nP_n(X)$. Reference: \\cite[Table 18.6.1]{dlmf}."]
+
+[[statements]]
+name = "Polynomial.map_jacobi"
+fingerprint = "ed1a66cf53b2a838503445c26ec9725e13dfa11ad2763606df329658361d41f2"
+rendered = "theorem Polynomial.map_jacobi : ∀ {R : Type u_1} {S : Type u_2} [inst : CommRing R] [inst_1 : Algebra ℚ R] [inst_2 : CommRing S] [inst_3 : Algebra ℚ S]\n  (f : R →ₐ[ℚ] S) (α β : R) (n : ℕ),\n  Polynomial.map f.toRingHom (Polynomial.jacobi α β n) = Polynomial.jacobi (f α) (f β) n"
+external = ["AddGroupWithOne.toAddMonoidWithOne", "AddMonoidWithOne.toNatCast", "AddMonoidWithOne.toOne", "AlgHom", "AlgHom.funLike", "AlgHom.toRingHom", "Algebra", "Algebra.algebraMap", "CommRing", "CommRing.toCommSemiring", "CommRing.toRing", "CommSemiring.toSemiring", "DFunLike.coe", "Distrib.toAdd", "Distrib.toMul", "Eq", "Finset.range", "Finset.sum", "HAdd.hAdd", "HMul.hMul", "HPow.hPow", "HSub.hSub", "Inv.inv", "Monoid.toNPow", "NPow.toPow", "Nat", "Nat.cast", "Nat.factorial", "OfNat.ofNat", "One.toOfNat1", "Polynomial", "Polynomial.C", "Polynomial.X", "Polynomial.eval", "Polynomial.instMul", "Polynomial.instOne", "Polynomial.instSub", "Polynomial.map", "Polynomial.semiring", "Rat", "Rat.commSemiring", "Rat.instInv", "Rat.instMul", "Rat.instNatCast", "Rat.instOfNat", "Rat.instPowNat", "Ring.toAddGroupWithOne", "RingHom", "RingHom.instFunLike", "Semiring.toAddCommMonoid", "Semiring.toMonoid", "Semiring.toNonAssocSemiring", "ascPochhammer", "instAddNat", "instDistribOfSemiring", "instHAdd", "instHMul", "instHPow", "instHSub", "instOfNatNat", "instSubNat"]
+mathlib_commit = "ade5dcd9754acef23d0e35968bff5c0c0c8acc76"
+toolchain = "leanprover/lean4:v4.35.0-rc4"
+git_commit = "df293f80609f8e711abacdb4d169e15a82469add"
+reviewer = "Timon S. Gutleb"
+date = "2026-10-22"
+book_nodes = ["thm:jacobi-low-degree"]
+book_texts = ["[Low degrees and parameter substitution] For a commutative $\\Q$-algebra $R$ and $\\alpha,\\beta\\in R$, \\[P_0^{(\\alpha,\\beta)}=1,\\qquad P_1^{(\\alpha,\\beta)}=(\\alpha+1)+\\tfrac12(\\alpha+\\beta+2)(X-1).\\] For every $\\Q$-algebra homomorphism $f:R\\to S$ and $n\\in\\N$, applying $f$ to the coefficients of $P_n^{(\\alpha,\\beta)}$ gives $P_n^{(f(\\alpha),f(\\beta))}$. Reference: \\cite[18.5.7]{dlmf}."]
+
+[[statements]]
+name = "Polynomial.measurable_jacobiWeight"
+fingerprint = "477cfe935115a35487f0434a3d95270768ee618c4325a3fd97a276b9e3664ec5"
+rendered = "theorem Polynomial.measurable_jacobiWeight : ∀ (α β : ℝ), Measurable ⇑(Polynomial.jacobiWeight α β)"
+external = ["Continuous", "ContinuousMap", "ContinuousMap.instFunLike", "ContinuousMap.mk", "DFunLike.coe", "HAdd.hAdd", "HMul.hMul", "HPow.hPow", "HSub.hSub", "IsOrderedRing.toPosMulMono", "LE.le", "Measurable", "Membership.mem", "MulZeroClass.toMul", "MulZeroClass.toZero", "NNReal", "NNReal.instTopologicalSpace", "NNReal.measurableSpace", "Neg.neg", "OfNat.ofNat", "One.toOfNat1", "Preorder.toLE", "PseudoMetricSpace.toUniformSpace", "Real", "Real.instAdd", "Real.instIsOrderedRing", "Real.instLE", "Real.instMul", "Real.instNeg", "Real.instOne", "Real.instPow", "Real.instPreorder", "Real.instSub", "Real.instZero", "Real.measurableSpace", "Real.partialOrder", "Real.pseudoMetricSpace", "Real.rpow_nonneg", "Real.semiring", "Set", "Set.Elem", "Set.Ioo", "Set.instMembership", "Subtype.instMeasurableSpace", "Subtype.mk", "Subtype.val", "UniformSpace.toTopologicalSpace", "Zero.toOfNat0", "instHAdd", "instHMul", "instHPow", "instHSub", "instMulZeroClassOfSemiring", "instTopologicalSpaceSubtype", "mul_nonneg"]
+mathlib_commit = "ade5dcd9754acef23d0e35968bff5c0c0c8acc76"
+toolchain = "leanprover/lean4:v4.35.0-rc4"
+git_commit = "40418359188960962b75d84647d9f9eff9b6da7a"
+reviewer = "Timon S. Gutleb"
+date = "2026-10-22"
+book_nodes = ["thm:jacobi-weight-basic"]
+book_texts = ["[Jacobi weight positivity and support] For all real $\\alpha,\\beta$, the weight $w_{\\alpha,\\beta}$ is measurable and strictly positive on its domain $(-1,1)$, and $\\mu_{\\alpha,\\beta}$-almost every point lies in $(-1,1)$. Reference: \\cite[Table 18.3.1]{dlmf}."]
+
+[[statements]]
+name = "Polynomial.natDegree_gegenbauer_le"
+fingerprint = "55278a4f0090dd3710c98d609c88221457ca1582a15ee2b06ef248f6ee92cf07"
+rendered = "theorem Polynomial.natDegree_gegenbauer_le : ∀ {R : Type u_1} [inst : CommRing R] [inst_1 : Algebra ℚ R] (lam : R) (n : ℕ),\n  (Polynomial.gegenbauer lam n).natDegree ≤ n"
+external = ["AddCommGroup.toDivisionAddCommMonoid", "AddGroupWithOne.toAddMonoidWithOne", "AddMonoidWithOne.toNatCast", "AddMonoidWithOne.toOne", "Algebra", "Algebra.algebraMap", "CommRing", "CommRing.toCommSemiring", "CommRing.toRing", "CommSemiring.toSemiring", "DFunLike.coe", "Distrib.toMul", "Finset.range", "Finset.sum", "HAdd.hAdd", "HDiv.hDiv", "HMul.hMul", "HPow.hPow", "HSub.hSub", "Inv.inv", "LE.le", "Monoid.toNPow", "NPow.toPow", "Nat", "Nat.AtLeastTwo", "Nat.cast", "Nat.factorial", "Nat.instDiv", "Neg.neg", "NegZeroClass.toNeg", "OfNat.ofNat", "One.toOfNat1", "Polynomial", "Polynomial.C", "Polynomial.X", "Polynomial.eval", "Polynomial.instMul", "Polynomial.natDegree", "Polynomial.semiring", "Rat", "Rat.commSemiring", "Rat.instInv", "Rat.instMul", "Rat.instNatCast", "Ring.toAddCommGroup", "Ring.toAddGroupWithOne", "RingHom", "RingHom.instFunLike", "Semiring.toAddCommMonoid", "Semiring.toMonoid", "Semiring.toNonAssocSemiring", "SubNegZeroMonoid.toNegZeroClass", "SubtractionCommMonoid.toSubtractionMonoid", "SubtractionMonoid.toSubNegZeroMonoid", "ascPochhammer", "instAddNat", "instDistribOfSemiring", "instHAdd", "instHDiv", "instHMul", "instHPow", "instHSub", "instLENat", "instMulNat", "instOfNatAtLeastTwo", "instOfNatNat", "instSubNat"]
+mathlib_commit = "ade5dcd9754acef23d0e35968bff5c0c0c8acc76"
+toolchain = "leanprover/lean4:v4.35.0-rc4"
+git_commit = "df293f80609f8e711abacdb4d169e15a82469add"
+reviewer = "Timon S. Gutleb"
+date = "2026-10-22"
+book_nodes = ["thm:gegenbauer-degree"]
+book_texts = ["[Gegenbauer degree and leading term] Let $R$ be a commutative $\\Q$-algebra, let $\\lambda\\in R$, and let $n\\in\\N$. The Gegenbauer polynomial $C_n^{(\\lambda)}(X)$ has degree at most $n$, and its coefficient of $X^n$ is \\[ c_n=\\frac{2^n(\\lambda)_n}{n!}. \\] It has degree exactly $n$ if and only if $c_n\\ne0$. In that case, its leading coefficient is $c_n$. Reference: \\cite[Table 18.3.1]{dlmf}."]
+
+[[statements]]
+name = "Polynomial.natDegree_jacobi_le"
+fingerprint = "012573e6d191cbe5ab60455c7a3d1366f973b5687470d51c8753d521489237d9"
+rendered = "theorem Polynomial.natDegree_jacobi_le : ∀ {R : Type u_1} [inst : CommRing R] [inst_1 : Algebra ℚ R] (α β : R) (n : ℕ), (Polynomial.jacobi α β n).natDegree ≤ n"
+external = ["AddGroupWithOne.toAddMonoidWithOne", "AddMonoidWithOne.toNatCast", "AddMonoidWithOne.toOne", "Algebra", "Algebra.algebraMap", "CommRing", "CommRing.toCommSemiring", "CommRing.toRing", "CommSemiring.toSemiring", "DFunLike.coe", "Distrib.toAdd", "Distrib.toMul", "Finset.range", "Finset.sum", "HAdd.hAdd", "HMul.hMul", "HPow.hPow", "HSub.hSub", "Inv.inv", "LE.le", "Monoid.toNPow", "NPow.toPow", "Nat", "Nat.cast", "Nat.factorial", "OfNat.ofNat", "One.toOfNat1", "Polynomial", "Polynomial.C", "Polynomial.X", "Polynomial.eval", "Polynomial.instMul", "Polynomial.instOne", "Polynomial.instSub", "Polynomial.natDegree", "Polynomial.semiring", "Rat", "Rat.commSemiring", "Rat.instInv", "Rat.instMul", "Rat.instNatCast", "Rat.instOfNat", "Rat.instPowNat", "Ring.toAddGroupWithOne", "RingHom", "RingHom.instFunLike", "Semiring.toAddCommMonoid", "Semiring.toMonoid", "Semiring.toNonAssocSemiring", "ascPochhammer", "instAddNat", "instDistribOfSemiring", "instHAdd", "instHMul", "instHPow", "instHSub", "instLENat", "instOfNatNat", "instSubNat"]
+mathlib_commit = "ade5dcd9754acef23d0e35968bff5c0c0c8acc76"
+toolchain = "leanprover/lean4:v4.35.0-rc4"
+git_commit = "df293f80609f8e711abacdb4d169e15a82469add"
+reviewer = "Timon S. Gutleb"
+date = "2026-10-22"
+book_nodes = ["thm:jacobi-degree"]
+book_texts = ["[Degree and leading term] Let $R$ be a commutative $\\Q$-algebra, let $\\alpha,\\beta\\in R$, and let $n\\in\\N$. The Jacobi polynomial $P_n^{(\\alpha,\\beta)}(X)$ has degree at most $n$, and its coefficient of $X^n$ is \\[ c_n=\\frac{(n+\\alpha+\\beta+1)_n}{2^n n!}. \\] It has degree exactly $n$ if and only if $c_n\\ne0$. In that case, its leading coefficient is $c_n$. Reference: \\cite[Table 18.3.1]{dlmf}."]
+
+[[statements]]
+name = "Polynomial.succ_mul_eval_jacobi_one"
+fingerprint = "4dae2a17e303c0c194700bc9071d21ea8e3e5253a1205eafb003a96f01e80b00"
+rendered = "theorem Polynomial.succ_mul_eval_jacobi_one : ∀ {R : Type u_1} [inst : CommRing R] [inst_1 : Algebra ℚ R] (α β : R) (n : ℕ),\n  (↑n + 1) * Polynomial.eval 1 (Polynomial.jacobi α β (n + 1)) =\n    (↑n + α + 1) * Polynomial.eval 1 (Polynomial.jacobi α β n)"
+external = ["AddGroupWithOne.toAddMonoidWithOne", "AddMonoidWithOne.toNatCast", "AddMonoidWithOne.toOne", "Algebra", "Algebra.algebraMap", "CommRing", "CommRing.toCommSemiring", "CommRing.toRing", "CommSemiring.toSemiring", "DFunLike.coe", "Distrib.toAdd", "Distrib.toMul", "Eq", "Finset.range", "Finset.sum", "HAdd.hAdd", "HMul.hMul", "HPow.hPow", "HSub.hSub", "Inv.inv", "Monoid.toNPow", "NPow.toPow", "Nat", "Nat.cast", "Nat.factorial", "OfNat.ofNat", "One.toOfNat1", "Polynomial", "Polynomial.C", "Polynomial.X", "Polynomial.eval", "Polynomial.instMul", "Polynomial.instOne", "Polynomial.instSub", "Polynomial.semiring", "Rat", "Rat.commSemiring", "Rat.instInv", "Rat.instMul", "Rat.instNatCast", "Rat.instOfNat", "Rat.instPowNat", "Ring.toAddGroupWithOne", "RingHom", "RingHom.instFunLike", "Semiring.toAddCommMonoid", "Semiring.toMonoid", "Semiring.toNonAssocSemiring", "ascPochhammer", "instAddNat", "instDistribOfSemiring", "instHAdd", "instHMul", "instHPow", "instHSub", "instOfNatNat", "instSubNat"]
+mathlib_commit = "ade5dcd9754acef23d0e35968bff5c0c0c8acc76"
+toolchain = "leanprover/lean4:v4.35.0-rc4"
+git_commit = "df293f80609f8e711abacdb4d169e15a82469add"
+reviewer = "Timon S. Gutleb"
+date = "2026-10-22"
+book_nodes = ["thm:jacobi-value-one"]
+book_texts = ["[Jacobi value at one] Let $R$ be a commutative $\\Q$-algebra, let $\\alpha,\\beta\\in R$, and let $n\\in\\N$. Then $P_n^{(\\alpha,\\beta)}(1)=(\\alpha+1)_n/n!$. In particular, $(n+1)P_{n+1}^{(\\alpha,\\beta)}(1)=(n+\\alpha+1)P_n^{(\\alpha,\\beta)}(1)$. Reference: \\cite[Table 18.6.1]{dlmf}."]
+
+[[statements]]
+name = "Polynomial.tendsto_jacobiWeight_add_one_neg_one"
+fingerprint = "c95efe81388835f7aadaf6ddf6c44b3d81b628dc7a0bbfbf907b7b2330d47422"
+rendered = "theorem Polynomial.tendsto_jacobiWeight_add_one_neg_one : ∀ {α β : ℝ},\n  -1 < β →\n    Filter.Tendsto (fun x => ↑((Polynomial.jacobiWeight (α + 1) (β + 1)) x)) (Filter.comap Subtype.val (nhds (-1)))\n      (nhds 0)"
+external = ["Continuous", "ContinuousMap", "ContinuousMap.instFunLike", "ContinuousMap.mk", "DFunLike.coe", "Filter.Tendsto", "Filter.comap", "HAdd.hAdd", "HMul.hMul", "HPow.hPow", "HSub.hSub", "IsOrderedRing.toPosMulMono", "LE.le", "LT.lt", "Membership.mem", "MulZeroClass.toMul", "MulZeroClass.toZero", "NNReal", "NNReal.instTopologicalSpace", "NNReal.toReal", "Neg.neg", "OfNat.ofNat", "One.toOfNat1", "Preorder.toLE", "PseudoMetricSpace.toUniformSpace", "Real", "Real.instAdd", "Real.instIsOrderedRing", "Real.instLE", "Real.instLT", "Real.instMul", "Real.instNeg", "Real.instOne", "Real.instPow", "Real.instPreorder", "Real.instSub", "Real.instZero", "Real.partialOrder", "Real.pseudoMetricSpace", "Real.rpow_nonneg", "Real.semiring", "Set", "Set.Elem", "Set.Ioo", "Set.instMembership", "Subtype.mk", "Subtype.val", "UniformSpace.toTopologicalSpace", "Zero.toOfNat0", "instHAdd", "instHMul", "instHPow", "instHSub", "instMulZeroClassOfSemiring", "instTopologicalSpaceSubtype", "mul_nonneg", "nhds"]
+mathlib_commit = "ade5dcd9754acef23d0e35968bff5c0c0c8acc76"
+toolchain = "leanprover/lean4:v4.35.0-rc4"
+git_commit = "40418359188960962b75d84647d9f9eff9b6da7a"
+reviewer = "Timon S. Gutleb"
+date = "2026-10-22"
+book_nodes = ["thm:jacobi-weight-calculus"]
+book_texts = ["[Jacobi weight calculus] On $(-1,1)$, for arbitrary real $\\alpha,\\beta$, \\[w_{\\alpha+1,\\beta+1}=(1-x^2)w_{\\alpha,\\beta},\\qquad w_{\\alpha+1,\\beta+1}'=[\\beta-\\alpha-(\\alpha+\\beta+2)x]w_{\\alpha,\\beta}.\\] If $\\alpha>-1$, the right endpoint limit of the shifted weight is zero, with no restriction on $\\beta$. If $\\beta>-1$, its left endpoint limit is zero, with no restriction on $\\alpha$. Reference: \\cite[Tables 18.3.1 and 18.8.1]{dlmf}."]
+
+[[statements]]
+name = "Polynomial.tendsto_jacobiWeight_add_one_one"
+fingerprint = "af89d0b3b389ffe2a2fa1e9a7ec04e3b84b4a6cdb25ea8032bca5b04621e8b23"
+rendered = "theorem Polynomial.tendsto_jacobiWeight_add_one_one : ∀ {α β : ℝ},\n  -1 < α →\n    Filter.Tendsto (fun x => ↑((Polynomial.jacobiWeight (α + 1) (β + 1)) x)) (Filter.comap Subtype.val (nhds 1))\n      (nhds 0)"
+external = ["Continuous", "ContinuousMap", "ContinuousMap.instFunLike", "ContinuousMap.mk", "DFunLike.coe", "Filter.Tendsto", "Filter.comap", "HAdd.hAdd", "HMul.hMul", "HPow.hPow", "HSub.hSub", "IsOrderedRing.toPosMulMono", "LE.le", "LT.lt", "Membership.mem", "MulZeroClass.toMul", "MulZeroClass.toZero", "NNReal", "NNReal.instTopologicalSpace", "NNReal.toReal", "Neg.neg", "OfNat.ofNat", "One.toOfNat1", "Preorder.toLE", "PseudoMetricSpace.toUniformSpace", "Real", "Real.instAdd", "Real.instIsOrderedRing", "Real.instLE", "Real.instLT", "Real.instMul", "Real.instNeg", "Real.instOne", "Real.instPow", "Real.instPreorder", "Real.instSub", "Real.instZero", "Real.partialOrder", "Real.pseudoMetricSpace", "Real.rpow_nonneg", "Real.semiring", "Set", "Set.Elem", "Set.Ioo", "Set.instMembership", "Subtype.mk", "Subtype.val", "UniformSpace.toTopologicalSpace", "Zero.toOfNat0", "instHAdd", "instHMul", "instHPow", "instHSub", "instMulZeroClassOfSemiring", "instTopologicalSpaceSubtype", "mul_nonneg", "nhds"]
+mathlib_commit = "ade5dcd9754acef23d0e35968bff5c0c0c8acc76"
+toolchain = "leanprover/lean4:v4.35.0-rc4"
+git_commit = "40418359188960962b75d84647d9f9eff9b6da7a"
+reviewer = "Timon S. Gutleb"
+date = "2026-10-22"
+book_nodes = ["thm:jacobi-weight-calculus"]
+book_texts = ["[Jacobi weight calculus] On $(-1,1)$, for arbitrary real $\\alpha,\\beta$, \\[w_{\\alpha+1,\\beta+1}=(1-x^2)w_{\\alpha,\\beta},\\qquad w_{\\alpha+1,\\beta+1}'=[\\beta-\\alpha-(\\alpha+\\beta+2)x]w_{\\alpha,\\beta}.\\] If $\\alpha>-1$, the right endpoint limit of the shifted weight is zero, with no restriction on $\\beta$. If $\\beta>-1$, its left endpoint limit is zero, with no restriction on $\\alpha$. Reference: \\cite[Tables 18.3.1 and 18.8.1]{dlmf}."]
+
+[[statements]]
+name = "Real.GammaOn"
+fingerprint = "b78caebdd4d351cefd4b0a2604f0b73611610cc89cbb637b77ca4d8adcbb800f"
+rendered = "definition Real.GammaOn : Real.GammaPoint → ℝ\n:= fun x => Real.Gamma ↑x"
+external = ["Nat", "Nat.cast", "Ne", "Neg.neg", "Real", "Real.Gamma", "Real.instNatCast", "Real.instNeg", "Subtype", "Subtype.val"]
+mathlib_commit = "ade5dcd9754acef23d0e35968bff5c0c0c8acc76"
+toolchain = "leanprover/lean4:v4.35.0-rc4"
+git_commit = "02fd3276b9c21c84b4ebc88ff3dc7f202e2ca5df"
+reviewer = "Timon S. Gutleb"
+date = "2026-10-16"
+book_nodes = ["def:gamma-function"]
+book_texts = ["[Gamma on its classical domain] Let $D=\\mathbb C\\setminus\\{0,-1,-2,\\ldots\\}$. For $z\\in D$, let $N=\\lfloor\\max(1-\\Re z,0)\\rfloor$ and define \\[ \\Gamma(z)=\\frac{1}{(z)_N}\\int_0^\\infty e^{-t}t^{z+N-1}\\,dt, \\] where $t$ ranges over the strictly positive reals and the power uses the real logarithm of $t$. The real Gamma function is its restriction to $\\mathbb R\\setminus\\{0,-1,-2,\\ldots\\}$. Gamma has no assigned value at a pole. Reference: \\cite[5.2.1, 5.5.1]{dlmf}."]
+
+[[statements]]
+name = "Real.GammaPoint"
+fingerprint = "11f50ca366da3b2dcbf263b2aeaca04738109e75e53acf0754b92ff70d1b5cb1"
+rendered = "definition Real.GammaPoint : Type\n:= { x // ∀ (n : ℕ), x ≠ -↑n }"
+external = ["Nat", "Nat.cast", "Ne", "Neg.neg", "Real", "Real.instNatCast", "Real.instNeg", "Subtype"]
+mathlib_commit = "ade5dcd9754acef23d0e35968bff5c0c0c8acc76"
+toolchain = "leanprover/lean4:v4.35.0-rc4"
+git_commit = "02fd3276b9c21c84b4ebc88ff3dc7f202e2ca5df"
+reviewer = "Timon S. Gutleb"
+date = "2026-10-16"
+book_nodes = ["def:gamma-function"]
+book_texts = ["[Gamma on its classical domain] Let $D=\\mathbb C\\setminus\\{0,-1,-2,\\ldots\\}$. For $z\\in D$, let $N=\\lfloor\\max(1-\\Re z,0)\\rfloor$ and define \\[ \\Gamma(z)=\\frac{1}{(z)_N}\\int_0^\\infty e^{-t}t^{z+N-1}\\,dt, \\] where $t$ ranges over the strictly positive reals and the power uses the real logarithm of $t$. The real Gamma function is its restriction to $\\mathbb R\\setminus\\{0,-1,-2,\\ldots\\}$. Gamma has no assigned value at a pole. Reference: \\cite[5.2.1, 5.5.1]{dlmf}."]
+

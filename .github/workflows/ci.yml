@@ -1,0 +1,125 @@
+name: Lean and blueprint
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Make room for Lean, Mathlib and TeX
+        run: |
+          df -h /
+          # Unused SDKs on the disposable GitHub-hosted runner, not project files.
+          sudo rm -rf /usr/local/lib/android /usr/share/dotnet /opt/ghc /usr/local/.ghcup /opt/hostedtoolcache/CodeQL
+          sudo apt-get clean
+          df -h /
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0   # tags and history, for the version shown in the RevOLVER
+      - name: Build Lean
+        uses: leanprover/lean-action@f061402b660e0c34644504b324e830f2991d4865 # v1.6.1
+        with:
+          auto-config: false
+          build: true
+          test: false
+          lint: false
+          use-mathlib-cache: true
+          use-github-cache: false
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.12'
+      - name: Install blueprint dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends graphviz libgraphviz-dev latexmk texlive-latex-extra texlive-fonts-recommended lmodern ghostscript dvisvgm
+          sudo apt-get clean
+          python -m pip install --no-cache-dir -r requirements-blueprint.txt
+          df -h /
+      - name: Test human statement review
+        run: python test/test_review.py -v
+      - name: Test version string
+        run: python test/test_version.py -v
+      - name: Reject stale human statement reviews
+        run: python scripts/review.py check
+      - name: Build blueprint and check declaration links
+        run: |
+          leanblueprint pdf
+          leanblueprint web
+          lake exe checkdecls blueprint/lean_decls
+      - name: Keep release files
+        if: startsWith(github.ref, 'refs/tags/v')
+        run: |
+          mkdir -p release
+          cp blueprint/print/print.pdf "release/LeanFun-RevOLVER-${GITHUB_REF_NAME}.pdf"
+          (cd blueprint && zip -qr "../release/LeanFun-RevOLVER-${GITHUB_REF_NAME}-html.zip" web)
+          {
+            echo "## LeanFun ${GITHUB_REF_NAME}"
+            echo
+            echo "- Lean toolchain: \`$(cat lean-toolchain)\`"
+            echo "- Mathlib commit: \`$(python -c "import json; print(next(p['rev'] for p in json.load(open('lake-manifest.json'))['packages'] if p['name'] == 'mathlib'))")\`"
+            python - <<'PY'
+          import json
+          c = json.load(open('blueprint/web/review-counts.json'))
+          print(f"- Statement review: {c['human_reviewed']} human-reviewed, "
+                f"{c['stale']} stale, {c['llm_only']} LLM-only (not yet human-reviewed)")
+          PY
+            echo
+            echo "The PDF and the zipped HTML RevOLVER for this version are attached."
+          } > release/notes.md
+      - name: Upload release files
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: actions/upload-artifact@v4  # TODO(owner): pin to a commit SHA like the other actions
+        with:
+          name: release
+          path: release
+      - name: Upload Pages site
+        if: github.event_name != 'pull_request' && github.ref == format('refs/heads/{0}', github.event.repository.default_branch)
+        uses: actions/upload-pages-artifact@7b1f4a764d45c48632c6b24a0339c27f5614fb0b # v4
+        with:
+          path: blueprint/web
+
+  deploy:
+    needs: check
+    if: github.event_name != 'pull_request' && github.ref == format('refs/heads/{0}', github.event.repository.default_branch)
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    concurrency:
+      group: github-pages
+      cancel-in-progress: false
+    steps:
+      - name: Deploy RevOLVER
+        id: deployment
+        uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e # v4
+
+  release:
+    # Owner-pushed tags vMAJOR.MINOR.PATCH only; notes are generated from the commit history.
+    needs: check
+    if: startsWith(github.ref, 'refs/tags/v')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@v4  # TODO(owner): pin to a commit SHA like the other actions
+        with:
+          name: release
+          path: release
+      - name: Create GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          gh release create "$GITHUB_REF_NAME" --verify-tag --title "LeanFun $GITHUB_REF_NAME" \
+            --notes-file release/notes.md --generate-notes \
+            release/*.pdf release/*.zip
+

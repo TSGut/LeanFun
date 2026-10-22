@@ -1,0 +1,257 @@
+/* LeanFun RevOLVER styles. Light values reproduce the stock plasTeX white theme;
+   dark values apply when chosen with the toggle, or by system preference when no
+   choice has been stored. */
+:root {
+  --rv-bg: #fff;
+  --rv-page: #f4f4f4;
+  --rv-surface: #f2f2f2;
+  --rv-surface-2: #e8e8e8;
+  --rv-hover: #e6e6e6;
+  --rv-text: #24292e;
+  --rv-muted: #464f59;
+  --rv-faint: #5c6976;
+  --rv-border: #e6e6e6;
+  --rv-link: #0645ad;
+  --rv-accent: #4a72b0;
+  --rv-code: #f4f6fa;
+  --rv-code-2: #f8f8f8;
+  --rv-box: #d8dde6;
+  --rv-tag: #eee4f7;
+  --rv-graph-filter: none;
+  --rv-blue: #0a6fd8;
+  --rv-orange: #f07c12;
+  --rv-mathlib: #7040a0;
+  --rv-mathlib-bg: #f7f2fc;
+  color-scheme: light;
+}
+:root[data-theme="dark"] {
+  --rv-bg: #1c2128;
+  --rv-page: #161b22;
+  --rv-surface: #22272e;
+  --rv-surface-2: #2d333b;
+  --rv-hover: #343b44;
+  --rv-text: #d7dce2;
+  --rv-muted: #adbac7;
+  --rv-faint: #8b97a5;
+  --rv-border: #3b434d;
+  --rv-link: #8ab4f8;
+  --rv-accent: #8ab4f8;
+  --rv-code: #252b33;
+  --rv-code-2: #22272e;
+  --rv-box: #3b434d;
+  --rv-tag: #4a3a5c;
+  --rv-graph-filter: invert(0.92) hue-rotate(180deg);
+  --rv-blue: #4da3ff;
+  --rv-orange: #f88f2e;
+  --rv-mathlib: #b48ce0;
+  --rv-mathlib-bg: #262030;
+  color-scheme: dark;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --rv-bg: #1c2128;
+    --rv-page: #161b22;
+    --rv-surface: #22272e;
+    --rv-surface-2: #2d333b;
+    --rv-hover: #343b44;
+    --rv-text: #d7dce2;
+    --rv-muted: #adbac7;
+    --rv-faint: #8b97a5;
+    --rv-border: #3b434d;
+    --rv-link: #8ab4f8;
+    --rv-accent: #8ab4f8;
+    --rv-code: #252b33;
+    --rv-code-2: #22272e;
+    --rv-box: #3b434d;
+    --rv-tag: #4a3a5c;
+    --rv-graph-filter: invert(0.92) hue-rotate(180deg);
+  --rv-blue: #4da3ff;
+  --rv-orange: #f88f2e;
+  --rv-mathlib: #b48ce0;
+  --rv-mathlib-bg: #262030;
+    color-scheme: dark;
+  }
+}
+
+/* Stock theme surfaces and text. */
+body, body div.wrapper, table, .tabular { background-color: var(--rv-bg); color: var(--rv-text); }
+h1, h2, h3, h4, h1#doc_title, #doc_title a, #doc_title a:visited,
+footer#footnotes h1, a.icon, .local_toc ul a { color: var(--rv-text); }
+a, a:visited { color: var(--rv-link); }
+body > header, nav.prev_up_next, div.modal-content header { background: var(--rv-surface); color: var(--rv-text); }
+nav.prev_up_next a, div.modal-content header button.closebtn { color: var(--rv-text); }
+div.modal-content header h1 { color: var(--rv-muted); }
+div.modal-content { background-color: var(--rv-bg); border-color: var(--rv-border); }
+nav.toc { background-color: var(--rv-bg); border-right-color: var(--rv-surface); }
+.toc ul li, .toc ul li.current { background-color: var(--rv-bg); }
+.toc ul a { color: var(--rv-muted); }
+.toc ul a:hover { background: var(--rv-hover); }
+span.expand-toc { color: var(--rv-faint); }
+svg.close-toc { color: var(--rv-muted); }
+pre.verbatim { background-color: var(--rv-surface); color: var(--rv-text); }
+.fbox, .framebox { border-color: var(--rv-text); }
+
+/* Dependency-graph page. */
+div#statements { background-color: var(--rv-surface-2); color: var(--rv-text); }
+div.dep-modal-content, ul.tooltip_list { background: var(--rv-bg); color: var(--rv-text); }
+/* The legend floats over the graph: give it the statement popup's panel so the graph does not show through. */
+#Legend dl { background: var(--rv-surface-2); color: var(--rv-text); z-index: 20; padding: .6em 1em;
+  border: 1px solid var(--rv-border); border-radius: 6px; box-shadow: 0 4px 14px rgba(0, 0, 0, .25);
+  max-height: calc(100vh - 8rem); overflow-y: auto; font-size: 100%; line-height: 1.6; }
+/* One entry per line: "Key: meaning". */
+#Legend dt { float: left; clear: left; margin-right: .3rem; }
+#Legend dd { display: block; margin: 0; }
+div.bar { background: var(--rv-text); }
+#graph svg { filter: var(--rv-graph-filter); }
+.rv-zoom { position: absolute; z-index: 10; right: 1.2em; margin-top: .5em; display: flex; gap: .3em; }
+.rv-zoom button { width: 2em; height: 2em; font-size: 1.1em; cursor: pointer;
+  background: var(--rv-surface); color: var(--rv-text); border: 1px solid var(--rv-border); border-radius: .3em; }
+.rv-zoom button:hover { background: var(--rv-hover); }
+
+/* Header corner: theme toggle and logo; cover logo. */
+body > header { position: relative; padding-right: 7.5em; box-sizing: border-box; }
+/* The graph template centres its title absolutely, on top of the status warning; keep both in the flow. */
+body.rv-graph-page > header { height: auto; min-height: 3rem; align-items: center; gap: 1rem; }
+body.rv-graph-page > header h1 { position: static; margin: 0; white-space: nowrap; }
+.rv-corner { position: absolute; top: 50%; right: .8em; transform: translateY(-50%);
+  display: flex; align-items: center; gap: .6em; }
+.rv-logo { height: 2.2em; width: auto; display: block; }
+#rv-theme-toggle { font-size: 1.1em; line-height: 1; padding: .25em .45em; cursor: pointer;
+  background: transparent; color: var(--rv-text); border: 1px solid var(--rv-border); border-radius: .3em; }
+#rv-theme-toggle:hover { background: var(--rv-hover); }
+.rv-cover-logo { display: block; width: min(16em, 60%); height: auto; margin: 1.5em auto 1em; }
+
+/* Lean statement boxes. */
+.lean-block { margin: .6em 0 .2em; border-left: 3px solid var(--rv-accent); padding: .2em 0 .2em .7em; }
+.lean-block-title { cursor: pointer; font-size: .85em; color: var(--rv-accent); }
+.lean-statement { margin: .3em 0; padding: .5em .7em; background: var(--rv-code); color: var(--rv-text); overflow-x: auto; font-size: .85em; white-space: pre; }
+.lean-proof, .lean-related { font-size: .85em; margin: .2em 0; }
+.lean-proof summary, .lean-related summary { cursor: pointer; color: var(--rv-accent); }
+.lean-proof pre { padding: .5em .7em; background: var(--rv-code-2); color: var(--rv-text); overflow-x: auto; max-height: 30em; }
+.lean-source { font-size: .9em; }
+.lean-tag { font-size: .75em; background: var(--rv-tag); border-radius: .3em; padding: 0 .4em; }
+details.supporting { margin: 1.2em 0; border: 1px solid var(--rv-box); border-radius: .4em; padding: .3em .8em; }
+details.supporting > summary { cursor: pointer; font-weight: bold; color: var(--rv-accent); }
+details.supporting[open] > summary { margin-bottom: .6em; }
+
+/* Title page. */
+.rv-rev { color: var(--rv-blue); }
+.rv-acr { color: var(--rv-orange); font-weight: 600; }
+.rv-subtitle { font-size: 1.25em; margin: .2em 0 1.2em; color: var(--rv-text); }
+.rv-pdf-note { margin-top: 3em; font-size: .95em; color: var(--rv-muted); }
+
+/* References. */
+dl.bibliography { display: grid; grid-template-columns: max-content 1fr; gap: .5em 1em; }
+dl.bibliography dt { font-weight: 600; }
+dl.bibliography dt::before { content: "["; }
+dl.bibliography dt::after { content: "]"; }
+dl.bibliography dd { margin: 0; }
+dl.bibliography dt:has(a:target), dl.bibliography dt:has(a:target) + dd { background: var(--rv-tag); }
+
+/* Part and chapter indexes. */
+.rv-lead { font-size: 1.1em; color: var(--rv-muted); }
+.rv-index { margin: 2em 0 1em; border-top: 1px solid var(--rv-border); padding-top: .6em; }
+.rv-index h2 { font-size: 1.1em; }
+.rv-index ol { list-style: none; padding-left: 0; }
+.rv-index li { margin: 0 0 1em; }
+.rv-index li > a { font-weight: 600; text-decoration: none; }
+.rv-index-ref { color: var(--rv-faint); margin-right: .3em; }
+.rv-index li p { margin: .2em 0 0; color: var(--rv-muted); }
+
+/* Results supplied by Mathlib: purple border as in the dependency graph, no review icon. */
+.rv-mathlib { border-left: 4px solid var(--rv-mathlib); background: var(--rv-mathlib-bg);
+  padding: .3em .8em .3em .9em; margin: .8em 0; border-radius: 0 .3em .3em 0; }
+.rv-mathlib-badge { font-size: .75em; font-weight: 600; color: var(--rv-mathlib) !important;
+  border: 1px solid var(--rv-mathlib); border-radius: .3em; padding: 0 .4em; margin-left: .5em;
+  text-decoration: none; vertical-align: middle; }
+a.rv-mathlib-badge:hover { background: var(--rv-mathlib); color: var(--rv-bg) !important; }
+
+/* Repository link beside the navigation arrows, on every page. */
+nav.prev_up_next a.rv-repo-link {
+  display: inline-flex; align-items: center; gap: 0.4em;
+  margin-right: 1.2em; font-size: 0.9rem; text-decoration: none; vertical-align: middle;
+}
+nav.prev_up_next a.rv-repo-link:hover span { text-decoration: underline; }
+
+/* Build version in the top-right corner, beside the theme toggle. */
+.rv-corner .rv-version {
+  color: var(--rv-muted, #8b949e); font-size: 0.8rem; text-decoration: none;
+  margin-right: 0.6em; white-space: nowrap; align-self: center;
+}
+.rv-corner a.rv-version:hover { text-decoration: underline; }
+
+/* Experimental-alpha warning in the top bar (remove as the project matures). */
+body > header .rv-alpha-warning {
+  margin: 0 auto; padding: 0.25em 0.8em; max-width: 60%;
+  border: 1px solid #cf222e; border-radius: 6px;
+  background: #ffebe9; color: #82071e; text-shadow: none;
+  font-size: 0.8rem; line-height: 1.3; text-align: center;
+}
+:root[data-theme="dark"] body > header .rv-alpha-warning {
+  background: #3d1214; color: #ffa198; border-color: #f85149;
+}
+@media (max-width: 700px) { body > header .rv-alpha-warning { max-width: 55%; font-size: 0.7rem; } }
+
+/* Search box in the top-right corner, with a results dropdown. */
+.rv-corner .rv-search { position: relative; margin-right: 0.6em; }
+.rv-search input {
+  width: 11em; padding: 0.25em 0.5em; font-size: 0.85rem;
+  border: 1px solid var(--rv-border, #d0d7de); border-radius: 6px;
+  background: var(--rv-bg, #fff); color: var(--rv-text, #1f2328);
+}
+.rv-search input:focus { width: 16em; outline: 2px solid #0a6fd8; outline-offset: -1px; }
+.rv-search-results {
+  position: absolute; right: 0; top: calc(100% + 4px); z-index: 10;
+  width: min(32em, 90vw); max-height: 70vh; overflow-y: auto;
+  margin: 0; padding: 0.25em 0; list-style: none; text-align: left; text-shadow: none;
+  background: var(--rv-surface, #fff); color: var(--rv-text, #1f2328);
+  border: 1px solid var(--rv-border, #d0d7de); border-radius: 6px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+}
+.rv-search-results li a {
+  display: block; padding: 0.35em 0.75em; text-decoration: none; color: inherit; line-height: 1.3;
+}
+.rv-search-results li.active a, .rv-search-results li a:hover { background: rgba(10, 111, 216, 0.12); }
+.rv-search-head { display: flex; justify-content: space-between; gap: 1rem; font-size: 0.9rem; }
+.rv-search-title { min-width: 0; }
+.rv-search-number { flex-shrink: 0; white-space: nowrap; color: var(--rv-muted, #57606a); }
+.rv-search-meta { display: block; font-size: 0.75rem; color: var(--rv-muted, #57606a); }
+@media (max-width: 700px) { .rv-search input { width: 6em; } .rv-search input:focus { width: 10em; } }
+
+
+/* Reading and reference routes share canonical mathematical statements. */
+.rv-reading-routes, .rv-topic-links { display:flex; flex-wrap:wrap; gap:.6rem; margin:1rem 0; }
+.rv-reading-routes a, .rv-topic-links a { border:1px solid var(--rv-box); border-radius:.35rem; padding:.6rem; }
+.rv-chapter-guide { border-left:3px solid var(--rv-blue); background:var(--rv-surface); padding:.8rem 1.1rem; margin:1rem 0 1.5rem; }
+.rv-chapter-guide ul { columns:2; column-gap:2rem; }
+.rv-chapter-guide li { break-inside:avoid; margin-bottom:.3rem; }
+.rv-reference-page { margin:0; font:1rem/1.55 system-ui,sans-serif; }
+.rv-reference-page > header { padding:1.1rem; min-height:3rem; position:relative; }
+.rv-reference-page main { width:100%; max-width:76rem; padding:1.5rem; margin:0 auto; }
+.rv-filter-form { display:flex; flex-wrap:wrap; align-items:end; gap:1rem; }
+.rv-filter-form label { display:flex; flex-direction:column; gap:.25rem; }
+.rv-filter-form input { min-width:18rem; }
+.rv-filter-form input, .rv-filter-form select, .rv-filter-form button { padding:.55rem; font:inherit; color:var(--rv-text); background:var(--rv-bg); border:1px solid var(--rv-box); border-radius:.25rem; }
+.rv-full-results li { padding:.9rem .4rem; border-bottom:1px solid var(--rv-box); }
+.rv-full-results a { font-weight:600; }
+.rv-result-snippet { margin:.35rem 0; overflow-wrap:anywhere; }
+.rv-pagination { display:flex; gap:2rem; margin:1rem 0; }
+.rv-family-table { border-collapse:collapse; width:100%; margin-top:1.2rem; }
+.rv-family-table caption { text-align:left; margin:.5rem 0; }
+.rv-family-table th, .rv-family-table td { text-align:left; vertical-align:top; padding:.6rem; border:1px solid var(--rv-box); }
+.rv-family-table a { display:inline-block; margin:.15rem 0; }
+.rv-reference-tables { overflow-x:auto; }
+.rv-reference-tables summary { cursor:pointer; font-weight:600; padding:.7rem 0; }
+.rv-target { outline:3px solid var(--rv-blue); outline-offset:5px; scroll-margin-top:1rem; }
+.rv-search-message { position:absolute; right:0; top:100%; font-size:.8rem; background:var(--rv-surface); color:var(--rv-text); z-index:101; min-width:18rem; }
+.rv-search-message:empty { display:none; }
+.rv-search-results { top:calc(100% + 1.8rem); max-height:65vh; overflow:auto; }
+.rv-reference-link { margin-right:.7rem; }
+@media(max-width:700px) { .rv-chapter-guide ul { columns:1; } .rv-filter-form input { min-width:0; width:100%; } .rv-reference-page main { padding:1rem; } }
+@media print { .rv-chapter-guide, .rv-reading-routes { break-inside:avoid; } }
+@media(max-width:900px) {
+  body > header { padding-right:1rem !important; }
+  .rv-corner { position:static; transform:none; flex-wrap:wrap; margin-top:.75rem; }
+  body > header .rv-alpha-warning { max-width:100%; margin:.6rem 0; }
+  .rv-search-results, .rv-search-message { left:0; right:auto; }
+}
