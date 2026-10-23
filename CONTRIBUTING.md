@@ -4,7 +4,8 @@ Open an issue before starting a larger change. Setup is in the
 [README](README.md#building-and-checking). Before a pull request, run:
 
 ```sh
-lake build
+lake build --wfail
+lake env lean scripts/CheckAxioms.lean
 python test/test_review.py
 leanblueprint pdf && leanblueprint web
 lake exe checkdecls blueprint/lean_decls

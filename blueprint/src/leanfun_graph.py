@@ -1,4 +1,4 @@
-"""Distinguish imported Mathlib results using leanblueprint's graph hooks."""
+"""Adjust leanblueprint's graph: Mathlib colour, proof attachment and the reader's legend."""
 
 
 def ProcessOptions(options, document):
@@ -30,3 +30,23 @@ def ProcessOptions(options, document):
         ]
 
     document.addPostParseCallbacks(170, make_legend)
+
+    # plastexdepgraph (order 100) finds a proof's statement by walking back through the
+    # siblings of the proof's paragraph, so a statement opening a `supporting` block is
+    # missed. Attach each proof to the nearest preceding statement in document order;
+    # an explicit \proves (order 10) still wins.
+    def attach_proofs():
+        last = None
+
+        def walk(node):
+            nonlocal last
+            for child in node.childNodes or []:
+                if child.nodeName == "thmenv":
+                    last = child
+                elif child.nodeName == "proof" and last is not None:
+                    child.userdata.setdefault("proves", last)
+                walk(child)
+
+        walk(document)
+
+    document.addPostParseCallbacks(90, attach_proofs)
