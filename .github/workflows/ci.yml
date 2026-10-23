@@ -122,7 +122,18 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           GH_REPO: ${{ github.repository }}
         run: |
-          gh release create "$GITHUB_REF_NAME" --verify-tag --title "LeanFun $GITHUB_REF_NAME" \
-            --notes-file release/notes.md --generate-notes \
-            release/*.pdf release/*.zip
+          if gh release view "$GITHUB_REF_NAME" > /dev/null 2>&1; then
+            # Release already made on GitHub: attach the files and append the notes once,
+            # keeping its title, text and pre-release flag.
+            gh release upload "$GITHUB_REF_NAME" --clobber release/*.pdf release/*.zip
+            body=$(gh release view "$GITHUB_REF_NAME" --json body --jq .body)
+            if ! grep -qF "## LeanFun ${GITHUB_REF_NAME}" <<< "$body"; then
+              printf '%s\n\n%s\n' "$body" "$(cat release/notes.md)" > release/combined.md
+              gh release edit "$GITHUB_REF_NAME" --notes-file release/combined.md
+            fi
+          else
+            gh release create "$GITHUB_REF_NAME" --verify-tag --title "LeanFun $GITHUB_REF_NAME" \
+              --notes-file release/notes.md --generate-notes \
+              release/*.pdf release/*.zip
+          fi
 
