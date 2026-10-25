@@ -9,6 +9,15 @@ FAVICON = '<link rel="icon" type="image/png" sizes="128x128" href="revolver-logo
 NODE = re.compile(r'\\begin\{(theorem|definition|lemma|corollary|proposition)\}(?:\[([^\]]*)\])?.*?\\end\{\1\}', re.S)
 
 
+def highlight_julia(source):
+    """Escape and highlight Julia at build time, preserving the code text."""
+    from pygments import highlight
+    from pygments.lexers import JuliaLexer
+    from pygments.formatters import HtmlFormatter
+    return highlight(source, JuliaLexer(stripnl=False, ensurenl=False),
+                     HtmlFormatter(nowrap=True))
+
+
 def source_nodes(text):
     return {re.search(r'\\label\{([^}]+)\}', m[0])[1]: m[0]
             for m in NODE.finditer(text) if re.search(r'\\label\{([^}]+)\}', m[0])}
@@ -86,7 +95,8 @@ def write_reference_pages(entries, directory, old):
     redirects = legacy_redirects(old, current)
     for url, label in json.loads((directory / 'revolver_legacy_pages.json').read_text()).items():
         if label not in current: raise ValueError(f'Missing legacy destination: {label}')
-        redirects[url] = current[label]
+        if url != current[label]:
+            redirects[url] = current[label]
     Path('legacy-urls.json').write_text(json.dumps(redirects, ensure_ascii=False))
     # Static links remain useful with scripting disabled or an index-load failure.
     def link(label, title=None):

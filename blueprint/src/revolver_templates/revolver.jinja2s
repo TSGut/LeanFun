@@ -92,6 +92,9 @@ name: supporting
 name: proof
 {# Proofs are left to Lean: see the collapsed Lean proof under each statement. #}
 
+name: juliacode
+<pre class="julia-code"><code class="language-julia">{{ obj.highlighted|safe }}</code></pre>
+
 name: rvRev
 <span class="rv-rev">{{ obj }}</span>
 
@@ -131,10 +134,10 @@ name: part chapter section
 </nav>
 {% endif %}
 {{ obj }}
-{% set kids = obj.subsections %}
+{% set kids = obj.subsections | selectattr('nodeName', 'in', ['chapter', 'section', 'subsection']) | list %}
 {% if kids %}
 <nav class="rv-index">
-<h2>{% if obj.nodeName == 'part' %}Chapters in this part{% else %}Sections in this chapter{% endif %}</h2>
+<h2>{% if obj.nodeName == 'part' %}Chapters in this part{% elif obj.nodeName == 'chapter' %}Sections in this chapter{% else %}Subsections{% endif %}</h2>
 <ol>
 {% for s in kids %}
 <li><a href="{{ s.url }}">{% if s.ref %}<span class="rv-index-ref">{{ s.ref }}</span> {% endif %}{{ s.title }}</a>

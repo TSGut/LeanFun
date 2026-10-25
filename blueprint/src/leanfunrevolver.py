@@ -17,9 +17,10 @@ import subprocess
 import sys
 from pathlib import Path
 
-from revolver_data import load_catalog, source_notes, citation_terms, mathematical_source, write_reference_pages, FAVICON
+from revolver_data import load_catalog, source_notes, citation_terms, mathematical_source, write_reference_pages, highlight_julia, FAVICON
 
 from plasTeX import Command, Environment
+from plasTeX.Base.LaTeX.Verbatim import verbatim
 from plasTeX.PackageResource import (PackageCss, PackagePreCleanupCB,
                                      PackageProcessFilecontents, PackageTemplateDir)
 
@@ -89,6 +90,14 @@ class supporting(Environment):
     blockType = True
 
 
+class juliacode(verbatim):
+    """Julia examples, highlighted without executing their contents."""
+
+    @property
+    def highlighted(self):
+        return highlight_julia(str(self.textContent))
+
+
 def lean_signatures(names):
     """Ask Lean for the signature, kind and source range of each declaration."""
     subprocess.run(['lake', 'build', 'revolver_signatures'], cwd=ROOT, check=True,
@@ -114,6 +123,7 @@ def mathlib_rev():
 def ProcessOptions(options, document):
     document.addPackageResource(PackageTemplateDir(path=HERE / 'revolver_templates'))
     document.addPackageResource(PackageCss(path=HERE / 'revolver.css'))
+    document.addPackageResource(PackageCss(path=HERE / 'julia.css'))
     if document.config['general']['renderer'] != 'HTML5':
         return
 

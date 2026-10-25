@@ -145,7 +145,22 @@ theorem eval_extremaInterpolant (N : ℕ) (f : ℝ → ℂ) (z : ℂ) :
         (Lagrange.basis (Finset.range (N+1))
           (fun k ↦ (classicalNode ⟨N,Nat.pos_of_ne_zero hN⟩ k : ℂ)) j).eval z) (N+1)).symm
 
-/-- Interpolation commutes with a series converging at each interpolation node. -/
+/-- Interpolation commutes with ordinary partial-sum limits at its finitely many
+nodes; absolute convergence is not required (ATAP, Chapters 4 and 8). -/
+theorem tendsto_sum_eval_extremaInterpolant {N : ℕ} {a : ℕ → ℂ} {f : ℝ → ℂ}
+    (hs : ∀ j : Fin (N + 1), Filter.Tendsto
+      (fun m : ℕ ↦ ∑ k ∈ Finset.range m,
+        a k * (((T ℝ k).eval (extremaGridNode N j) : ℝ) : ℂ))
+      Filter.atTop (nhds (f (extremaGridNode N j)))) (z : ℂ) :
+    Filter.Tendsto
+      (fun m : ℕ ↦ ∑ k ∈ Finset.range m, a k *
+        (extremaInterpolant N (fun t : ℝ ↦ (((T ℝ k).eval t : ℝ) : ℂ))).eval z)
+      Filter.atTop (nhds ((extremaInterpolant N f).eval z)) := by
+  simp_rw [eval_extremaInterpolant, Finset.mul_sum, ← mul_assoc]
+  simp_rw [Finset.sum_comm (s := Finset.range _), ← Finset.sum_mul]
+  exact tendsto_finsetSum _ fun j _ ↦ (hs j).mul_const _
+
+/-- Interpolation commutes with an unconditionally convergent series at each node. -/
 theorem hasSum_eval_extremaInterpolant {N : ℕ} {a : ℕ → ℂ} {f : ℝ → ℂ}
     (hs : ∀ j : Fin (N + 1), HasSum (fun k : ℕ ↦ a k * (((T ℝ k).eval (extremaGridNode N j) : ℝ) : ℂ))
       (f (extremaGridNode N j))) (z : ℂ) :

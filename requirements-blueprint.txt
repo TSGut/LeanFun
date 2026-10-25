@@ -1,1 +1,2 @@
 leanblueprint==0.0.20
+Pygments==2.21.0

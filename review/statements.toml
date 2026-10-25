@@ -86,11 +86,11 @@ rendered = "definition MeasureTheory.IntegrableInput : {X : Type u_1} → [inst 
 external = ["ESeminormedAddMonoid.toContinuousENorm", "MeasurableSpace", "MeasureTheory.Integrable", "MeasureTheory.Measure", "NonUnitalSeminormedCommRing.toNonUnitalSeminormedRing", "NonUnitalSeminormedRing.toSeminormedAddCommGroup", "NormedCommRing.toSeminormedCommRing", "PseudoMetricSpace.toUniformSpace", "Real", "Real.normedCommRing", "Real.pseudoMetricSpace", "SeminormedAddCommGroup.toSeminormedAddGroup", "SeminormedAddGroup.toESeminormedAddMonoid", "SeminormedCommRing.toNonUnitalSeminormedCommRing", "Subtype", "UniformSpace.toTopologicalSpace"]
 mathlib_commit = "ade5dcd9754acef23d0e35968bff5c0c0c8acc76"
 toolchain = "leanprover/lean4:v4.35.0-rc4"
-git_commit = "16ad8e2df66672de8e1157dda0ba51bdba721b85"
+git_commit = "11c6bae8698ad827aea657242882b25d692abad3"
 reviewer = "Timon S. Gutleb"
-date = "2026-10-22"
+date = "2026-10-24"
 book_nodes = ["def:integrable-input"]
-book_texts = ["[Integrable real inputs] For a measure $\\mu$ on a measurable space $X$, let $\\mathcal I(\\mu)$ be the set of functions $f:X\\to\\R$ that are $\\mu$-integrable. These are pointwise functions, rather than equivalence classes."]
+book_texts = ["[Integrable real functions] For a measure $\\mu$ on a measurable space $X$, let $\\mathcal I(\\mu)$ be the set of functions $f:X\\to\\R$ that are $\\mu$-integrable."]
 
 [[statements]]
 name = "MeasureTheory.IntegrableInput.integrable"
@@ -99,11 +99,11 @@ rendered = "theorem MeasureTheory.IntegrableInput.integrable : ∀ {X : Type u_1
 external = ["ESeminormedAddMonoid.toContinuousENorm", "MeasurableSpace", "MeasureTheory.Integrable", "MeasureTheory.Measure", "NonUnitalSeminormedCommRing.toNonUnitalSeminormedRing", "NonUnitalSeminormedRing.toSeminormedAddCommGroup", "NormedCommRing.toSeminormedCommRing", "PseudoMetricSpace.toUniformSpace", "Real", "Real.normedCommRing", "Real.pseudoMetricSpace", "SeminormedAddCommGroup.toSeminormedAddGroup", "SeminormedAddGroup.toESeminormedAddMonoid", "SeminormedCommRing.toNonUnitalSeminormedCommRing", "Subtype", "Subtype.val", "UniformSpace.toTopologicalSpace"]
 mathlib_commit = "ade5dcd9754acef23d0e35968bff5c0c0c8acc76"
 toolchain = "leanprover/lean4:v4.35.0-rc4"
-git_commit = "c256a5ea50c066a180ccfe4fb320a65a978b2b44"
+git_commit = "11c6bae8698ad827aea657242882b25d692abad3"
 reviewer = "Timon S. Gutleb"
-date = "2026-10-18"
+date = "2026-10-24"
 book_nodes = ["thm:integrable-input"]
-book_texts = ["[Integrability of a bundled input] Every $f\\in\\mathcal I(\\mu)$ is $\\mu$-integrable."]
+book_texts = ["[Integrability of functions in $\\mathcal I(\\mu)$] Every $f\\in\\mathcal I(\\mu)$ is $\\mu$-integrable."]
 
 [[statements]]
 name = "MeasureTheory.integrable_openIntervalWeightMeasure_iff"

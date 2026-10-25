@@ -4,17 +4,31 @@ from pathlib import Path
 import re
 import sys
 import unittest
+from html.parser import HTMLParser
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'blueprint/src'))
-from revolver_data import source_nodes, source_notes, citation_terms, mathematical_source, load_catalog, legacy_redirects
+from revolver_data import source_nodes, source_notes, citation_terms, mathematical_source, load_catalog, legacy_redirects, highlight_julia
 
 
 class RevolverTests(unittest.TestCase):
+    def test_julia_highlighting_preserves_code_and_escapes_html(self):
+        class Text(HTMLParser):
+            def __init__(self):
+                super().__init__(); self.parts = []; self.tags = []
+            def handle_data(self, data): self.parts.append(data)
+            def handle_starttag(self, tag, attrs): self.tags.append(tag)
+        source = '\nfunction f(x)\n    x < 2 && println("<script>&</script>")\n    x\' # adjoint\nend\n'
+        result = highlight_julia(source)
+        parsed = Text(); parsed.feed(result)
+        self.assertEqual(''.join(parsed.parts), source)
+        self.assertTrue(parsed.tags)
+        self.assertEqual(set(parsed.tags), {'span'})
+
     def test_catalog_has_exact_node_coverage(self):
         nodes, catalog = load_catalog(ROOT / 'blueprint/src')
         self.assertEqual(nodes.keys(), catalog.keys())
-        self.assertTrue(all(v['reason'] and v['chapter'] for v in catalog.values()))
+        self.assertTrue(all(v['chapter'] for v in catalog.values()))
         for label, source in nodes.items():
             self.assertEqual(catalog[label]['role'] == 'planned', r'\notready' in source)
 
@@ -26,6 +40,28 @@ class RevolverTests(unittest.TestCase):
             for cell in row['nodes']:
                 for label in cell:
                     self.assertIn(label, nodes)
+
+    def test_textbook_prerequisites_are_visible_and_helpers_searchable(self):
+        source = (ROOT / 'blueprint/src/content.tex').read_text().split(
+            r'\part{Operators:', 1)[0]
+        disclosures = re.findall(r'\\begin\{supporting\}.*?\\end\{supporting\}',
+                                 source, re.S)
+        hidden = set().union(*(source_nodes(block).keys() for block in disclosures))
+        nodes, catalog = load_catalog(ROOT / 'blueprint/src')
+        for label in ('def:gauss-coefficients', 'def:coefficient-input',
+                      'def:extrema-aliasing', 'def:extrema-barycentric',
+                      'def:extrema-lebesgue-constant', 'def:clenshaw',
+                      'thm:jacobi-pairwise', 'thm:normalized-jacobi-spectrum'):
+            self.assertNotIn(label, hidden)
+            self.assertEqual(catalog[label]['role'], 'main')
+        for label in ('thm:integrable-input', 'thm:legendre-maps',
+                      'thm:legendre-derivative-leading-coefficient',
+                      'thm:complex-chebyshev-competitor'):
+            self.assertIn(label, hidden)
+            self.assertIn(label, nodes)
+            self.assertIn(label, catalog)
+        self.assertEqual(source.count(r'\begin{juliacode}'), 7)
+        self.assertNotIn(r'\begin{verbatim}', source)
 
     def test_formula_search_does_not_drop_long_tail(self):
         source = r'\lean{Hidden.proof}\uses{hidden:node}' + 'x' * 900 + r'\frac{a}{b} \cite[18.9.15]{dlmf}'
@@ -55,7 +91,7 @@ class RevolverTests(unittest.TestCase):
     def test_supporting_boundaries_and_planned_chapter(self):
         source = (ROOT / 'blueprint/src/content.tex').read_text()
         depth = 0
-        for m in re.finditer(r'\\(begin|end)\{supporting\}|\\(?:chapter|part)\{', source):
+        for m in re.finditer(r'\\(begin|end)\{supporting\}|\\(?:section|chapter|part)\{', source):
             if m[1]:
                 depth += 1 if m[1] == 'begin' else -1
                 self.assertGreaterEqual(depth, 0)

@@ -5,6 +5,24 @@
 \usepackage{amsmath,amssymb,amsthm,hyperref}
 \usepackage{comment}
 \usepackage{xcolor}
+\usepackage{listings}
+% Julia examples are typeset only; no interpreter or shell escape is used.
+\lstdefinelanguage{Julia}{
+  sensitive=true,
+  morekeywords={function,end,for,in,if,else,elseif,while,return,using,import,
+    let,begin,break,continue,struct,mutable,where,do,try,catch,finally},
+  morekeywords=[2]{true,false,nothing},
+  morecomment=[l]{\#},
+  morecomment=[s]{\#=}{=\#},
+  morestring=[b]"
+}
+\lstnewenvironment{juliacode}{\lstset{
+  language=Julia,basicstyle=\ttfamily\footnotesize,
+  keywordstyle=\color{blue!65!black},commentstyle=\color{green!35!black},
+  stringstyle=\color{red!60!black},showstringspaces=false,
+  columns=fullflexible,keepspaces=true,breaklines=true,
+  frame=single,rulecolor=\color{black!15}
+}}{}
 \definecolor{rvblue}{HTML}{0A6FD8}
 \definecolor{rvorange}{HTML}{F07C12}
 \definecolor{rvmathlib}{HTML}{7040A0}

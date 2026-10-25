@@ -23,7 +23,11 @@ def proofExprs (c : ConstantInfo) : List Expr :=
 def direct (env : Environment) (n : Name) (withProofs := false) (linked : NameSet := {}) : Array Name := Id.run do
   let some c := env.find? n | return #[]
   let mut out : NameSet := {}
-  for e in (if withProofs then proofExprs c else exprs c) do
+  -- A structure's fields live in its constructor type, not in the structure's own type.
+  let ctors := match c with
+    | .inductInfo v => v.ctors.filterMap fun k => (env.find? k).map (·.type)
+    | _ => []
+  for e in (if withProofs then proofExprs c else exprs c) ++ ctors do
     for d in e.getUsedConstants do
       if d != n && (isLocal env d || linked.contains d) then out := out.insert d
   return out.toArray
