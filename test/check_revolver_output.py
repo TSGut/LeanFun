@@ -1,6 +1,7 @@
 """Validate generated discovery links after leanblueprint web."""
 from html.parser import HTMLParser
 import json
+import re
 from pathlib import Path
 import sys
 from urllib.parse import unquote, urlsplit
@@ -39,6 +40,25 @@ def main():
         assert mathematical_source(note) in indexed[label]['math'], f'Unsearchable commentary: {label}'
     roadmap = json.loads((ROOT/'blueprint/src/revolver_catalog.json').read_text()).get('roadmap', {})
     by_label = {e['label']: e for e in entries}
+    # A part lists chapters; every chapter is a complete reading page.
+    part_number = chapter_number = 0
+    chapter_label = None
+    for kind, label in re.findall(
+            r'\\(part|chapter|section)\{[^}]*\}\s*\\label\{([^}]+)\}', source):
+        if kind == 'part':
+            part_number += 1
+            chapter_number = 0
+        elif kind == 'chapter':
+            chapter_number += 1
+            chapter_label = label
+            assert by_label[label]['ref'] == f'{part_number}.{chapter_number}', label
+        elif chapter_label:
+            assert urlsplit(by_label[label]['url']).path == urlsplit(by_label[chapter_label]['url']).path, label
+    for label, meta in catalog.items():
+        assert urlsplit(indexed[label]['url']).path == urlsplit(by_label[meta['chapter']]['url']).path, label
+    for page in ['index.html'] + [urlsplit(e['url']).path for e in entries if e['kind'] == 'Chapter']:
+        sidebar = re.search(r'<nav class="toc">.*?</nav>', (directory/page).read_text(), re.S)[0]
+        assert not re.search(r'class="sub-toc-[2-9]', sidebar), f'Internal headings leaked into sidebar: {page}'
     for label in roadmap:
         assert by_label[label]['kind'] == 'Section', f'Roadmap rendered as a statement: {label}'
         assert by_label[label]['status'] == 'planned', label

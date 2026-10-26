@@ -1,3 +1,7 @@
+% Chapters are numbered within their part in both web and print.
+\numberwithin{chapter}{part}
+\renewcommand{\thepart}{\arabic{part}}
+\renewcommand{\thechapter}{\arabic{part}.\arabic{chapter}}
 \newcommand{\definitionname}{Definition}
 \newtheorem{definition}{Definition}[chapter]
 \newtheorem{theorem}[definition]{Theorem}
